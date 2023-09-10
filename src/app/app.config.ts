@@ -1,7 +1,7 @@
+import { ApplicationConfig, isDevMode } from '@angular/core';
 import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading } from '@angular/router';
 
-import { ApplicationConfig, isDevMode } from '@angular/core';
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { appRoutes } from 'app/app.routes';
 import { mockApiServices } from 'app/mock-api';
@@ -10,7 +10,6 @@ import { provideAuth } from 'app/core/auth/auth.provider';
 import { provideHttpClient } from '@angular/common/http';
 import { provideIcons } from 'app/core/icons/icons.provider';
 import { provideSenior } from '@senior';
-import { provideTransloco } from 'app/core/transloco/transloco.provider';
 import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
@@ -37,8 +36,6 @@ export const appConfig: ApplicationConfig = {
             },
         },
     },
-    // Transloco Config
-    provideTransloco(),
     // Senior
     provideAuth(),
     provideIcons(),
