@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { SeniorAlertComponent, SeniorAlertType } from '@senior/components/alert';
+import { OmanOnlineAlertComponent, OmanOnlineAlertType } from '@omanonline/components/alert';
 
 import { AuthService } from 'app/core/auth/auth.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,21 +11,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgIf } from '@angular/common';
 import { UserService } from 'app/core/user/user.service';
-import { seniorAnimations } from '@senior/animations';
+import { omanonlineAnimations } from '@omanonline/animations';
 
 @Component({
     selector     : 'auth-unlock-session',
     templateUrl  : './unlock-session.component.html',
     encapsulation: ViewEncapsulation.None,
-    animations   : seniorAnimations,
+    animations   : omanonlineAnimations,
     standalone   : true,
-    imports      : [NgIf, SeniorAlertComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, RouterLink],
+    imports      : [NgIf, OmanOnlineAlertComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, RouterLink],
 })
 export class AuthUnlockSessionComponent implements OnInit
 {
     @ViewChild('unlockSessionNgForm') unlockSessionNgForm: NgForm;
 
-    alert: { type: SeniorAlertType; message: string } = {
+    alert: { type: OmanOnlineAlertType; message: string } = {
         type   : 'success',
         message: '',
     };

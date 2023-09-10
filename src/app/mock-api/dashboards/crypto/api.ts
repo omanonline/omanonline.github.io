@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 import { cloneDeep } from 'lodash-es';
 import { crypto as cryptoData } from 'app/mock-api/dashboards/crypto/data';
 
@@ -11,7 +11,7 @@ export class CryptoMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -29,7 +29,7 @@ export class CryptoMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Crypto - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/dashboards/crypto')
             .reply(() => [200, cloneDeep(this._crypto)]);
     }

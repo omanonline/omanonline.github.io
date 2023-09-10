@@ -1,8 +1,8 @@
 {
-    "name": "senior",
+    "name": "omanonline",
     "version": "0.0.1",
-    "description": "senior blockchain website",
-    "author": "https://seniorblockchain.io",
+    "description": "omanonline blockchain website",
+    "author": "https://omanonlineblockchain.io",
     "license": "MIT",
     "private": true,
     "scripts": {

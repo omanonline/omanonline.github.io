@@ -1,4 +1,4 @@
-import { SeniorMockApiService, SeniorMockApiUtils } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService, OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api';
 import { assign, cloneDeep } from 'lodash-es';
 
 import { Injectable } from '@angular/core';
@@ -12,7 +12,7 @@ export class ShortcutsMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -30,14 +30,14 @@ export class ShortcutsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/common/shortcuts')
             .reply(() => [200, cloneDeep(this._shortcuts)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/common/shortcuts')
             .reply(({request}) =>
             {
@@ -45,7 +45,7 @@ export class ShortcutsMockApi
                 const newShortcut = cloneDeep(request.body.shortcut);
 
                 // Generate a new GUID
-                newShortcut.id = SeniorMockApiUtils.guid();
+                newShortcut.id = OmanOnlineMockApiUtils.guid();
 
                 // Unshift the new shortcut
                 this._shortcuts.unshift(newShortcut);
@@ -57,7 +57,7 @@ export class ShortcutsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/common/shortcuts')
             .reply(({request}) =>
             {
@@ -88,7 +88,7 @@ export class ShortcutsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Shortcuts - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/common/shortcuts')
             .reply(({request}) =>
             {

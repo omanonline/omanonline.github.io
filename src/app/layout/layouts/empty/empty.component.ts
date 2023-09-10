@@ -1,8 +1,8 @@
 import { Component, OnDestroy, ViewEncapsulation } from '@angular/core';
 
 import { NgIf } from '@angular/common';
+import { OmanOnlineLoadingBarComponent } from '@omanonline/components/loading-bar';
 import { RouterOutlet } from '@angular/router';
-import { SeniorLoadingBarComponent } from '@senior/components/loading-bar';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
     templateUrl  : './empty.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone   : true,
-    imports      : [SeniorLoadingBarComponent, NgIf, RouterOutlet],
+    imports      : [OmanOnlineLoadingBarComponent, NgIf, RouterOutlet],
 })
 export class EmptyLayoutComponent implements OnDestroy
 {

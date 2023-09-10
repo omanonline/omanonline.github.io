@@ -1,7 +1,7 @@
 import Base64 from 'crypto-js/enc-base64';
 import HmacSHA256 from 'crypto-js/hmac-sha256';
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 import Utf8 from 'crypto-js/enc-utf8';
 import { cloneDeep } from 'lodash-es';
 import { user as userData } from 'app/mock-api/common/user/data';
@@ -15,7 +15,7 @@ export class AuthMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Set the mock-api
         this._secret = 'YOUR_VERY_CONFIDENTIAL_SECRET_FOR_SIGNING_JWT_TOKENS!!!';
@@ -36,7 +36,7 @@ export class AuthMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Forgot password - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/auth/forgot-password', 1000)
             .reply(() =>
                 [
@@ -48,7 +48,7 @@ export class AuthMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Reset password - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/auth/reset-password', 1000)
             .reply(() =>
                 [
@@ -60,7 +60,7 @@ export class AuthMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Sign in - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/auth/sign-in', 1500)
             .reply(({request}) =>
             {
@@ -87,7 +87,7 @@ export class AuthMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Sign in using the access token - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/auth/sign-in-with-token')
             .reply(({request}) =>
             {
@@ -119,7 +119,7 @@ export class AuthMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Sign up - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/auth/sign-up', 1500)
             .reply(() =>
 
@@ -133,7 +133,7 @@ export class AuthMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Unlock session - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/auth/unlock-session', 1500)
             .reply(({request}) =>
             {
@@ -208,7 +208,7 @@ export class AuthMockApi
         // Define token payload
         const payload = {
             iat: iat,
-            iss: 'Senior',
+            iss: 'OmanOnline',
             exp: exp,
         };
 

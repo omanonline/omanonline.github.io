@@ -1,10 +1,10 @@
 import { DOCUMENT, NgIf } from '@angular/common';
 import { Component, Inject, OnDestroy, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { SeniorConfig, SeniorConfigService } from '@senior/services/config';
-import { SeniorMediaWatcherService } from '@senior/services/media-watcher';
-import { SeniorPlatformService } from '@senior/services/platform';
-import { SENIOR_VERSION } from '@senior/version';
+import { OmanOnlineConfig, OmanOnlineConfigService } from '@omanonline/services/config';
+import { OmanOnlineMediaWatcherService } from '@omanonline/services/media-watcher';
+import { OmanOnlinePlatformService } from '@omanonline/services/platform';
+import { OMANONLINE_VERSION } from '@omanonline/version';
 import { combineLatest, filter, map, Subject, takeUntil } from 'rxjs';
 import { EmptyLayoutComponent } from './layouts/empty/empty.component';
 import { EnterpriseLayoutComponent } from './layouts/horizontal/enterprise/enterprise.component';
@@ -20,7 +20,7 @@ import { DenseLayoutComponent } from './layouts/vertical/dense/dense.component';
     imports      : [NgIf, EmptyLayoutComponent, EnterpriseLayoutComponent, ModernLayoutComponent, DenseLayoutComponent]})
 export class LayoutComponent implements OnInit, OnDestroy
 {
-    config: SeniorConfig;
+    config: OmanOnlineConfig;
     layout: string;
     scheme: 'dark' | 'light';
     theme: string;
@@ -34,9 +34,9 @@ export class LayoutComponent implements OnInit, OnDestroy
         @Inject(DOCUMENT) private _document: any,
         private _renderer2: Renderer2,
         private _router: Router,
-        private _seniorConfigService: SeniorConfigService,
-        private _seniorMediaWatcherService: SeniorMediaWatcherService,
-        private _seniorPlatformService: SeniorPlatformService,
+        private _omanonlineConfigService: OmanOnlineConfigService,
+        private _omanonlineMediaWatcherService: OmanOnlineMediaWatcherService,
+        private _omanonlinePlatformService: OmanOnlinePlatformService,
     )
     {
     }
@@ -52,8 +52,8 @@ export class LayoutComponent implements OnInit, OnDestroy
     {
         // Set the theme and scheme based on the configuration
         combineLatest([
-            this._seniorConfigService.config$,
-            this._seniorMediaWatcherService.onMediaQueryChange$(['(prefers-color-scheme: dark)', '(prefers-color-scheme: light)']),
+            this._omanonlineConfigService.config$,
+            this._omanonlineMediaWatcherService.onMediaQueryChange$(['(prefers-color-scheme: dark)', '(prefers-color-scheme: light)']),
         ]).pipe(
             takeUntil(this._unsubscribeAll),
             map(([config, mql]) =>
@@ -84,9 +84,9 @@ export class LayoutComponent implements OnInit, OnDestroy
         });
 
         // Subscribe to config changes
-        this._seniorConfigService.config$
+        this._omanonlineConfigService.config$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((config: SeniorConfig) =>
+            .subscribe((config: OmanOnlineConfig) =>
             {
                 // Store the config
                 this.config = config;
@@ -106,10 +106,10 @@ export class LayoutComponent implements OnInit, OnDestroy
         });
 
         // Set the app version
-        this._renderer2.setAttribute(this._document.querySelector('[ng-version]'), 'senior-version', SENIOR_VERSION);
+        this._renderer2.setAttribute(this._document.querySelector('[ng-version]'), 'omanonline-version', OMANONLINE_VERSION);
 
         // Set the OS name
-        this._renderer2.addClass(this._document.body, this._seniorPlatformService.osName);
+        this._renderer2.addClass(this._document.body, this._omanonlinePlatformService.osName);
     }
 
     /**

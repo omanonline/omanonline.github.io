@@ -169,7 +169,7 @@ export class MessagesComponent implements OnInit, OnDestroy
         // Create the overlay
         this._overlayRef = this._overlay.create({
             hasBackdrop     : true,
-            backdropClass   : 'senior-backdrop-on-mobile',
+            backdropClass   : 'omanonline-backdrop-on-mobile',
             scrollStrategy  : this._overlay.scrollStrategies.block(),
             positionStrategy: this._overlay.position()
                 .flexibleConnectedTo(this._messagesOrigin._elementRef.nativeElement)

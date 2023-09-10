@@ -113,7 +113,7 @@ export const members = [
     },
     {
         id    : '4d24cf48-a322-4d53-89cb-9140dfd5c6ba',
-        name  : 'Jseniorine Hebert',
+        name  : 'Jomanonlineine Hebert',
         avatar: 'assets/images/avatars/female-10.jpg',
     },
     {

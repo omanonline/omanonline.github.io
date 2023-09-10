@@ -9,7 +9,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAuth } from 'app/core/auth/auth.provider';
 import { provideHttpClient } from '@angular/common/http';
 import { provideIcons } from 'app/core/icons/icons.provider';
-import { provideSenior } from '@senior';
+import { provideOmanOnline } from '@omanonline/omanonline.provider';
 import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
@@ -36,15 +36,15 @@ export const appConfig: ApplicationConfig = {
             },
         },
     },
-    // Senior
+    // OmanOnline
     provideAuth(),
     provideIcons(),
-    provideSenior({
+    provideOmanOnline({
         mockApi: {
             delay: 0,
             services: mockApiServices,
         },
-        senior: JSON.parse(localStorage.getItem('config')) ?? {
+        omanonline: JSON.parse(localStorage.getItem('config')) ?? {
             layout: 'enterprise',
             scheme: 'dark',
             screens: {

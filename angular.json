@@ -3,7 +3,7 @@
     "version": 1,
     "newProjectRoot": "projects",
     "projects": {
-        "senior": {
+        "omanonline": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -48,14 +48,14 @@
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
-                                "src/@senior/styles"
+                                "src/@omanonline/styles"
                             ]
                         },
                         "styles": [
-                            "src/@senior/styles/tailwind.scss",
-                            "src/@senior/styles/themes.scss",
+                            "src/@omanonline/styles/tailwind.scss",
+                            "src/@omanonline/styles/themes.scss",
                             "src/styles/vendors.scss",
-                            "src/@senior/styles/main.scss",
+                            "src/@omanonline/styles/main.scss",
                             "src/styles/styles.scss",
                             "src/styles/tailwind.scss"
                         ],
@@ -94,10 +94,10 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "production": {
-                            "browserTarget": "senior:build:production"
+                            "browserTarget": "omanonline:build:production"
                         },
                         "development": {
-                            "browserTarget": "senior:build:development"
+                            "browserTarget": "omanonline:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -105,7 +105,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "senior:build"
+                        "browserTarget": "omanonline:build"
                     }
                 },
                 "test": {

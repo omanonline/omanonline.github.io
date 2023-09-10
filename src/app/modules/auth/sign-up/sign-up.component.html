@@ -17,7 +17,7 @@
             </div>
 
             <!-- Alert -->
-            <senior-alert
+            <omanonline-alert
                 class="mt-8"
                 *ngIf="showAlert"
                 [appearance]="'outline'"
@@ -25,7 +25,7 @@
                 [type]="alert.type"
                 [@shake]="alert.type === 'error'">
                 {{alert.message}}
-            </senior-alert>
+            </omanonline-alert>
 
             <!-- Sign Up form -->
             <form
@@ -118,7 +118,7 @@
 
                 <!-- Submit button -->
                 <button
-                    class="senior-mat-button-large w-full mt-6"
+                    class="omanonline-mat-button-large w-full mt-6"
                     mat-flat-button
                     [color]="'primary'"
                     [disabled]="signUpForm.disabled"
@@ -163,7 +163,7 @@
                 <div>our community</div>
             </div>
             <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
-                Senior helps developers to build organized and well coded dashboards full of beautiful and rich modules.
+                OmanOnline helps developers to build organized and well coded dashboards full of beautiful and rich modules.
                 Join us and start building your application today.
             </div>
             <div class="flex items-center mt-8">

@@ -266,7 +266,7 @@ export const project = {
             name  : 'Best Blackburn',
             email : 'blackburn.best@beadzza.me',
             phone : '+1-814-498-3701',
-            title : 'Senior Developer',
+            title : 'OmanOnline Developer',
         },
         {
             id    : '8bb0f597-673a-47ca-8c77-2f83219cb9af',
@@ -274,7 +274,7 @@ export const project = {
             name  : 'Duncan Carver',
             email : 'duncancarver@mail.info',
             phone : '+1-968-547-2111',
-            title : 'Senior Developer',
+            title : 'OmanOnline Developer',
         },
         {
             id    : 'c318e31f-1d74-49c5-8dae-2bc5805e2fdb',

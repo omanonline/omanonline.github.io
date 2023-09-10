@@ -1,16 +1,16 @@
 <!-- Loading bar -->
-<senior-loading-bar></senior-loading-bar>
+<omanonline-loading-bar></omanonline-loading-bar>
 
 <!-- Navigation -->
 <ng-container *ngIf="isScreenSmall">
-    <senior-vertical-navigation
+    <omanonline-vertical-navigation
         class="dark bg-gray-900 print:hidden"
         [mode]="'over'"
         [name]="'mainNavigation'"
         [navigation]="navigation.default"
         [opened]="false">
         <!-- Navigation header hook -->
-        <ng-container seniorVerticalNavigationContentHeader>
+        <ng-container omanonlineVerticalNavigationContentHeader>
             <!-- Logo -->
             <div class="flex items-center h-20 pt-6 px-8">
                 <img
@@ -19,7 +19,7 @@
                     alt="Logo image">
             </div>
         </ng-container>
-    </senior-vertical-navigation>
+    </omanonline-vertical-navigation>
 </ng-container>
 
 <!-- Wrapper -->
@@ -49,7 +49,7 @@
                 </ng-container>
                 <!-- Components -->
                 <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
-                    <senior-fullscreen class="hidden md:block"></senior-fullscreen>
+                    <omanonline-fullscreen class="hidden md:block"></omanonline-fullscreen>
                     <!-- <search [appearance]="'bar'"></search>
                     <shortcuts></shortcuts>
                     <messages></messages>
@@ -62,10 +62,10 @@
         <ng-container *ngIf="!isScreenSmall">
             <div class="flex flex-auto justify-center px-4 md:px-8 bg-card dark:bg-gray-700">
                 <div class="relative flex items-center w-full max-w-360 h-16">
-                    <senior-horizontal-navigation
+                    <omanonline-horizontal-navigation
                         class="-mx-4"
                         [name]="'mainNavigation'"
-                        [navigation]="navigation.horizontal"></senior-horizontal-navigation>
+                        [navigation]="navigation.horizontal"></omanonline-horizontal-navigation>
                 </div>
             </div>
         </ng-container>
@@ -83,7 +83,7 @@
     <!-- Footer -->
     <div class="relative flex flex-0 justify-center w-full px-6 md:px-8 border-t bg-card print:hidden">
         <div class="flex items-center w-full max-w-360 h-14 sm:h-20">
-            <span class="font-medium text-secondary">Senior &copy; {{currentYear}}</span>
+            <span class="font-medium text-secondary">OmanOnline &copy; {{currentYear}}</span>
         </div>
     </div>
 

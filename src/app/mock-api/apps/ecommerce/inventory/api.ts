@@ -1,4 +1,4 @@
-import { SeniorMockApiService, SeniorMockApiUtils } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService, OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api';
 import { assign, cloneDeep } from 'lodash-es';
 import { brands as brandsData, categories as categoriesData, products as productsData, tags as tagsData, vendors as vendorsData } from 'app/mock-api/apps/ecommerce/inventory/data';
 
@@ -16,7 +16,7 @@ export class ECommerceInventoryMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -34,21 +34,21 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Categories - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/ecommerce/inventory/categories')
             .reply(() => [200, cloneDeep(this._categories)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Brands - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/ecommerce/inventory/brands')
             .reply(() => [200, cloneDeep(this._brands)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Products - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/ecommerce/inventory/products', 300)
             .reply(({request}) =>
             {
@@ -135,7 +135,7 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Product - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/ecommerce/inventory/product')
             .reply(({request}) =>
             {
@@ -155,13 +155,13 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Product - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/ecommerce/inventory/product')
             .reply(() =>
             {
                 // Generate a new product
                 const newProduct = {
-                    id         : SeniorMockApiUtils.guid(),
+                    id         : OmanOnlineMockApiUtils.guid(),
                     category   : '',
                     name       : 'A New Product',
                     description: '',
@@ -192,7 +192,7 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Product - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/ecommerce/inventory/product')
             .reply(({request}) =>
             {
@@ -223,7 +223,7 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Product - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/ecommerce/inventory/product')
             .reply(({request}) =>
             {
@@ -246,14 +246,14 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/ecommerce/inventory/tags')
             .reply(() => [200, cloneDeep(this._tags)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/ecommerce/inventory/tag')
             .reply(({request}) =>
             {
@@ -261,7 +261,7 @@ export class ECommerceInventoryMockApi
                 const newTag = cloneDeep(request.body.tag);
 
                 // Generate a new GUID
-                newTag.id = SeniorMockApiUtils.guid();
+                newTag.id = OmanOnlineMockApiUtils.guid();
 
                 // Unshift the new tag
                 this._tags.unshift(newTag);
@@ -273,7 +273,7 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/ecommerce/inventory/tag')
             .reply(({request}) =>
             {
@@ -304,7 +304,7 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tag - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/ecommerce/inventory/tag')
             .reply(({request}) =>
             {
@@ -336,7 +336,7 @@ export class ECommerceInventoryMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Vendors - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/ecommerce/inventory/vendors')
             .reply(() => [200, cloneDeep(this._vendors)]);
     }

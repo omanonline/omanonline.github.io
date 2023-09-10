@@ -1,7 +1,7 @@
 import { categories as categoriesData, courses as coursesData, demoCourseSteps as demoCourseStepsData } from 'app/mock-api/apps/academy/data';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api/mock-api.service';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api/mock-api.service';
 import { cloneDeep } from 'lodash-es';
 
 @Injectable({providedIn: 'root'})
@@ -14,7 +14,7 @@ export class AcademyMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -32,7 +32,7 @@ export class AcademyMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Categories - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/academy/categories')
             .reply(() =>
             {
@@ -48,7 +48,7 @@ export class AcademyMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Courses - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/academy/courses')
             .reply(() =>
             {
@@ -61,7 +61,7 @@ export class AcademyMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Course - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/academy/courses/course')
             .reply(({request}) =>
             {

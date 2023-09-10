@@ -1,9 +1,9 @@
-import { SeniorNavigationItem } from '@senior/components/navigation';
+import { OmanOnlineNavigationItem } from '@omanonline/components/navigation';
 
 export interface Navigation
 {
-    compact: SeniorNavigationItem[];
-    default: SeniorNavigationItem[];
-    futuristic: SeniorNavigationItem[];
-    horizontal: SeniorNavigationItem[];
+    compact: OmanOnlineNavigationItem[];
+    default: OmanOnlineNavigationItem[];
+    futuristic: OmanOnlineNavigationItem[];
+    horizontal: OmanOnlineNavigationItem[];
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api/mock-api.service';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api/mock-api.service';
 import { cloneDeep } from 'lodash-es';
 import { items as itemsData } from 'app/mock-api/apps/file-manager/data';
 
@@ -11,7 +11,7 @@ export class FileManagerMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -29,7 +29,7 @@ export class FileManagerMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Items - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/file-manager')
             .reply(({request}) =>
             {

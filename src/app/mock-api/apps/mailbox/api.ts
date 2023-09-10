@@ -1,4 +1,4 @@
-import { SeniorMockApiService, SeniorMockApiUtils } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService, OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api';
 import { assign, cloneDeep } from 'lodash-es';
 import { filters as filtersData, folders as foldersData, labels as labelsData, mails as mailsData, settings as settingsData } from 'app/mock-api/apps/mailbox/data';
 
@@ -16,7 +16,7 @@ export class MailboxMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -34,14 +34,14 @@ export class MailboxMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/mailbox/settings')
             .reply(() => [200, cloneDeep(this._settings)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/mailbox/settings')
             .reply(({request}) =>
             {
@@ -58,7 +58,7 @@ export class MailboxMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Folders - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/mailbox/folders')
             .reply(() =>
             {
@@ -109,21 +109,21 @@ export class MailboxMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Filters - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/mailbox/filters')
             .reply(() => [200, cloneDeep(this._filters)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/mailbox/labels')
             .reply(() => [200, cloneDeep(this._labels)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/mailbox/label')
             .reply(({request}) =>
             {
@@ -131,7 +131,7 @@ export class MailboxMockApi
                 const label = cloneDeep(request.body.label);
 
                 // Generate an id
-                label.id = SeniorMockApiUtils.guid();
+                label.id = OmanOnlineMockApiUtils.guid();
 
                 // Generate a slug
                 label.slug = label.title.toLowerCase()
@@ -167,7 +167,7 @@ export class MailboxMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/mailbox/label')
             .reply(({request}) =>
             {
@@ -204,7 +204,7 @@ export class MailboxMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/mailbox/label')
             .reply(({request}) =>
             {
@@ -231,7 +231,7 @@ export class MailboxMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mails - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/mailbox/mails', 625)
             .reply(({request}) =>
             {
@@ -327,7 +327,7 @@ export class MailboxMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mail - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/mailbox/mail')
             .reply(({request}) =>
             {
@@ -349,7 +349,7 @@ export class MailboxMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mail - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/mailbox/mail')
             .reply(({request}) =>
             {

@@ -1,7 +1,7 @@
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { SeniorAlertComponent, SeniorAlertType } from '@senior/components/alert';
+import { OmanOnlineAlertComponent, OmanOnlineAlertType } from '@omanonline/components/alert';
 
 import { AuthService } from 'app/core/auth/auth.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,21 +11,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgIf } from '@angular/common';
-import { seniorAnimations } from '@senior/animations';
+import { omanonlineAnimations } from '@omanonline/animations';
 
 @Component({
     selector     : 'auth-sign-in',
     templateUrl  : './sign-in.component.html',
     encapsulation: ViewEncapsulation.None,
-    animations   : seniorAnimations,
+    animations   : omanonlineAnimations,
     standalone   : true,
-    imports      : [RouterLink, SeniorAlertComponent, NgIf, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule, MatProgressSpinnerModule],
+    imports      : [RouterLink, OmanOnlineAlertComponent, NgIf, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatCheckboxModule, MatProgressSpinnerModule],
 })
 export class AuthSignInComponent implements OnInit
 {
     @ViewChild('signInNgForm') signInNgForm: NgForm;
 
-    alert: { type: SeniorAlertType; message: string } = {
+    alert: { type: OmanOnlineAlertType; message: string } = {
         type   : 'success',
         message: '',
     };

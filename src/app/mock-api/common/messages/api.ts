@@ -1,4 +1,4 @@
-import { SeniorMockApiService, SeniorMockApiUtils } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService, OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api';
 import { assign, cloneDeep } from 'lodash-es';
 
 import { Injectable } from '@angular/core';
@@ -12,7 +12,7 @@ export class MessagesMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -30,14 +30,14 @@ export class MessagesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Messages - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/common/messages')
             .reply(() => [200, cloneDeep(this._messages)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Messages - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/common/messages')
             .reply(({request}) =>
             {
@@ -45,7 +45,7 @@ export class MessagesMockApi
                 const newMessage = cloneDeep(request.body.message);
 
                 // Generate a new GUID
-                newMessage.id = SeniorMockApiUtils.guid();
+                newMessage.id = OmanOnlineMockApiUtils.guid();
 
                 // Unshift the new message
                 this._messages.unshift(newMessage);
@@ -57,7 +57,7 @@ export class MessagesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Messages - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/common/messages')
             .reply(({request}) =>
             {
@@ -88,7 +88,7 @@ export class MessagesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Messages - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/common/messages')
             .reply(({request}) =>
             {
@@ -114,7 +114,7 @@ export class MessagesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mark all as read - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/common/messages/mark-all-as-read')
             .reply(() =>
             {
@@ -133,7 +133,7 @@ export class MessagesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Toggle read status - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/common/messages/toggle-read-status')
             .reply(({request}) =>
             {

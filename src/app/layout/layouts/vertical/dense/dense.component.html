@@ -1,8 +1,8 @@
 <!-- Loading bar -->
-<senior-loading-bar></senior-loading-bar>
+<omanonline-loading-bar></omanonline-loading-bar>
 
 <!-- Navigation -->
-<senior-vertical-navigation
+<omanonline-vertical-navigation
     class="dark bg-gray-900 print:hidden"
     [appearance]="navigationAppearance"
     [mode]="isScreenSmall ? 'over' : 'side'"
@@ -10,7 +10,7 @@
     [navigation]="navigation.default"
     [opened]="!isScreenSmall">
     <!-- Navigation header hook -->
-    <ng-container seniorVerticalNavigationContentHeader>
+    <ng-container omanonlineVerticalNavigationContentHeader>
         <!-- Logo -->
         <div class="flex items-center justify-center h-20">
             <img
@@ -19,7 +19,7 @@
                 alt="Logo image">
         </div>
     </ng-container>
-</senior-vertical-navigation>
+</omanonline-vertical-navigation>
 
 <!-- Wrapper -->
 <div class="flex flex-col flex-auto w-full min-w-0">
@@ -43,7 +43,7 @@
         </div>
         <!-- Components -->
         <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
-            <senior-fullscreen class="hidden md:block"></senior-fullscreen>
+            <omanonline-fullscreen class="hidden md:block"></omanonline-fullscreen>
             <!-- <search [appearance]="'bar'"></search>
             <shortcuts></shortcuts>
             <messages></messages>
@@ -61,7 +61,7 @@
 
     <!-- Footer -->
     <div class="relative flex flex-0 items-center justify-start w-full h-14 px-4 md:px-6 border-t bg-card dark:bg-transparent print:hidden">
-        <span class="font-medium text-secondary">Senior &copy; {{currentYear}}</span>
+        <span class="font-medium text-secondary">OmanOnline &copy; {{currentYear}}</span>
     </div>
 
 </div>

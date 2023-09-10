@@ -1,0 +1,1340 @@
+omanonline-alert {
+    display: block;
+
+    /* Common */
+    .omanonline-alert-container {
+        position: relative;
+        display: flex;
+        padding: 16px;
+        font-size: 14px;
+        line-height: 1;
+
+        /* All icons */
+        .mat-icon {
+            color: currentColor !important;
+        }
+
+        /* Icon */
+        .omanonline-alert-icon {
+            display: flex;
+            align-items: flex-start;
+
+            .omanonline-alert-custom-icon,
+            .omanonline-alert-default-icon {
+                display: none;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+
+                &:not(:empty) {
+                    display: flex;
+                    margin-right: 12px;
+                }
+            }
+
+            .omanonline-alert-default-icon {
+
+                .mat-icon {
+                    @apply icon-size-5;
+                }
+            }
+
+            .omanonline-alert-custom-icon {
+                display: none;
+
+                &:not(:empty) {
+                    display: flex;
+
+                    + .omanonline-alert-default-icon {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        /* Content */
+        .omanonline-alert-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1;
+
+            /* Title */
+            .omanonline-alert-title {
+                display: none;
+                font-weight: 600;
+                line-height: 20px;
+
+                &:not(:empty) {
+                    display: block;
+
+                    /* Alert that comes after the title */
+                    + .omanonline-alert-message {
+
+                        &:not(:empty) {
+                            margin-top: 4px;
+                        }
+                    }
+                }
+            }
+
+            /* Alert */
+            .omanonline-alert-message {
+                display: none;
+                line-height: 20px;
+
+                &:not(:empty) {
+                    display: block;
+                }
+            }
+        }
+
+        /* Dismiss button */
+        .omanonline-alert-dismiss-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 32px !important;
+            min-width: 32px !important;
+            height: 32px !important;
+            min-height: 32px !important;
+            line-height: 32px !important;
+
+            .mat-icon {
+                @apply icon-size-4;
+            }
+        }
+    }
+
+    /* Dismissible */
+    &.omanonline-alert-dismissible {
+
+        .omanonline-alert-container {
+
+            .omanonline-alert-content {
+                margin-right: 32px;
+            }
+        }
+    }
+
+    &:not(.omanonline-alert-dismissible) {
+
+        .omanonline-alert-container {
+
+            .omanonline-alert-dismiss-button {
+                display: none !important;
+            }
+        }
+    }
+
+    /* Border */
+    &.omanonline-alert-appearance-border {
+
+        .omanonline-alert-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+            @apply shadow-md bg-card;
+
+            .omanonline-alert-border {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+            }
+
+            .omanonline-alert-message {
+                @apply text-gray-600;
+            }
+        }
+
+        /* Primary */
+        &.omanonline-alert-type-primary {
+
+            .omanonline-alert-container {
+
+                .omanonline-alert-border {
+                    @apply bg-primary;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-icon {
+                    @apply text-primary;
+                }
+
+                .dark & {
+                    @apply bg-gray-700;
+
+                    .omanonline-alert-border {
+                        @apply bg-primary-400;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-icon {
+                        @apply text-primary-400;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Accent */
+        &.omanonline-alert-type-accent {
+
+            .omanonline-alert-container {
+
+                .omanonline-alert-border {
+                    @apply bg-accent;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-icon {
+                    @apply text-accent;
+                }
+
+                .dark & {
+                    @apply bg-gray-700;
+
+                    .omanonline-alert-border {
+                        @apply bg-accent-400;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-icon {
+                        @apply text-accent-400;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Warn */
+        &.omanonline-alert-type-warn {
+
+            .omanonline-alert-container {
+
+                .omanonline-alert-border {
+                    @apply bg-warn;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-icon {
+                    @apply text-warn;
+                }
+
+                .dark & {
+                    @apply bg-gray-700;
+
+                    .omanonline-alert-border {
+                        @apply bg-warn-400;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-icon {
+                        @apply text-warn-400;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Basic */
+        &.omanonline-alert-type-basic {
+
+            .omanonline-alert-container {
+
+                .omanonline-alert-border {
+                    @apply bg-gray-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-icon {
+                    @apply text-gray-600;
+                }
+
+                .dark & {
+                    @apply bg-gray-700;
+
+                    .omanonline-alert-border {
+                        @apply bg-gray-400;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-icon {
+                        @apply text-gray-400;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Info */
+        &.omanonline-alert-type-info {
+
+            .omanonline-alert-container {
+
+                .omanonline-alert-border {
+                    @apply bg-blue-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-icon {
+                    @apply text-blue-700;
+                }
+
+                .dark & {
+                    @apply bg-gray-700;
+
+                    .omanonline-alert-border {
+                        @apply bg-blue-400;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-icon {
+                        @apply text-blue-400;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Success */
+        &.omanonline-alert-type-success {
+
+            .omanonline-alert-container {
+
+                .omanonline-alert-border {
+                    @apply bg-green-500;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-icon {
+                    @apply text-green-500;
+                }
+
+                .dark & {
+                    @apply bg-gray-700;
+
+                    .omanonline-alert-border {
+                        @apply bg-green-400;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-icon {
+                        @apply text-green-400;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Warning */
+        &.omanonline-alert-type-warning {
+
+            .omanonline-alert-container {
+
+                .omanonline-alert-border {
+                    @apply bg-amber-500;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-icon {
+                    @apply text-amber-500;
+                }
+
+                .dark & {
+                    @apply bg-gray-700;
+
+                    .omanonline-alert-border {
+                        @apply bg-amber-400;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-icon {
+                        @apply text-amber-400;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+
+        /* Error */
+        &.omanonline-alert-type-error {
+
+            .omanonline-alert-container {
+
+                .omanonline-alert-border {
+                    @apply bg-red-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-icon {
+                    @apply text-red-700;
+                }
+
+                .dark & {
+                    @apply bg-gray-700;
+
+                    .omanonline-alert-border {
+                        @apply bg-red-400;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-icon {
+                        @apply text-red-400;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-300;
+                    }
+
+                    code {
+                        @apply bg-gray-400 text-gray-800;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Fill */
+    &.omanonline-alert-appearance-fill {
+
+        .omanonline-alert-container {
+            border-radius: 6px;
+
+            .omanonline-alert-dismiss-button {
+                @apply text-white;
+            }
+        }
+
+        /* Primary */
+        &.omanonline-alert-type-primary {
+
+            .omanonline-alert-container {
+                @apply bg-primary-600;
+
+                .omanonline-alert-icon {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-title {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-primary-100;
+                }
+
+                code {
+                    @apply text-primary-800 bg-primary-200;
+                }
+            }
+        }
+
+        /* Accent */
+        &.omanonline-alert-type-accent {
+
+            .omanonline-alert-container {
+                @apply bg-accent-600;
+
+                .omanonline-alert-icon {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-title {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-accent-100;
+                }
+
+                code {
+                    @apply text-accent-800 bg-accent-200;
+                }
+            }
+        }
+
+        /* Warn */
+        &.omanonline-alert-type-warn {
+
+            .omanonline-alert-container {
+                @apply bg-warn-600;
+
+                .omanonline-alert-icon {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-title {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-warn-100;
+                }
+
+                code {
+                    @apply text-warn-800 bg-warn-200;
+                }
+            }
+        }
+
+        /* Basic */
+        &.omanonline-alert-type-basic {
+
+            .omanonline-alert-container {
+                @apply bg-gray-600;
+
+                .omanonline-alert-icon {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-title {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-gray-100;
+                }
+
+                code {
+                    @apply bg-gray-200 text-gray-800;
+                }
+            }
+        }
+
+        /* Info */
+        &.omanonline-alert-type-info {
+
+            .omanonline-alert-container {
+                @apply bg-blue-600;
+
+                .omanonline-alert-icon {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-title {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-blue-100;
+                }
+
+                code {
+                    @apply bg-blue-200 text-blue-800;
+                }
+            }
+        }
+
+        /* Success */
+        &.omanonline-alert-type-success {
+
+            .omanonline-alert-container {
+                @apply bg-green-600;
+
+                .omanonline-alert-icon {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-title {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-green-100;
+                }
+
+                code {
+                    @apply bg-green-200 text-gray-800;
+                }
+            }
+        }
+
+        /* Warning */
+        &.omanonline-alert-type-warning {
+
+            .omanonline-alert-container {
+                @apply bg-amber-500;
+
+                .omanonline-alert-icon {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-title {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-amber-100;
+                }
+
+                code {
+                    @apply bg-amber-200 text-amber-800;
+                }
+            }
+        }
+
+        /* Error */
+        &.omanonline-alert-type-error {
+
+            .omanonline-alert-container {
+                @apply bg-red-600;
+
+                .omanonline-alert-icon {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-title {
+                    @apply text-white;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-red-100;
+                }
+
+                code {
+                    @apply bg-red-200 text-red-800;
+                }
+            }
+        }
+    }
+
+    /* Outline */
+    &.omanonline-alert-appearance-outline {
+
+        .omanonline-alert-container {
+            border-radius: 6px;
+        }
+
+        /* Primary */
+        &.omanonline-alert-type-primary {
+
+            .omanonline-alert-container {
+                @apply bg-primary-50 ring-1 ring-primary-400 ring-inset;
+
+                .omanonline-alert-icon {
+                    @apply text-primary-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-primary-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-primary-700;
+                }
+
+                code {
+                    @apply text-primary-800 bg-primary-200;
+                }
+
+                .dark & {
+                    @apply bg-primary-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-primary-200;
+                    }
+                }
+            }
+        }
+
+        /* Accent */
+        &.omanonline-alert-type-accent {
+
+            .omanonline-alert-container {
+                @apply bg-accent-100 ring-1 ring-accent-400 ring-inset;
+
+                .omanonline-alert-icon {
+                    @apply text-accent-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-accent-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-accent-700;
+                }
+
+                code {
+                    @apply text-accent-800 bg-accent-200;
+                }
+
+                .dark & {
+                    @apply bg-accent-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-accent-200;
+                    }
+                }
+            }
+        }
+
+        /* Warn */
+        &.omanonline-alert-type-warn {
+
+            .omanonline-alert-container {
+                @apply bg-warn-50 ring-1 ring-warn-400 ring-inset;
+
+                .omanonline-alert-icon {
+                    @apply text-warn-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-warn-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-warn-700;
+                }
+
+                code {
+                    @apply text-warn-800 bg-warn-200;
+                }
+
+                .dark & {
+                    @apply bg-warn-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-warn-200;
+                    }
+                }
+            }
+        }
+
+        /* Basic */
+        &.omanonline-alert-type-basic {
+
+            .omanonline-alert-container {
+                @apply bg-gray-100 ring-1 ring-gray-400 ring-inset;
+
+                .omanonline-alert-icon {
+                    @apply text-gray-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-gray-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-gray-700;
+                }
+
+                code {
+                    @apply bg-gray-200 text-gray-800;
+                }
+
+                .dark & {
+                    @apply bg-gray-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-200;
+                    }
+                }
+            }
+        }
+
+        /* Info */
+        &.omanonline-alert-type-info {
+
+            .omanonline-alert-container {
+                @apply bg-blue-50 ring-1 ring-blue-400 ring-inset;
+
+                .omanonline-alert-icon {
+                    @apply text-blue-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-blue-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-blue-700;
+                }
+
+                code {
+                    @apply bg-blue-200 text-blue-800;
+                }
+
+                .dark & {
+                    @apply bg-blue-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-blue-200;
+                    }
+                }
+            }
+        }
+
+        /* Success */
+        &.omanonline-alert-type-success {
+
+            .omanonline-alert-container {
+                @apply bg-green-50 ring-1 ring-green-400 ring-inset;
+
+                .omanonline-alert-icon {
+                    @apply text-green-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-green-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-green-700;
+                }
+
+                code {
+                    @apply bg-green-200 text-green-800;
+                }
+
+                .dark & {
+                    @apply bg-green-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-green-200;
+                    }
+                }
+            }
+        }
+
+        /* Warning */
+        &.omanonline-alert-type-warning {
+
+            .omanonline-alert-container {
+                @apply bg-amber-50 ring-1 ring-amber-400 ring-inset;
+
+                .omanonline-alert-icon {
+                    @apply text-amber-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-amber-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-amber-700;
+                }
+
+                code {
+                    @apply bg-amber-200 text-amber-800;
+                }
+
+                .dark & {
+                    @apply bg-amber-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-amber-200;
+                    }
+                }
+            }
+        }
+
+        /* Error */
+        &.omanonline-alert-type-error {
+
+            .omanonline-alert-container {
+                @apply bg-red-50 ring-1 ring-red-400 ring-inset;
+
+                .omanonline-alert-icon {
+                    @apply text-red-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-red-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-red-700;
+                }
+
+                code {
+                    @apply bg-red-200 text-red-800;
+                }
+
+                .dark & {
+                    @apply bg-red-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-red-200;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Soft */
+    &.omanonline-alert-appearance-soft {
+
+        .omanonline-alert-container {
+            border-radius: 6px;
+        }
+
+        /* Primary */
+        &.omanonline-alert-type-primary {
+
+            .omanonline-alert-container {
+                @apply bg-primary-50;
+
+                .omanonline-alert-icon {
+                    @apply text-primary-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-primary-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-primary-700;
+                }
+
+                code {
+                    @apply text-primary-800 bg-primary-200;
+                }
+
+                .dark & {
+                    @apply bg-primary-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-primary-200;
+                    }
+                }
+            }
+        }
+
+        /* Accent */
+        &.omanonline-alert-type-accent {
+
+            .omanonline-alert-container {
+                @apply bg-accent-100;
+
+                .omanonline-alert-icon {
+                    @apply text-accent-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-accent-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-accent-700;
+                }
+
+                code {
+                    @apply text-accent-800 bg-accent-200;
+                }
+
+                .dark & {
+                    @apply bg-accent-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-accent-200;
+                    }
+                }
+            }
+        }
+
+        /* Warn */
+        &.omanonline-alert-type-warn {
+
+            .omanonline-alert-container {
+                @apply bg-warn-50;
+
+                .omanonline-alert-icon {
+                    @apply text-warn-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-warn-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-warn-700;
+                }
+
+                code {
+                    @apply text-warn-800 bg-warn-200;
+                }
+
+                .dark & {
+                    @apply bg-warn-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-warn-200;
+                    }
+                }
+            }
+        }
+
+        /* Basic */
+        &.omanonline-alert-type-basic {
+
+            .omanonline-alert-container {
+                @apply bg-gray-100;
+
+                .omanonline-alert-icon {
+                    @apply text-gray-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-gray-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-gray-700;
+                }
+
+                code {
+                    @apply bg-gray-200 text-gray-800;
+                }
+
+                .dark & {
+                    @apply bg-gray-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-gray-200;
+                    }
+                }
+            }
+        }
+
+        /* Info */
+        &.omanonline-alert-type-info {
+
+            .omanonline-alert-container {
+                @apply bg-blue-50;
+
+                .omanonline-alert-icon {
+                    @apply text-blue-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-blue-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-blue-700;
+                }
+
+                code {
+                    @apply bg-blue-200 text-blue-800;
+                }
+
+                .dark & {
+                    @apply bg-blue-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-blue-200;
+                    }
+                }
+            }
+        }
+
+        /* Success */
+        &.omanonline-alert-type-success {
+
+            .omanonline-alert-container {
+                @apply bg-green-50;
+
+                .omanonline-alert-icon {
+                    @apply text-green-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-green-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-green-700;
+                }
+
+                code {
+                    @apply bg-green-200 text-green-800;
+                }
+
+                .dark & {
+                    @apply bg-green-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-green-200;
+                    }
+                }
+            }
+        }
+
+        /* Warning */
+        &.omanonline-alert-type-warning {
+
+            .omanonline-alert-container {
+                @apply bg-amber-50;
+
+                .omanonline-alert-icon {
+                    @apply text-amber-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-amber-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-amber-700;
+                }
+
+                code {
+                    @apply bg-amber-200 text-amber-800;
+                }
+
+                .dark & {
+                    @apply bg-amber-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-amber-200;
+                    }
+                }
+            }
+        }
+
+        /* Error */
+        &.omanonline-alert-type-error {
+
+            .omanonline-alert-container {
+                @apply bg-red-50;
+
+                .omanonline-alert-icon {
+                    @apply text-red-600;
+                }
+
+                .omanonline-alert-title,
+                .omanonline-alert-dismiss-button {
+                    @apply text-red-900;
+                }
+
+                .omanonline-alert-message {
+                    @apply text-red-700;
+                }
+
+                code {
+                    @apply bg-red-200 text-red-800;
+                }
+
+                .dark & {
+                    @apply bg-red-600;
+
+                    .omanonline-alert-icon {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-title,
+                    .omanonline-alert-dismiss-button {
+                        @apply text-white;
+                    }
+
+                    .omanonline-alert-message {
+                        @apply text-red-200;
+                    }
+                }
+            }
+        }
+    }
+}

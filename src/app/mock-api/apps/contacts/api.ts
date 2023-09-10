@@ -1,4 +1,4 @@
-import { SeniorMockApiService, SeniorMockApiUtils } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService, OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api';
 import { assign, cloneDeep } from 'lodash-es';
 import { contacts as contactsData, countries as countriesData, tags as tagsData } from 'app/mock-api/apps/contacts/data';
 import { from, map } from 'rxjs';
@@ -15,7 +15,7 @@ export class ContactsMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -33,7 +33,7 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contacts - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/contacts/all')
             .reply(() =>
             {
@@ -50,7 +50,7 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contacts Search - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/contacts/search')
             .reply(({request}) =>
             {
@@ -77,7 +77,7 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/contacts/contact')
             .reply(({request}) =>
             {
@@ -97,13 +97,13 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/contacts/contact')
             .reply(() =>
             {
                 // Generate a new contact
                 const newContact = {
-                    id          : SeniorMockApiUtils.guid(),
+                    id          : OmanOnlineMockApiUtils.guid(),
                     avatar      : null,
                     name        : 'New Contact',
                     emails      : [],
@@ -128,7 +128,7 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/contacts/contact')
             .reply(({request}) =>
             {
@@ -159,7 +159,7 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/contacts/contact')
             .reply(({request}) =>
             {
@@ -182,21 +182,21 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Countries - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/contacts/countries')
             .reply(() => [200, cloneDeep(this._countries)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/contacts/tags')
             .reply(() => [200, cloneDeep(this._tags)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/contacts/tag')
             .reply(({request}) =>
             {
@@ -204,7 +204,7 @@ export class ContactsMockApi
                 const newTag = cloneDeep(request.body.tag);
 
                 // Generate a new GUID
-                newTag.id = SeniorMockApiUtils.guid();
+                newTag.id = OmanOnlineMockApiUtils.guid();
 
                 // Unshift the new tag
                 this._tags.unshift(newTag);
@@ -216,7 +216,7 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/contacts/tag')
             .reply(({request}) =>
             {
@@ -247,7 +247,7 @@ export class ContactsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tag - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/contacts/tag')
             .reply(({request}) =>
             {
@@ -310,7 +310,7 @@ export class ContactsMockApi
             })
         ;
 
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/contacts/avatar')
             .reply(({request}) =>
             {

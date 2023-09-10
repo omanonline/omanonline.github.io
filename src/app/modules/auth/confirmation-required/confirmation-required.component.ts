@@ -1,13 +1,13 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { RouterLink } from '@angular/router';
-import { seniorAnimations } from '@senior/animations';
+import { omanonlineAnimations } from '@omanonline/animations';
 
 @Component({
     selector     : 'auth-confirmation-required',
     templateUrl  : './confirmation-required.component.html',
     encapsulation: ViewEncapsulation.None,
-    animations   : seniorAnimations,
+    animations   : omanonlineAnimations,
     standalone   : true,
     imports      : [RouterLink],
 })

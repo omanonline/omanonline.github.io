@@ -1,0 +1,112 @@
+/* Variables */
+:root {
+    --omanonline-vertical-navigation-compact-width: 112px;
+}
+
+omanonline-vertical-navigation {
+
+    /* Compact appearance overrides */
+    &.omanonline-vertical-navigation-appearance-compact {
+        width: var(--omanonline-vertical-navigation-compact-width);
+        min-width: var(--omanonline-vertical-navigation-compact-width);
+        max-width: var(--omanonline-vertical-navigation-compact-width);
+
+        /* Left positioned */
+        &.omanonline-vertical-navigation-position-left {
+
+            /* Side mode */
+            &.omanonline-vertical-navigation-mode-side {
+                margin-left: calc(var(--omanonline-vertical-navigation-compact-width) * -1);
+            }
+
+            /* Opened */
+            &.omanonline-vertical-navigation-opened {
+                margin-left: 0;
+            }
+        }
+
+        /* Right positioned */
+        &.omanonline-vertical-navigation-position-right {
+
+            /* Side mode */
+            &.omanonline-vertical-navigation-mode-side {
+                margin-right: calc(var(--omanonline-vertical-navigation-compact-width) * -1);
+            }
+
+            /* Opened */
+            &.omanonline-vertical-navigation-opened {
+                margin-right: 0;
+            }
+
+            /* Aside wrapper */
+            .omanonline-vertical-navigation-aside-wrapper {
+                left: auto;
+                right: var(--omanonline-vertical-navigation-compact-width);
+            }
+        }
+
+        /* Wrapper */
+        .omanonline-vertical-navigation-wrapper {
+
+            /* Content */
+            .omanonline-vertical-navigation-content {
+
+                > omanonline-vertical-navigation-aside-item,
+                > omanonline-vertical-navigation-basic-item {
+
+                    .omanonline-vertical-navigation-item-wrapper {
+                        margin: 4px 8px 0 8px;
+
+                        .omanonline-vertical-navigation-item {
+                            flex-direction: column;
+                            justify-content: center;
+                            padding: 12px;
+                            border-radius: 6px;
+
+                            .omanonline-vertical-navigation-item-icon {
+                                margin-right: 0;
+                            }
+
+                            .omanonline-vertical-navigation-item-title-wrapper {
+                                margin-top: 8px;
+
+                                .omanonline-vertical-navigation-item-title {
+                                    font-size: 12px;
+                                    font-weight: 500;
+                                    text-align: center;
+                                    line-height: 16px;
+                                }
+
+                                .omanonline-vertical-navigation-item-subtitle {
+                                    display: none !important;
+                                }
+                            }
+
+                            .omanonline-vertical-navigation-item-badge {
+                                position: absolute;
+                                top: 12px;
+                                left: 64px;
+                            }
+                        }
+                    }
+
+                    > omanonline-vertical-navigation-collapsable-item {
+                        display: none
+                    }
+
+                    > omanonline-vertical-navigation-group-item {
+
+                        > .omanonline-vertical-navigation-item-wrapper {
+                            display: none
+                        }
+                    }
+                }
+            }
+        }
+
+        /* Aside wrapper */
+        .omanonline-vertical-navigation-aside-wrapper {
+            left: var(--omanonline-vertical-navigation-compact-width);
+        }
+    }
+}

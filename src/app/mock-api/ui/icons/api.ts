@@ -1,7 +1,7 @@
 import { feather, heroicons, material } from 'app/mock-api/ui/icons/data';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 import { cloneDeep } from 'lodash-es';
 
 @Injectable({providedIn: 'root'})
@@ -14,7 +14,7 @@ export class IconsMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -32,7 +32,7 @@ export class IconsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Feather icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/ui/icons/feather')
             .reply(() => [
                 200,
@@ -47,7 +47,7 @@ export class IconsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Heroicons outline icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/ui/icons/heroicons-outline')
             .reply(() => [
                 200,
@@ -62,7 +62,7 @@ export class IconsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Heroicons solid icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/ui/icons/heroicons-solid')
             .reply(() => [
                 200,
@@ -77,7 +77,7 @@ export class IconsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Heroicons mini icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/ui/icons/heroicons-mini')
             .reply(() => [
                 200,
@@ -92,7 +92,7 @@ export class IconsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Material solid icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/ui/icons/material-solid')
             .reply(() => [
                 200,
@@ -107,7 +107,7 @@ export class IconsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Material outline icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/ui/icons/material-outline')
             .reply(() => [
                 200,
@@ -122,7 +122,7 @@ export class IconsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Material twotone icons - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/ui/icons/material-twotone')
             .reply(() => [
                 200,

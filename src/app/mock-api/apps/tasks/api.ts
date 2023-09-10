@@ -2,8 +2,8 @@ import { assign, cloneDeep } from 'lodash-es';
 import { tags as tagsData, tasks as tasksData } from 'app/mock-api/apps/tasks/data';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api/mock-api.service';
-import { SeniorMockApiUtils } from '@senior/lib/mock-api/mock-api.utils';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api/mock-api.service';
+import { OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api/mock-api.utils';
 
 @Injectable({providedIn: 'root'})
 export class TasksMockApi
@@ -14,7 +14,7 @@ export class TasksMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -32,7 +32,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/tasks/tags')
             .reply(() => [
                 200,
@@ -42,7 +42,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/tasks/tag')
             .reply(({request}) =>
             {
@@ -50,7 +50,7 @@ export class TasksMockApi
                 const newTag = cloneDeep(request.body.tag);
 
                 // Generate a new GUID
-                newTag.id = SeniorMockApiUtils.guid();
+                newTag.id = OmanOnlineMockApiUtils.guid();
 
                 // Unshift the new tag
                 this._tags.unshift(newTag);
@@ -64,7 +64,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tags - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/tasks/tag')
             .reply(({request}) =>
             {
@@ -97,7 +97,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tag - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/tasks/tag')
             .reply(({request}) =>
             {
@@ -126,7 +126,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tasks - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/tasks/all')
             .reply(() =>
             {
@@ -145,7 +145,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tasks Search - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/tasks/search')
             .reply(({request}) =>
             {
@@ -190,7 +190,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Tasks Orders - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/tasks/order')
             .reply(({request}) =>
             {
@@ -217,7 +217,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Task - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/tasks/task')
             .reply(({request}) =>
             {
@@ -239,13 +239,13 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Task - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/tasks/task')
             .reply(({request}) =>
             {
                 // Generate a new task
                 const newTask = {
-                    id       : SeniorMockApiUtils.guid(),
+                    id       : OmanOnlineMockApiUtils.guid(),
                     type     : request.body.type,
                     title    : '',
                     notes    : null,
@@ -274,7 +274,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Task - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/tasks/task')
             .reply(({request}) =>
             {
@@ -307,7 +307,7 @@ export class TasksMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Task - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/tasks/task')
             .reply(({request}) =>
             {

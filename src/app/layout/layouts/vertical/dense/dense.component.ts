@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
-import { SeniorNavigationService, SeniorVerticalNavigationComponent } from '@senior/components/navigation';
+import { OmanOnlineNavigationService, OmanOnlineVerticalNavigationComponent } from '@omanonline/components/navigation';
 import { Subject, takeUntil } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -10,10 +10,10 @@ import { Navigation } from 'app/core/navigation/navigation.types';
 import { NavigationService } from 'app/core/navigation/navigation.service';
 import { NgIf } from '@angular/common';
 import { NotificationsComponent } from 'app/layout/common/notifications/notifications.component';
+import { OmanOnlineFullscreenComponent } from '@omanonline/components/fullscreen';
+import { OmanOnlineLoadingBarComponent } from '@omanonline/components/loading-bar';
+import { OmanOnlineMediaWatcherService } from '@omanonline/services/media-watcher';
 import { SearchComponent } from 'app/layout/common/search/search.component';
-import { SeniorFullscreenComponent } from '@senior/components/fullscreen';
-import { SeniorLoadingBarComponent } from '@senior/components/loading-bar';
-import { SeniorMediaWatcherService } from '@senior/services/media-watcher';
 import { SettingsComponent } from 'app/layout/common/settings/settings.component';
 import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.component';
 
@@ -22,7 +22,7 @@ import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.compon
     templateUrl  : './dense.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone   : true,
-    imports      : [SeniorLoadingBarComponent, SeniorVerticalNavigationComponent, MatButtonModule, MatIconModule, SeniorFullscreenComponent, SearchComponent, ShortcutsComponent, MessagesComponent, NotificationsComponent, NgIf, RouterOutlet, SettingsComponent],
+    imports      : [OmanOnlineLoadingBarComponent, OmanOnlineVerticalNavigationComponent, MatButtonModule, MatIconModule, OmanOnlineFullscreenComponent, SearchComponent, ShortcutsComponent, MessagesComponent, NotificationsComponent, NgIf, RouterOutlet, SettingsComponent],
 })
 export class DenseLayoutComponent implements OnInit, OnDestroy
 {
@@ -38,8 +38,8 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
         private _activatedRoute: ActivatedRoute,
         private _router: Router,
         private _navigationService: NavigationService,
-        private _seniorMediaWatcherService: SeniorMediaWatcherService,
-        private _seniorNavigationService: SeniorNavigationService,
+        private _omanonlineMediaWatcherService: OmanOnlineMediaWatcherService,
+        private _omanonlineNavigationService: OmanOnlineNavigationService,
     )
     {
     }
@@ -74,7 +74,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
             });
 
         // Subscribe to media changes
-        this._seniorMediaWatcherService.onMediaChange$
+        this._omanonlineMediaWatcherService.onMediaChange$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe(({matchingAliases}) =>
             {
@@ -108,7 +108,7 @@ export class DenseLayoutComponent implements OnInit, OnDestroy
     toggleNavigation(name: string): void
     {
         // Get the navigation
-        const navigation = this._seniorNavigationService.getComponent<SeniorVerticalNavigationComponent>(name);
+        const navigation = this._omanonlineNavigationService.getComponent<OmanOnlineVerticalNavigationComponent>(name);
 
         if ( navigation )
         {

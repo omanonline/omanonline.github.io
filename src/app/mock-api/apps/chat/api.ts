@@ -2,7 +2,7 @@ import { assign, cloneDeep, omit } from 'lodash-es';
 import { chats as chatsData, contacts as contactsData, messages as messagesData, profile as profileData } from 'app/mock-api/apps/chat/data';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 
 @Injectable({providedIn: 'root'})
 export class ChatMockApi
@@ -15,7 +15,7 @@ export class ChatMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -47,7 +47,7 @@ export class ChatMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Chats - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/chat/chats')
             .reply(() =>
             {
@@ -61,7 +61,7 @@ export class ChatMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Chat - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/chat/chat')
             .reply(({request}) =>
             {
@@ -81,7 +81,7 @@ export class ChatMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Chat - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/chat/chat')
             .reply(({request}) =>
             {
@@ -112,7 +112,7 @@ export class ChatMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contacts - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/chat/contacts')
             .reply(() =>
             {
@@ -132,7 +132,7 @@ export class ChatMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Contact Details - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/chat/contact')
             .reply(({request}) =>
             {
@@ -152,7 +152,7 @@ export class ChatMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Profile - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/chat/profile')
             .reply(() =>
             {

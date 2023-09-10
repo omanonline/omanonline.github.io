@@ -1,22 +1,22 @@
 import { compactNavigation, defaultNavigation, futuristicNavigation, horizontalNavigation } from 'app/mock-api/common/navigation/data';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
-import { SeniorNavigationItem } from '@senior/components/navigation';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
+import { OmanOnlineNavigationItem } from '@omanonline/components/navigation';
 import { cloneDeep } from 'lodash-es';
 
 @Injectable({providedIn: 'root'})
 export class NavigationMockApi
 {
-    private readonly _compactNavigation: SeniorNavigationItem[] = compactNavigation;
-    private readonly _defaultNavigation: SeniorNavigationItem[] = defaultNavigation;
-    private readonly _futuristicNavigation: SeniorNavigationItem[] = futuristicNavigation;
-    private readonly _horizontalNavigation: SeniorNavigationItem[] = horizontalNavigation;
+    private readonly _compactNavigation: OmanOnlineNavigationItem[] = compactNavigation;
+    private readonly _defaultNavigation: OmanOnlineNavigationItem[] = defaultNavigation;
+    private readonly _futuristicNavigation: OmanOnlineNavigationItem[] = futuristicNavigation;
+    private readonly _horizontalNavigation: OmanOnlineNavigationItem[] = horizontalNavigation;
 
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -34,7 +34,7 @@ export class NavigationMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Navigation - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/common/navigation')
             .reply(() =>
             {

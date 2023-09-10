@@ -1,4 +1,4 @@
-import { SeniorMockApiService, SeniorMockApiUtils } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService, OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api';
 import { assign, cloneDeep } from 'lodash-es';
 
 import { Injectable } from '@angular/core';
@@ -12,7 +12,7 @@ export class NotificationsMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -30,14 +30,14 @@ export class NotificationsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/common/notifications')
             .reply(() => [200, cloneDeep(this._notifications)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/common/notifications')
             .reply(({request}) =>
             {
@@ -45,7 +45,7 @@ export class NotificationsMockApi
                 const newNotification = cloneDeep(request.body.notification);
 
                 // Generate a new GUID
-                newNotification.id = SeniorMockApiUtils.guid();
+                newNotification.id = OmanOnlineMockApiUtils.guid();
 
                 // Unshift the new notification
                 this._notifications.unshift(newNotification);
@@ -57,7 +57,7 @@ export class NotificationsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/common/notifications')
             .reply(({request}) =>
             {
@@ -88,7 +88,7 @@ export class NotificationsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notifications - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/common/notifications')
             .reply(({request}) =>
             {
@@ -114,7 +114,7 @@ export class NotificationsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Mark all as read - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/common/notifications/mark-all-as-read')
             .reply(() =>
             {
@@ -133,7 +133,7 @@ export class NotificationsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Toggle read status - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/common/notifications/toggle-read-status')
             .reply(({request}) =>
             {

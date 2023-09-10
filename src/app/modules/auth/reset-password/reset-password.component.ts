@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
-import { SeniorAlertComponent, SeniorAlertType } from '@senior/components/alert';
+import { OmanOnlineAlertComponent, OmanOnlineAlertType } from '@omanonline/components/alert';
 
 import { AuthService } from 'app/core/auth/auth.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,24 +9,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgIf } from '@angular/common';
+import { OmanOnlineValidators } from '@omanonline/validators';
 import { RouterLink } from '@angular/router';
-import { SeniorValidators } from '@senior/validators';
 import { finalize } from 'rxjs';
-import { seniorAnimations } from '@senior/animations';
+import { omanonlineAnimations } from '@omanonline/animations';
 
 @Component({
     selector     : 'auth-reset-password',
     templateUrl  : './reset-password.component.html',
     encapsulation: ViewEncapsulation.None,
-    animations   : seniorAnimations,
+    animations   : omanonlineAnimations,
     standalone   : true,
-    imports      : [NgIf, SeniorAlertComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, RouterLink],
+    imports      : [NgIf, OmanOnlineAlertComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule, RouterLink],
 })
 export class AuthResetPasswordComponent implements OnInit
 {
     @ViewChild('resetPasswordNgForm') resetPasswordNgForm: NgForm;
 
-    alert: { type: SeniorAlertType; message: string } = {
+    alert: { type: OmanOnlineAlertType; message: string } = {
         type   : 'success',
         message: '',
     };
@@ -58,7 +58,7 @@ export class AuthResetPasswordComponent implements OnInit
                 passwordConfirm: ['', Validators.required],
             },
             {
-                validators: SeniorValidators.mustMatch('password', 'passwordConfirm'),
+                validators: OmanOnlineValidators.mustMatch('password', 'passwordConfirm'),
             },
         );
     }

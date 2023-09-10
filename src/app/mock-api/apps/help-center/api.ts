@@ -1,7 +1,7 @@
 import { faqCategories as faqCategoriesData, faqs as faqsData, guideCategories as guideCategoriesData, guideContent as guideContentData, guides as guidesData } from 'app/mock-api/apps/help-center/data';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 import { cloneDeep } from 'lodash-es';
 
 @Injectable({providedIn: 'root'})
@@ -16,7 +16,7 @@ export class HelpCenterMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -34,7 +34,7 @@ export class HelpCenterMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ FAQs - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/help-center/faqs')
             .reply(({request}) =>
             {
@@ -86,7 +86,7 @@ export class HelpCenterMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Guides - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/help-center/guides')
             .reply(({request}) =>
             {
@@ -144,7 +144,7 @@ export class HelpCenterMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Guide - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/help-center/guide')
             .reply(({request}) =>
             {

@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgClass, NgFor } from '@angular/common';
-import { Scheme, SeniorConfig, SeniorConfigService, Theme, Themes } from '@senior/services/config';
+import { OmanOnlineConfig, OmanOnlineConfigService, Scheme, Theme, Themes } from '@omanonline/services/config';
 import { Subject, takeUntil } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { OmanOnlineDrawerComponent } from '@omanonline/components/drawer';
 import { Router } from '@angular/router';
-import { SeniorDrawerComponent } from '@senior/components/drawer';
 
 @Component({
     selector     : 'settings',
@@ -31,11 +31,11 @@ import { SeniorDrawerComponent } from '@senior/components/drawer';
     ],
     encapsulation: ViewEncapsulation.None,
     standalone   : true,
-    imports      : [MatIconModule, SeniorDrawerComponent, MatButtonModule, NgFor, NgClass, MatTooltipModule],
+    imports      : [MatIconModule, OmanOnlineDrawerComponent, MatButtonModule, NgFor, NgClass, MatTooltipModule],
 })
 export class SettingsComponent implements OnInit, OnDestroy
 {
-    config: SeniorConfig;
+    config: OmanOnlineConfig;
     layout: string;
     scheme: 'dark' | 'light';
     theme: string;
@@ -47,7 +47,7 @@ export class SettingsComponent implements OnInit, OnDestroy
      */
     constructor(
         private _router: Router,
-        private _seniorConfigService: SeniorConfigService,
+        private _omanonlineConfigService: OmanOnlineConfigService,
     )
     {
     }
@@ -62,9 +62,9 @@ export class SettingsComponent implements OnInit, OnDestroy
     ngOnInit(): void
     {
         // Subscribe to config changes
-        this._seniorConfigService.config$
+        this._omanonlineConfigService.config$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((config: SeniorConfig) =>
+            .subscribe((config: OmanOnlineConfig) =>
             {
                 localStorage.setItem('config', JSON.stringify(config));
                 this.config = config;
@@ -101,7 +101,7 @@ export class SettingsComponent implements OnInit, OnDestroy
         }).then(() =>
         {
             // Set the config
-            this._seniorConfigService.config = {layout};
+            this._omanonlineConfigService.config = {layout};
         });
     }
 
@@ -112,7 +112,7 @@ export class SettingsComponent implements OnInit, OnDestroy
      */
     setScheme(scheme: Scheme): void
     {
-        this._seniorConfigService.config = {scheme};
+        this._omanonlineConfigService.config = {scheme};
     }
 
     /**
@@ -122,6 +122,6 @@ export class SettingsComponent implements OnInit, OnDestroy
      */
     setTheme(theme: Theme): void
     {
-        this._seniorConfigService.config = {theme};
+        this._omanonlineConfigService.config = {theme};
     }
 }

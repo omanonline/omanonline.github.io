@@ -1,7 +1,7 @@
-import { SeniorNavigationItem, SeniorNavigationService } from '@senior/components/navigation';
+import { OmanOnlineNavigationItem, OmanOnlineNavigationService } from '@omanonline/components/navigation';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 import { cloneDeep } from 'lodash-es';
 import { contacts } from 'app/mock-api/apps/contacts/data';
 import { defaultNavigation } from 'app/mock-api/common/navigation/data';
@@ -10,7 +10,7 @@ import { tasks } from 'app/mock-api/apps/tasks/data';
 @Injectable({providedIn: 'root'})
 export class SearchMockApi
 {
-    private readonly _defaultNavigation: SeniorNavigationItem[] = defaultNavigation;
+    private readonly _defaultNavigation: OmanOnlineNavigationItem[] = defaultNavigation;
     private readonly _contacts: any[] = contacts;
     private readonly _tasks: any[] = tasks;
 
@@ -18,8 +18,8 @@ export class SearchMockApi
      * Constructor
      */
     constructor(
-        private _seniorMockApiService: SeniorMockApiService,
-        private _seniorNavigationService: SeniorNavigationService,
+        private _omanonlineMockApiService: OmanOnlineMockApiService,
+        private _omanonlineNavigationService: OmanOnlineNavigationService,
     )
     {
         // Register Mock API handlers
@@ -36,12 +36,12 @@ export class SearchMockApi
     registerHandlers(): void
     {
         // Get the flat navigation and store it
-        const flatNavigation = this._seniorNavigationService.getFlatNavigation(this._defaultNavigation);
+        const flatNavigation = this._omanonlineNavigationService.getFlatNavigation(this._defaultNavigation);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Search results - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/common/search')
             .reply(({request}) =>
             {

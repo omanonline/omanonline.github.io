@@ -1,8 +1,8 @@
 import { labels as labelsData, notes as notesData } from 'app/mock-api/apps/notes/data';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api/mock-api.service';
-import { SeniorMockApiUtils } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api/mock-api.service';
+import { OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api';
 import { cloneDeep } from 'lodash-es';
 
 @Injectable({providedIn: 'root'})
@@ -14,7 +14,7 @@ export class NotesMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -32,7 +32,7 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/notes/labels')
             .reply(() => [
                 200,
@@ -42,13 +42,13 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/notes/labels')
             .reply(({request}) =>
             {
                 // Create a new label
                 const label = {
-                    id   : SeniorMockApiUtils.guid(),
+                    id   : OmanOnlineMockApiUtils.guid(),
                     title: request.body.title,
                 };
 
@@ -64,7 +64,7 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/notes/labels')
             .reply(({request}) =>
             {
@@ -94,7 +94,7 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/notes/labels')
             .reply(({request}) =>
             {
@@ -119,7 +119,7 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Note Tasks - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/notes/tasks')
             .reply(({request}) =>
             {
@@ -139,7 +139,7 @@ export class NotesMockApi
                         }
 
                         note.tasks.push({
-                            id       : SeniorMockApiUtils.guid(),
+                            id       : OmanOnlineMockApiUtils.guid(),
                             content  : task,
                             completed: false,
                         });
@@ -164,7 +164,7 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notes - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/notes/all')
             .reply(() =>
             {
@@ -189,7 +189,7 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notes - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/notes')
             .reply(({request}) =>
             {
@@ -197,7 +197,7 @@ export class NotesMockApi
                 const note = request.body.note;
 
                 // Add an id
-                note.id = SeniorMockApiUtils.guid();
+                note.id = OmanOnlineMockApiUtils.guid();
 
                 // Push the note
                 this._notes.push(note);
@@ -211,7 +211,7 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notes - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/notes')
             .reply(({request}) =>
             {
@@ -240,7 +240,7 @@ export class NotesMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Notes - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/notes')
             .reply(({request}) =>
             {

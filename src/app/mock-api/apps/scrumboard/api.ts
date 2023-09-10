@@ -1,4 +1,4 @@
-import { SeniorMockApiService, SeniorMockApiUtils } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService, OmanOnlineMockApiUtils } from '@omanonline/lib/mock-api';
 import { assign, cloneDeep } from 'lodash-es';
 import { boards as boardsData, cards as cardsData, labels as labelsData, lists as listsData, members as membersData } from 'app/mock-api/apps/scrumboard/data';
 
@@ -17,7 +17,7 @@ export class ScrumboardMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -35,7 +35,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Boards - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/scrumboard/boards')
             .reply(({request}) =>
             {
@@ -57,7 +57,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Board - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/scrumboard/board')
             .reply(({request}) =>
             {
@@ -97,7 +97,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ List - POST
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPost('api/apps/scrumboard/board/list')
             .reply(({request}) =>
             {
@@ -105,7 +105,7 @@ export class ScrumboardMockApi
                 const newList = cloneDeep(request.body.list);
 
                 // Generate a new GUID
-                newList.id = SeniorMockApiUtils.guid();
+                newList.id = OmanOnlineMockApiUtils.guid();
 
                 // Store the new list
                 this._lists.push(newList);
@@ -119,7 +119,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ List - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/scrumboard/board/list')
             .reply(({request}) =>
             {
@@ -151,7 +151,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Lists - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/scrumboard/board/lists')
             .reply(({request}) =>
             {
@@ -183,7 +183,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ List - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/scrumboard/board/list')
             .reply(({request}) =>
             {
@@ -206,7 +206,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Card - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPut('api/apps/scrumboard/board/card')
             .reply(({request}) =>
             {
@@ -214,7 +214,7 @@ export class ScrumboardMockApi
                 const newCard = cloneDeep(request.body.card);
 
                 // Generate a new GUID
-                newCard.id = SeniorMockApiUtils.guid();
+                newCard.id = OmanOnlineMockApiUtils.guid();
 
                 // Unshift the new card
                 this._cards.push(newCard);
@@ -228,7 +228,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Card - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/scrumboard/board/card')
             .reply(({request}) =>
             {
@@ -267,7 +267,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Cards - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/scrumboard/board/cards')
             .reply(({request}) =>
             {
@@ -305,7 +305,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Card - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/scrumboard/board/card')
             .reply(({request}) =>
             {
@@ -325,7 +325,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Card Positions - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/scrumboard/board/card/positions')
             .reply(({request}) =>
             {
@@ -352,7 +352,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Labels - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/apps/scrumboard/board/labels')
             .reply(({request}) =>
             {
@@ -371,7 +371,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Label - PUT
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPut('api/apps/scrumboard/board/label')
             .reply(({request}) =>
             {
@@ -379,7 +379,7 @@ export class ScrumboardMockApi
                 const newLabel = cloneDeep(request.body.label);
 
                 // Generate a new GUID
-                newLabel.id = SeniorMockApiUtils.guid();
+                newLabel.id = OmanOnlineMockApiUtils.guid();
 
                 // Unshift the new label
                 this._labels.unshift(newLabel);
@@ -393,7 +393,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Label - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/apps/scrumboard/board/label')
             .reply(({request}) =>
             {
@@ -426,7 +426,7 @@ export class ScrumboardMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Label - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onDelete('api/apps/scrumboard/board/label')
             .reply(({request}) =>
             {

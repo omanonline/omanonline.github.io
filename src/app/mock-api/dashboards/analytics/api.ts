@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 import { analytics as analyticsData } from 'app/mock-api/dashboards/analytics/data';
 import { cloneDeep } from 'lodash-es';
 
@@ -11,7 +11,7 @@ export class AnalyticsMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -29,7 +29,7 @@ export class AnalyticsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Sales - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/dashboards/analytics')
             .reply(() => [200, cloneDeep(this._analytics)]);
     }

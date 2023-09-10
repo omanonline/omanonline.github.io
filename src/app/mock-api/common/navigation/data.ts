@@ -1,8 +1,8 @@
 /* eslint-disable */
 
-import { SeniorNavigationItem } from '@senior/components/navigation';
+import { OmanOnlineNavigationItem } from '@omanonline/components/navigation';
 
-export const defaultNavigation: SeniorNavigationItem[] = [
+export const defaultNavigation: OmanOnlineNavigationItem[] = [
     {
         id   : 'home',
         title: 'Home',
@@ -18,7 +18,7 @@ export const defaultNavigation: SeniorNavigationItem[] = [
         link : '/ico'
     }
 ];
-export const compactNavigation: SeniorNavigationItem[] = [
+export const compactNavigation: OmanOnlineNavigationItem[] = [
     {
         id   : 'home',
         title: 'Home',
@@ -34,7 +34,7 @@ export const compactNavigation: SeniorNavigationItem[] = [
         link : '/ico'
     }
 ];
-export const futuristicNavigation: SeniorNavigationItem[] = [
+export const futuristicNavigation: OmanOnlineNavigationItem[] = [
     {
         id   : 'home',
         title: 'Home',
@@ -50,7 +50,7 @@ export const futuristicNavigation: SeniorNavigationItem[] = [
         link : '/ico'
     }
 ];
-export const horizontalNavigation: SeniorNavigationItem[] = [
+export const horizontalNavigation: OmanOnlineNavigationItem[] = [
     {
         id   : 'home',
         title: 'Home',

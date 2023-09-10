@@ -1,7 +1,7 @@
 import { assign, cloneDeep } from 'lodash-es';
 
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 import { user as userData } from 'app/mock-api/common/user/data';
 
 @Injectable({providedIn: 'root'})
@@ -12,7 +12,7 @@ export class UserMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -30,14 +30,14 @@ export class UserMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ User - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/common/user')
             .reply(() => [200, cloneDeep(this._user)]);
 
         // -----------------------------------------------------------------------------------------------------
         // @ User - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onPatch('api/common/user')
             .reply(({request}) =>
             {

@@ -1,7 +1,7 @@
 const path = require('path');
 const colors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
-const generatePalette = require(path.resolve(__dirname, ('src/@senior/tailwind/utils/generate-palette')));
+const generatePalette = require(path.resolve(__dirname, ('src/@omanonline/tailwind/utils/generate-palette')));
 
 /**
  * Custom palettes
@@ -192,61 +192,61 @@ const config = {
             typography: ({theme}) => ({
                 DEFAULT: {
                     css: {
-                        color              : 'var(--senior-text-default)',
+                        color              : 'var(--omanonline-text-default)',
                         '[class~="lead"]'  : {
-                            color: 'var(--senior-text-secondary)'
+                            color: 'var(--omanonline-text-secondary)'
                         },
                         a                  : {
-                            color: 'var(--senior-primary-500)'
+                            color: 'var(--omanonline-primary-500)'
                         },
                         strong             : {
-                            color: 'var(--senior-text-default)'
+                            color: 'var(--omanonline-text-default)'
                         },
                         'ol > li::before'  : {
-                            color: 'var(--senior-text-secondary)'
+                            color: 'var(--omanonline-text-secondary)'
                         },
                         'ul > li::before'  : {
-                            backgroundColor: 'var(--senior-text-hint)'
+                            backgroundColor: 'var(--omanonline-text-hint)'
                         },
                         hr                 : {
-                            borderColor: 'var(--senior-border)'
+                            borderColor: 'var(--omanonline-border)'
                         },
                         blockquote         : {
-                            color          : 'var(--senior-text-default)',
-                            borderLeftColor: 'var(--senior-border)'
+                            color          : 'var(--omanonline-text-default)',
+                            borderLeftColor: 'var(--omanonline-border)'
                         },
                         h1                 : {
-                            color: 'var(--senior-text-default)'
+                            color: 'var(--omanonline-text-default)'
                         },
                         h2                 : {
-                            color: 'var(--senior-text-default)'
+                            color: 'var(--omanonline-text-default)'
                         },
                         h3                 : {
-                            color: 'var(--senior-text-default)'
+                            color: 'var(--omanonline-text-default)'
                         },
                         h4                 : {
-                            color: 'var(--senior-text-default)'
+                            color: 'var(--omanonline-text-default)'
                         },
                         'figure figcaption': {
-                            color: 'var(--senior-text-secondary)'
+                            color: 'var(--omanonline-text-secondary)'
                         },
                         code               : {
-                            color     : 'var(--senior-text-default)',
+                            color     : 'var(--omanonline-text-default)',
                             fontWeight: '500'
                         },
                         'a code'           : {
-                            color: 'var(--senior-primary)'
+                            color: 'var(--omanonline-primary)'
                         },
                         pre                : {
                             color          : theme('colors.white'),
                             backgroundColor: theme('colors.gray.800')
                         },
                         thead              : {
-                            color            : 'var(--senior-text-default)',
-                            borderBottomColor: 'var(--senior-border)'
+                            color            : 'var(--omanonline-text-default)',
+                            borderBottomColor: 'var(--omanonline-border)'
                         },
                         'tbody tr'         : {
-                            borderBottomColor: 'var(--senior-border)'
+                            borderBottomColor: 'var(--omanonline-border)'
                         },
                         'ol[type="A" s]'   : false,
                         'ol[type="a" s]'   : false,
@@ -281,10 +281,10 @@ const config = {
     },
     plugins    : [
 
-        // Senior - Tailwind plugins
-        require(path.resolve(__dirname, ('src/@senior/tailwind/plugins/utilities'))),
-        require(path.resolve(__dirname, ('src/@senior/tailwind/plugins/icon-size'))),
-        require(path.resolve(__dirname, ('src/@senior/tailwind/plugins/theming')))({themes}),
+        // OmanOnline - Tailwind plugins
+        require(path.resolve(__dirname, ('src/@omanonline/tailwind/plugins/utilities'))),
+        require(path.resolve(__dirname, ('src/@omanonline/tailwind/plugins/icon-size'))),
+        require(path.resolve(__dirname, ('src/@omanonline/tailwind/plugins/theming')))({themes}),
 
         // Other third party and/or custom plugins
         require('@tailwindcss/typography')({modifiers: ['sm', 'lg']})

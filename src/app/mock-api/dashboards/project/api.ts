@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SeniorMockApiService } from '@senior/lib/mock-api';
+import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
 import { cloneDeep } from 'lodash-es';
 import { project as projectData } from 'app/mock-api/dashboards/project/data';
 
@@ -11,7 +11,7 @@ export class ProjectMockApi
     /**
      * Constructor
      */
-    constructor(private _seniorMockApiService: SeniorMockApiService)
+    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
     {
         // Register Mock API handlers
         this.registerHandlers();
@@ -29,7 +29,7 @@ export class ProjectMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Sales - GET
         // -----------------------------------------------------------------------------------------------------
-        this._seniorMockApiService
+        this._omanonlineMockApiService
             .onGet('api/dashboards/project')
             .reply(() => [200, cloneDeep(this._project)]);
     }

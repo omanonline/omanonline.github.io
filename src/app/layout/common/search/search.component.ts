@@ -12,14 +12,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { Overlay } from '@angular/cdk/overlay';
 import { RouterLink } from '@angular/router';
-import { seniorAnimations } from '@senior/animations/public-api';
+import { omanonlineAnimations } from '@omanonline/animations/public-api';
 
 @Component({
     selector     : 'search',
     templateUrl  : './search.component.html',
     encapsulation: ViewEncapsulation.None,
-    exportAs     : 'seniorSearch',
-    animations   : seniorAnimations,
+    exportAs     : 'omanonlineSearch',
+    animations   : omanonlineAnimations,
     standalone   : true,
     imports      : [NgIf, MatButtonModule, MatIconModule, FormsModule, MatAutocompleteModule, ReactiveFormsModule, MatOptionModule, NgFor, RouterLink, NgTemplateOutlet, MatFormFieldModule, MatInputModule, NgClass],
     providers    : [

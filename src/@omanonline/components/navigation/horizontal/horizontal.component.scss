@@ -1,0 +1,180 @@
+/* Root navigation specific */
+omanonline-horizontal-navigation {
+
+    .omanonline-horizontal-navigation-wrapper {
+        display: flex;
+        align-items: center;
+
+        /* Basic, Branch */
+        omanonline-horizontal-navigation-basic-item,
+        omanonline-horizontal-navigation-branch-item {
+
+            @screen sm {
+
+                &:hover {
+
+                    .omanonline-horizontal-navigation-item-wrapper {
+                        @apply bg-hover;
+                    }
+                }
+            }
+
+            .omanonline-horizontal-navigation-item-wrapper {
+                border-radius: 4px;
+                overflow: hidden;
+
+                .omanonline-horizontal-navigation-item {
+                    padding: 0 16px;
+                    cursor: pointer;
+                    user-select: none;
+
+                    .omanonline-horizontal-navigation-item-icon {
+                        margin-right: 12px;
+                    }
+                }
+            }
+        }
+
+        /* Basic - When item active (current link) */
+        omanonline-horizontal-navigation-basic-item {
+
+            .omanonline-horizontal-navigation-item-active,
+            .omanonline-horizontal-navigation-item-active-forced {
+
+                .omanonline-horizontal-navigation-item-title {
+                    @apply text-primary #{'!important'};
+                }
+
+                .omanonline-horizontal-navigation-item-subtitle {
+                    @apply text-primary-400 #{'!important'};
+
+                    .dark & {
+                        @apply text-primary-600 #{'!important'};
+                    }
+                }
+
+                .omanonline-horizontal-navigation-item-icon {
+                    @apply text-primary #{'!important'};
+                }
+            }
+        }
+
+        /* Branch - When menu open */
+        omanonline-horizontal-navigation-branch-item {
+
+            .omanonline-horizontal-navigation-menu-active,
+            .omanonline-horizontal-navigation-menu-active-forced {
+
+                .omanonline-horizontal-navigation-item-wrapper {
+                    @apply bg-hover;
+                }
+            }
+        }
+
+        /* Spacer */
+        omanonline-horizontal-navigation-spacer-item {
+            margin: 12px 0;
+        }
+    }
+}
+
+/* Menu panel specific */
+.omanonline-horizontal-navigation-menu-panel {
+
+    .omanonline-horizontal-navigation-menu-item {
+        height: auto;
+        min-height: 0;
+        line-height: normal;
+        white-space: normal;
+
+        /* Basic, Branch */
+        omanonline-horizontal-navigation-basic-item,
+        omanonline-horizontal-navigation-branch-item,
+        omanonline-horizontal-navigation-divider-item {
+            display: flex;
+            flex: 1 1 auto;
+        }
+
+        /* Divider */
+        omanonline-horizontal-navigation-divider-item {
+            margin: 8px -16px;
+
+            .omanonline-horizontal-navigation-item-wrapper {
+                height: 1px;
+                box-shadow: 0 1px 0 0;
+            }
+        }
+    }
+}
+
+/* Navigation menu item common */
+.omanonline-horizontal-navigation-menu-item {
+
+    /* Basic - When item active (current link) */
+    omanonline-horizontal-navigation-basic-item {
+
+        .omanonline-horizontal-navigation-item-active,
+        .omanonline-horizontal-navigation-item-active-forced {
+
+            .omanonline-horizontal-navigation-item-title {
+                @apply text-primary #{'!important'};
+            }
+
+            .omanonline-horizontal-navigation-item-subtitle {
+                @apply text-primary-400 #{'!important'};
+
+                .dark & {
+                    @apply text-primary-600 #{'!important'};
+                }
+            }
+
+            .omanonline-horizontal-navigation-item-icon {
+                @apply text-primary #{'!important'};
+            }
+        }
+    }
+
+    .omanonline-horizontal-navigation-item-wrapper {
+        width: 100%;
+
+        &.omanonline-horizontal-navigation-item-has-subtitle {
+
+            .omanonline-horizontal-navigation-item {
+                min-height: 56px;
+            }
+        }
+
+        .omanonline-horizontal-navigation-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 48px;
+            width: 100%;
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+
+            .omanonline-horizontal-navigation-item-title-wrapper {
+
+                .omanonline-horizontal-navigation-item-subtitle {
+                    font-size: 12px;
+                }
+            }
+
+            .omanonline-horizontal-navigation-item-badge {
+                margin-left: auto;
+
+                .omanonline-horizontal-navigation-item-badge-content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 10px;
+                    font-weight: 600;
+                    white-space: nowrap;
+                    height: 20px;
+                }
+            }
+        }
+    }
+}
