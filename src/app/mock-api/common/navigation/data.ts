@@ -11,11 +11,11 @@ export const defaultNavigation: OmanOnlineNavigationItem[] = [
         link : '/home'
     },
     {
-        id   : 'ico',
-        title: 'ICO',
+        id   : 'categories',
+        title: 'Categories',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/ico'
+        link : '/categories'
     }
 ];
 export const compactNavigation: OmanOnlineNavigationItem[] = [
@@ -27,11 +27,11 @@ export const compactNavigation: OmanOnlineNavigationItem[] = [
         link : '/home'
     },
     {
-        id   : 'ico',
-        title: 'ICO',
+        id   : 'categories',
+        title: 'Categories',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/ico'
+        link : '/categories'
     }
 ];
 export const futuristicNavigation: OmanOnlineNavigationItem[] = [
@@ -43,11 +43,11 @@ export const futuristicNavigation: OmanOnlineNavigationItem[] = [
         link : '/home'
     },
     {
-        id   : 'ico',
-        title: 'ICO',
+        id   : 'categories',
+        title: 'Categories',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/ico'
+        link : '/categories'
     }
 ];
 export const horizontalNavigation: OmanOnlineNavigationItem[] = [
@@ -59,10 +59,10 @@ export const horizontalNavigation: OmanOnlineNavigationItem[] = [
         link : '/home'
     },
     {
-        id   : 'ico',
-        title: 'ICO',
+        id   : 'categories',
+        title: 'Categories',
         type : 'basic',
         icon : 'heroicons_outline:chart-pie',
-        link : '/ico'
+        link : '/categories'
     }
 ];

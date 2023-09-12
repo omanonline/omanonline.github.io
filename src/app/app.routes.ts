@@ -84,7 +84,7 @@ export const appRoutes: Route[] = [
             initialData: initialDataResolver
         },
         children: [
-            { path: 'ico', loadChildren: () => import('app/modules/pages/ico/ico.routes') },
+            { path: 'categories', loadChildren: () => import('app/modules/pages/categories/categories.routes') },
         ]
     }
 

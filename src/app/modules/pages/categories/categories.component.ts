@@ -7,14 +7,14 @@ import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector     : 'ico',
+    selector     : 'categories',
     standalone   : true,
-    templateUrl  : './ico.component.html',
+    templateUrl  : './categories.component.html',
     encapsulation: ViewEncapsulation.None,
     imports      : [MatFormFieldModule, MatInputModule, MatIconModule, RouterLink, NgFor],
 
 })
-export class ICOComponent
+export class CategoriesComponent
 {
     /**
      * Constructor
