@@ -1,25 +1,23 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 import { Subject, takeUntil } from 'rxjs';
 
-import { FaqCategory } from 'app/modules/pages/home/home.type';
+import { GuideCategory } from 'app/modules/pages/home/home.type';
 import { HelpCenterService } from 'app/modules/pages/home/home.service';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector     : 'home',
-    templateUrl  : './home.component.html',
+    selector     : 'home-guides',
+    templateUrl  : './guides.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone   : true,
-    imports      : [MatFormFieldModule, MatInputModule, MatIconModule, RouterLink, MatExpansionModule, NgFor],
+    imports      : [MatButtonModule, RouterLink, MatIconModule, NgFor, NgIf],
 })
-export class HomeComponent implements OnInit, OnDestroy
+export class HelpCenterGuidesComponent implements OnInit, OnDestroy
 {
-    faqCategory: FaqCategory;
+    guideCategories: GuideCategory[];
     private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
@@ -38,12 +36,12 @@ export class HomeComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the FAQs
-        this._homeService.faqs$
+        // Get the Guide categories
+        this._homeService.guides$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((faqCategories) =>
+            .subscribe((guideCategories) =>
             {
-                this.faqCategory = faqCategories[0];
+                this.guideCategories = guideCategories;
             });
     }
 

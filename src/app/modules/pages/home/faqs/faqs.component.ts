@@ -3,23 +3,22 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { FaqCategory } from 'app/modules/pages/home/home.type';
 import { HelpCenterService } from 'app/modules/pages/home/home.service';
+import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector     : 'home',
-    templateUrl  : './home.component.html',
+    selector     : 'home-faqs',
+    templateUrl  : './faqs.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone   : true,
-    imports      : [MatFormFieldModule, MatInputModule, MatIconModule, RouterLink, MatExpansionModule, NgFor],
+    imports      : [MatButtonModule, RouterLink, MatIconModule, NgFor, MatExpansionModule],
 })
-export class HomeComponent implements OnInit, OnDestroy
+export class HelpCenterFaqsComponent implements OnInit, OnDestroy
 {
-    faqCategory: FaqCategory;
+    faqCategories: FaqCategory[];
     private _unsubscribeAll: Subject<any> = new Subject();
 
     /**
@@ -43,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((faqCategories) =>
             {
-                this.faqCategory = faqCategories[0];
+                this.faqCategories = faqCategories;
             });
     }
 
