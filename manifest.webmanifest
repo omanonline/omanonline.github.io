@@ -1,7 +1,7 @@
 {
   "name": "omanonline",
   "short_name": "omanonline",
-  "theme_color": "#05813e",
+  "theme_color": "#0d9488",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
