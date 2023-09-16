@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 
+import { ApiService } from 'app/core/services/api.service';
 import { FaqCategory } from 'app/modules/pages/home/home.type';
 import { HelpCenterService } from 'app/modules/pages/home/home.service';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -25,8 +26,9 @@ export class HomeComponent implements OnInit, OnDestroy
     /**
      * Constructor
      */
-    constructor(private _homeService: HelpCenterService)
+    constructor(private _homeService: HelpCenterService, private api: ApiService,)
     {
+        console.log(api.loadBusiness("10000"));
     }
 
     // -----------------------------------------------------------------------------------------------------
