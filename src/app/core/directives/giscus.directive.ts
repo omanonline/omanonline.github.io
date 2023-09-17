@@ -25,13 +25,14 @@ export class GiscusDirective implements AfterViewInit {
             scriptEl.setAttribute('data-repo-id', 'R_kgDOKTVBqQ');
             scriptEl.setAttribute('data-category', 'General');
             scriptEl.setAttribute('data-category-id', 'DIC_kwDOKTVBqc4CZYEZ');
-            scriptEl.setAttribute('data-mapping', 'pathname');
+            scriptEl.setAttribute('data-mapping', 'title');
             scriptEl.setAttribute('data-strict', '1');
             scriptEl.setAttribute('data-reactions-enabled', '1');
             scriptEl.setAttribute('data-emit-metadata', '0');
             scriptEl.setAttribute('data-input-position', 'bottom');
             scriptEl.setAttribute('data-theme', 'preferred_color_scheme');
             scriptEl.setAttribute('data-lang', 'en');
+            scriptEl.setAttribute('data-loading', 'lazy');
             scriptEl.setAttribute('crossorigin', 'anonymous');
             scriptEl.async = true;
             scriptEl.defer = true;
