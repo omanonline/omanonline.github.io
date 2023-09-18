@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1694934053277,
+  "timestamp": 1695037144412,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -23,12 +23,12 @@
         "/74.227e2e7c96943678.js",
         "/756.1dc47f1faeefd356.js",
         "/772.ade6fda20b300bb3.js",
-        "/889.412b759b5d1ca6ac.js",
+        "/889.937102926530dcdd.js",
         "/index.html",
-        "/main.770a6cb860c525a2.js",
+        "/main.79a141de35d9d055.js",
         "/manifest.webmanifest",
         "/polyfills.78fd6e2ccf806ca2.js",
-        "/runtime.6aa7701904d545e5.js",
+        "/runtime.fccee31b35e75db2.js",
         "/styles.0e309c43d632f06e.css"
       ],
       "patterns": []
@@ -195,7 +195,7 @@
     "/74.227e2e7c96943678.js": "b24d0767a6164493b97c0c29ed1c0e548f78e009",
     "/756.1dc47f1faeefd356.js": "61f693470a4e766308cf13a78696cb33500e20ed",
     "/772.ade6fda20b300bb3.js": "8d73030a2f725ed81381a9bc21c80b733b368001",
-    "/889.412b759b5d1ca6ac.js": "1552c070e778f674f8f94e710b163a064e5be1d3",
+    "/889.937102926530dcdd.js": "944dc0eedbf901f48e36bfd7c58b3fb94a2b94f5",
     "/assets/fonts/inter/Inter-italic.var.woff2": "5c2ff0c81a369e4ff3b060b5eeee59e82058a41e",
     "/assets/fonts/inter/Inter-roman.var.woff2": "03d67f11d4c6bcdd6182f0bcebb26d11e8c13dd3",
     "/assets/fonts/inter/inter.css": "7122975b65ba33758ce10be9eb2ecca4b5869afc",
@@ -332,11 +332,11 @@
     "/assets/styles/splash-screen.css": "f00478d56165afd63d536e1059e15b827db36ba9",
     "/favicon-16x16.png": "fb597756eda7409adb67ca0204316f0cdaf9cfc2",
     "/favicon-32x32.png": "c1c16de91302d018c1d5ce1af4e3e315719ab53d",
-    "/index.html": "9669870e69b9f21062268511fc14c38921eb571a",
-    "/main.770a6cb860c525a2.js": "81932b7eceec68bf6e2dfdfeb8898ce743a57545",
+    "/index.html": "d3464ee1099b3ee357c9be19f2b4a499d20734fb",
+    "/main.79a141de35d9d055.js": "06fb2ca00f02cc471442f8b5de9b2c7f5e356ba4",
     "/manifest.webmanifest": "224f8c7b05a7fe8f9713821e9c6740d178f3360e",
     "/polyfills.78fd6e2ccf806ca2.js": "dd498ebe574dbd562f8f9f0b3d50cb00d8187bc2",
-    "/runtime.6aa7701904d545e5.js": "e30962f7a2e03eb6498e320309e3f12af7473f01",
+    "/runtime.fccee31b35e75db2.js": "cf8d4c3908faf0028e6852b1aad210de86085d67",
     "/styles.0e309c43d632f06e.css": "673608604a28244014b41a4981c4a194ba3a0429"
   },
   "navigationUrls": [
