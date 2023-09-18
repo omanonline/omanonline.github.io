@@ -1,12 +1,12 @@
-export interface FaqCategory
+export interface BusinessCategory
 {
     id: string;
     slug: string;
     title: string;
-    faqs?: Faq[];
+    business?: Business[];
 }
 
-export interface Faq
+export interface Business
 {
     id: string;
     categoryId: string;
@@ -14,22 +14,36 @@ export interface Faq
     answer: string;
 }
 
-export interface GuideCategory
+
+export interface ServicesCategory
 {
     id: string;
     slug: string;
     title: string;
-    totalGuides?: number;
-    visibleGuides?: number;
-    guides?: Guide[];
+    business?: Services[];
 }
 
-export interface Guide
+export interface Services
 {
     id: string;
     categoryId: string;
+    question: string;
+    answer: string;
+}
+
+
+export interface JobsCategory
+{
+    id: string;
     slug: string;
     title: string;
-    subtitle?: string;
-    content?: string;
+    business?: Jobs[];
+}
+
+export interface Jobs
+{
+    id: string;
+    categoryId: string;
+    question: string;
+    answer: string;
 }

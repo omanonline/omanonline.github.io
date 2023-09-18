@@ -21,7 +21,7 @@
                 Introduction of businesses and services and jobs in Oman
             </div>
             <mat-form-field
-                class="fuse-mat-rounded fuse-mat-bold w-full max-w-80 sm:max-w-120 mt-10 sm:mt-20"
+                class="omanonline-mat-rounded omanonline-mat-bold w-full max-w-80 sm:max-w-120 mt-10 sm:mt-20"
                 [subscriptSizing]="'dynamic'">
                 <input
                     matInput
@@ -45,7 +45,7 @@
                 <div class="flex items-center justify-center py-4 px-8 text-primary-500 dark:text-primary-400 bg-gray-50 dark:bg-transparent dark:border-t">
                     <a
                         class="flex items-center"
-                        [routerLink]="">
+                        [routerLink]="['businesses']">
                         <span class="absolute inset-0"></span>
                         <span class="font-medium">Go to Businesses</span>
                         <mat-icon
@@ -63,7 +63,7 @@
                 <div class="flex items-center justify-center py-4 px-8 text-primary-500 dark:text-primary-400 bg-gray-50 dark:bg-transparent dark:border-t">
                     <a
                         class="flex items-center"
-                        [routerLink]="">
+                        [routerLink]="['services']">
                         <span class="absolute inset-0"></span>
                         <span class="font-medium">Go to Services</span>
                         <mat-icon
@@ -81,7 +81,7 @@
                 <div class="flex items-center justify-center py-4 px-8 text-primary-500 dark:text-primary-400 bg-gray-50 dark:bg-transparent dark:border-t">
                     <a
                         class="flex items-center"
-                        [routerLink]="">
+                        [routerLink]="['jobs']">
                         <span class="absolute inset-0"></span>
                         <span class="font-medium">Go to Jobs</span>
                         <mat-icon
@@ -95,12 +95,12 @@
         <div class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Most frequently asked questions</div>
         <div class="mt-2 text-xl text-center text-secondary">Here are the most frequently asked questions you may check before getting started</div>
         <mat-accordion class="max-w-4xl mt-12">
-            <ng-container *ngFor="let faq of faqCategory.faqs; trackBy: trackByFn">
+            <ng-container *ngFor="let business of businessCategory.business; trackBy: trackByFn">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                        <mat-panel-title>{{faq.question}}</mat-panel-title>
+                        <mat-panel-title>{{business.question}}</mat-panel-title>
                     </mat-expansion-panel-header>
-                    {{faq.answer}}
+                    {{business.answer}}
                 </mat-expansion-panel>
             </ng-container>
         </mat-accordion>

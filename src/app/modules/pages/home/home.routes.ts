@@ -1,64 +1,40 @@
 import { ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 
-import { HelpCenterFaqsComponent } from 'app/modules/pages/home/faqs/faqs.component';
-import { HelpCenterGuidesCategoryComponent } from 'app/modules/pages/home/guides/category/category.component';
-import { HelpCenterGuidesComponent } from 'app/modules/pages/home/guides/guides.component';
-import { HelpCenterGuidesGuideComponent } from 'app/modules/pages/home/guides/guide/guide.component';
-import { HelpCenterService } from 'app/modules/pages/home/home.service';
-import { HelpCenterSupportComponent } from 'app/modules/pages/home/support/support.component';
+import { BusinessesComponent } from 'app/modules/pages/home/businesses/businesses.component';
 import { HomeComponent } from 'app/modules/pages/home/home.component';
+import { HomeService } from 'app/modules/pages/home/home.service';
+import { JobsComponent } from './jobs/jobs.component';
+import { ServicesComponent } from './services/services.component';
 import { inject } from '@angular/core';
 
 export default [
     {
-        path     : '',
+        path: '',
         component: HomeComponent,
-        resolve  : {
-            faqs: () => inject(HelpCenterService).getFaqsByCategory('most-asked'),
+        resolve: {
+            business: () => inject(HomeService).getBusinessByCategory('most-asked'),
         },
     },
     {
-        path     : 'faqs',
-        component: HelpCenterFaqsComponent,
-        resolve  : {
-            faqs: () => inject(HelpCenterService).getAllFaqs(),
+        path: 'businesses',
+        component: BusinessesComponent,
+        resolve: {
+            business: () => inject(HomeService).getAllBusiness(),
         },
     },
     {
-        path    : 'guides',
-        children: [
-            {
-                path     : '',
-                component: HelpCenterGuidesComponent,
-                resolve  : {
-                    guides: () => inject(HelpCenterService).getAllGuides(),
-                },
-            },
-            {
-                path    : ':categorySlug',
-                children: [
-                    {
-                        path     : '',
-                        component: HelpCenterGuidesCategoryComponent,
-                        resolve  : {
-                            guides: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
-                                inject(HelpCenterService).getGuidesByCategory(route.paramMap.get('categorySlug')),
-                        },
-                    },
-                    {
-                        path     : ':guideSlug',
-                        component: HelpCenterGuidesGuideComponent,
-                        resolve  : {
-                            guides: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
-                                inject(HelpCenterService).getGuide(route.parent.paramMap.get('categorySlug'), route.paramMap.get('guideSlug')),
-                        },
-                    },
-                ],
-            },
-        ],
-    },
+        path: 'jobs',
+        component: JobsComponent,
+        resolve: {
+            jobs: () => inject(HomeService).getAllJobs(),
+        },
+    }
+    ,
     {
-        path     : 'support',
-        component: HelpCenterSupportComponent,
-    },
+        path: 'services',
+        component: ServicesComponent,
+        resolve: {
+            services: () => inject(HomeService).getAllServices(),
+        },
+    }
 ] as Routes;
