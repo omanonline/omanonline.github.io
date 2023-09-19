@@ -8,14 +8,14 @@ import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector     : 'categories',
+    selector     : 'news',
     standalone   : true,
-    templateUrl  : './categories.component.html',
+    templateUrl  : './news.component.html',
     encapsulation: ViewEncapsulation.None,
     imports      : [MatFormFieldModule, MatInputModule, MatIconModule, RouterLink, NgFor,GiscusDirective,],
 
 })
-export class CategoriesComponent
+export class NewsComponent
 {
     /**
      * Constructor

@@ -84,7 +84,7 @@ export const appRoutes: Route[] = [
             initialData: initialDataResolver
         },
         children: [
-            { path: 'categories', loadChildren: () => import('app/modules/pages/categories/categories.routes') },
+            { path: 'news', loadChildren: () => import('app/modules/pages/news/news.routes') },
         ]
     }
 
