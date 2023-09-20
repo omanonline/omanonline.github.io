@@ -1,19 +1,14 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
 
-import { GiscusDirective } from 'app/core/directives/giscus.directive';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { NgFor } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-    selector     : 'news',
-    standalone   : true,
-    templateUrl  : './news.component.html',
-    encapsulation: ViewEncapsulation.None,
-    imports      : [MatFormFieldModule, MatInputModule, MatIconModule, RouterLink, NgFor,GiscusDirective,],
-
+    selector       : 'news',
+    templateUrl    : './news.component.html',
+    encapsulation  : ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone     : true,
+    imports        : [RouterOutlet],
 })
 export class NewsComponent
 {
