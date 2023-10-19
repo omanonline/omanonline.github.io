@@ -11,14 +11,18 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideIcons } from 'app/core/icons/icons.provider';
 import { provideOmanOnline } from '@omanonline/omanonline.provider';
 import { provideServiceWorker } from '@angular/service-worker';
+import { InitialDataResolver } from './app.resolvers';
 
 export const appConfig: ApplicationConfig = {
+
+ 
+    
     providers: [
     provideAnimations(),
     provideHttpClient(),
     provideRouter(appRoutes, withPreloading(PreloadAllModules), withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })),
     // Material Date Adapter
-    {
+    { 
         provide: DateAdapter,
         useClass: LuxonDateAdapter,
     },
@@ -37,7 +41,6 @@ export const appConfig: ApplicationConfig = {
         },
     },
     // OmanOnline
-    provideAuth(),
     provideIcons(),
     provideOmanOnline({
         mockApi: {

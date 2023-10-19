@@ -10,25 +10,25 @@ export const defaultNavigation: OmanOnlineNavigationItem[] = [
         icon    : 'heroicons_outline:home',
         children: [
             {
-                id   : 'home.businesses',
+                id   : 'businesses',
                 title: 'Businesses',
                 type : 'basic',
                 icon : 'heroicons_outline:clipboard-document-check',
-                link : '/home/businesses',
+                link : '/businesses',
             },
             {
-                id   : 'home.services',
+                id   : 'services',
                 title: 'Services',
                 type : 'basic',
                 icon : 'heroicons_outline:chart-pie',
-                link : '/home/services',
+                link : '/services',
             },
             {
-                id   : 'home.jobs',
+                id   : 'jobs',
                 title: 'Jobs',
                 type : 'basic',
                 icon : 'heroicons_outline:banknotes',
-                link : '/home/jobs'
+                link : '/jobs'
             }
         ],
     },
@@ -50,25 +50,25 @@ export const compactNavigation: OmanOnlineNavigationItem[] = [
         icon    : 'heroicons_outline:home',
         children: [
             {
-                id   : 'home.businesses',
+                id   : 'businesses',
                 title: 'Businesses',
                 type : 'basic',
                 icon : 'heroicons_outline:clipboard-document-check',
-                link : '/home/businesses',
+                link : '/businesses',
             },
             {
-                id   : 'home.services',
+                id   : 'services',
                 title: 'Services',
                 type : 'basic',
                 icon : 'heroicons_outline:chart-pie',
-                link : '/home/services',
+                link : '/services',
             },
             {
-                id   : 'home.jobs',
+                id   : 'jobs',
                 title: 'Jobs',
                 type : 'basic',
                 icon : 'heroicons_outline:banknotes',
-                link : '/home/jobs'
+                link : '/jobs'
             }
         ],
     },
@@ -90,25 +90,25 @@ export const futuristicNavigation: OmanOnlineNavigationItem[] = [
         icon    : 'heroicons_outline:home',
         children: [
             {
-                id   : 'home.businesses',
+                id   : 'businesses',
                 title: 'Businesses',
                 type : 'basic',
                 icon : 'heroicons_outline:clipboard-document-check',
-                link : '/home/businesses',
+                link : '/businesses',
             },
             {
-                id   : 'home.services',
+                id   : 'services',
                 title: 'Services',
                 type : 'basic',
                 icon : 'heroicons_outline:chart-pie',
-                link : '/home/services',
+                link : '/services',
             },
             {
-                id   : 'home.jobs',
+                id   : 'jobs',
                 title: 'Jobs',
                 type : 'basic',
                 icon : 'heroicons_outline:banknotes',
-                link : '/home/jobs'
+                link : '/jobs'
             }
         ],
     },
@@ -130,25 +130,25 @@ export const horizontalNavigation: OmanOnlineNavigationItem[] = [
         icon    : 'heroicons_outline:home',
         children: [
             {
-                id   : 'home.businesses',
+                id   : 'businesses',
                 title: 'Businesses',
                 type : 'basic',
                 icon : 'heroicons_outline:clipboard-document-check',
-                link : '/home/businesses',
+                link : '/businesses',
             },
             {
-                id   : 'home.services',
+                id   : 'services',
                 title: 'Services',
                 type : 'basic',
                 icon : 'heroicons_outline:chart-pie',
-                link : '/home/services',
+                link : '/services',
             },
             {
-                id   : 'home.jobs',
+                id   : 'jobs',
                 title: 'Jobs',
                 type : 'basic',
                 icon : 'heroicons_outline:banknotes',
-                link : '/home/jobs'
+                link : '/jobs'
             }
         ],
     },

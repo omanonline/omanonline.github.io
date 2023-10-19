@@ -4,19 +4,18 @@ import { NotificationsService } from 'app/layout/common/notifications/notificati
 import { ShortcutsService } from 'app/layout/common/shortcuts/shortcuts.service';
 import { forkJoin } from 'rxjs';
 import { inject } from '@angular/core';
+import { SetupService } from './core/services/setup.service';
+import { RouterStateSnapshot } from '@angular/router';
 
-export const initialDataResolver = () =>
+
+export const InitialDataResolver = () =>
 {
-    const messagesService = inject(MessagesService);
-    const navigationService = inject(NavigationService);
-    const notificationsService = inject(NotificationsService);
-    const shortcutsService = inject(ShortcutsService);
-
+     const navigationService = inject(NavigationService);
+ 
+ 
     // Fork join multiple API endpoint calls to wait all of them to finish
     return forkJoin([
         navigationService.get(),
-        messagesService.getAll(),
-        notificationsService.getAll(),
-        shortcutsService.getAll(),
+        
     ]);
 };

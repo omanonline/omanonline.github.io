@@ -1,7 +1,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { SetupService } from 'app/core/services/setup.service';
 
 @Component({
     selector     : 'landing-home',
@@ -15,7 +16,7 @@ export class LandingHomeComponent
     /**
      * Constructor
      */
-    constructor()
+    constructor(public setup: SetupService)
     {
     }
 }

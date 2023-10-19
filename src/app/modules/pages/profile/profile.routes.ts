@@ -1,12 +1,7 @@
-import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, Routes } from '@angular/router';
+import { ProfileComponent } from './profile.component';
+import { inject } from '@angular/core';
 import { SetupService } from 'app/core/services/setup.service';
-import { LandingHomeComponent } from 'app/modules/landing/home/home.component';
-import { catchError, throwError } from 'rxjs';
-
- 
-
-
 
 const profileResolver = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
 {
@@ -15,11 +10,10 @@ const profileResolver = (route: ActivatedRouteSnapshot, state: RouterStateSnapsh
     setupService.current=(route.paramMap.get('username'));
 
 };
-
 export default [
     {
         path     : '',
-        component: LandingHomeComponent,
+        component: ProfileComponent,
         resolve  : {
             business: profileResolver,
         } 

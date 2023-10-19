@@ -83,7 +83,7 @@ export class ApiService {
     this.businessUrl = this.resetUrl;
   }
   async loadCategories() {
-    return this.download(`https://status.seniorblockchain.io/github.json`);
+    return this.download(`https://omanonline.org/businesses/categories.json`);
   }
   async loadBusiness(BusinessId: string) {
     return this.download(`https://omanonline.org/businesses/businesses/${BusinessId}.json`);
