@@ -1,4 +1,4 @@
-export class OmanOnlineMockApiUtils
+export class OmanOnlineApiUtils
 {
     /**
      * Constructor

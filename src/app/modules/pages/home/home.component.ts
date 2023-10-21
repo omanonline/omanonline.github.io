@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the FAQs
+        // Get the Business with star
         this._homeService.business$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((businessCategories) =>

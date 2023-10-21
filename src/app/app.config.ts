@@ -4,14 +4,14 @@ import { PreloadAllModules, provideRouter, withInMemoryScrolling, withPreloading
 
 import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { appRoutes } from 'app/app.routes';
-import { mockApiServices } from 'app/mock-api';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { provideIcons } from 'app/core/icons/icons.provider';
 import { provideOmanOnline } from '@omanonline/omanonline.provider';
 import { provideServiceWorker } from '@angular/service-worker';
 import { InitialDataResolver } from './app.resolvers';
-
+import { ApiServices } from './api';
+ 
 export const appConfig: ApplicationConfig = {
 
  
@@ -42,9 +42,9 @@ export const appConfig: ApplicationConfig = {
     // OmanOnline
     provideIcons(),
     provideOmanOnline({
-        mockApi: {
+        Api: {
             delay: 0,
-            services: mockApiServices,
+            services: ApiServices,
         },
         omanonline: JSON.parse(localStorage.getItem('config')) ?? {
             layout: 'enterprise',

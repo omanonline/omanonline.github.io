@@ -1,12 +1,12 @@
-import { compactNavigation, defaultNavigation, futuristicNavigation, horizontalNavigation } from 'app/mock-api/common/navigation/data';
+import { compactNavigation, defaultNavigation, futuristicNavigation, horizontalNavigation } from 'app/api/common/navigation/data';
 
 import { Injectable } from '@angular/core';
-import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
+import { OmanOnlineApiService } from '@omanonline/lib/api';
 import { OmanOnlineNavigationItem } from '@omanonline/components/navigation';
 import { cloneDeep } from 'lodash-es';
 
 @Injectable({providedIn: 'root'})
-export class NavigationMockApi
+export class NavigationApi
 {
     private readonly _compactNavigation: OmanOnlineNavigationItem[] = compactNavigation;
     private readonly _defaultNavigation: OmanOnlineNavigationItem[] = defaultNavigation;
@@ -16,9 +16,9 @@ export class NavigationMockApi
     /**
      * Constructor
      */
-    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
+    constructor(private _omanonlineApiService: OmanOnlineApiService)
     {
-        // Register Mock API handlers
+        // Register  API handlers
         this.registerHandlers();
     }
 
@@ -27,14 +27,14 @@ export class NavigationMockApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Register Mock API handlers
+     * Register  API handlers
      */
     registerHandlers(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Navigation - GET
         // -----------------------------------------------------------------------------------------------------
-        this._omanonlineMockApiService
+        this._omanonlineApiService
             .onGet('api/common/navigation')
             .reply(() =>
             {

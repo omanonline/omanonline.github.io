@@ -1,11 +1,11 @@
-import { servicesCategories as servicesCategoriesData, services as servicesData } from 'app/mock-api/apps/services/data';
+import { servicesCategories as servicesCategoriesData, services as servicesData } from 'app/api/apps/services/data';
 
 import { Injectable } from '@angular/core';
-import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
+import { OmanOnlineApiService } from '@omanonline/lib/api';
 import { cloneDeep } from 'lodash-es';
 
 @Injectable({providedIn: 'root'})
-export class ServicesMockApi
+export class ServicesApi
 {
     private _servicesCategories: any[] = servicesCategoriesData;
     private _services: any[] = servicesData;
@@ -14,9 +14,9 @@ export class ServicesMockApi
     /**
      * Constructor
      */
-    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
+    constructor(private _omanonlineApiService: OmanOnlineApiService)
     {
-        // Register Mock API handlers
+        // Register  API handlers
         this.registerHandlers();
     }
 
@@ -25,14 +25,14 @@ export class ServicesMockApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Register Mock API handlers
+     * Register  API handlers
      */
     registerHandlers(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Services - GET
         // -----------------------------------------------------------------------------------------------------
-        this._omanonlineMockApiService
+        this._omanonlineApiService
             .onGet('api/apps/services/services')
             .reply(({request}) =>
             {

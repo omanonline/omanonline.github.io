@@ -1,15 +1,15 @@
 import { Observable, of, take, throwError } from 'rxjs';
 
 import { HttpRequest } from '@angular/common/http';
-import { OmanOnlineMockApiReplyCallback } from '@omanonline/lib/mock-api/mock-api.types';
+import { OmanOnlineApiReplyCallback } from '@omanonline/lib/api/api.types';
 
-export class OmanOnlineMockApiHandler
+export class OmanOnlineApiHandler
 {
     request!: HttpRequest<any>;
     urlParams!: { [key: string]: string };
 
     // Private
-    private _reply: OmanOnlineMockApiReplyCallback = undefined;
+    private _reply: OmanOnlineApiReplyCallback = undefined;
     private _replyCount = 0;
     private _replied = 0;
 
@@ -79,7 +79,7 @@ export class OmanOnlineMockApiHandler
      *
      * @param callback
      */
-    reply(callback: OmanOnlineMockApiReplyCallback): void
+    reply(callback: OmanOnlineApiReplyCallback): void
     {
         // Store the reply
         this._reply = callback;

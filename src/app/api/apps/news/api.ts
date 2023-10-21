@@ -1,11 +1,11 @@
 import { categories as categoriesData, courses as coursesData, demoCourseSteps as demoCourseStepsData } from './data';
 
 import { Injectable } from '@angular/core';
-import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api/mock-api.service';
+import { OmanOnlineApiService } from '@omanonline/lib/api/api.service';
 import { cloneDeep } from 'lodash-es';
 
 @Injectable({providedIn: 'root'})
-export class NewsMockApi
+export class NewsApi
 {
     private _categories: any[] = categoriesData;
     private _courses: any[] = coursesData;
@@ -14,9 +14,9 @@ export class NewsMockApi
     /**
      * Constructor
      */
-    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService)
+    constructor(private _omanonlineApiService: OmanOnlineApiService)
     {
-        // Register Mock API handlers
+        // Register  API handlers
         this.registerHandlers();
     }
 
@@ -25,14 +25,14 @@ export class NewsMockApi
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Register Mock API handlers
+     * Register  API handlers
      */
     registerHandlers(): void
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Categories - GET
         // -----------------------------------------------------------------------------------------------------
-        this._omanonlineMockApiService
+        this._omanonlineApiService
             .onGet('api/apps/news/categories')
             .reply(() =>
             {
@@ -48,7 +48,7 @@ export class NewsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Courses - GET
         // -----------------------------------------------------------------------------------------------------
-        this._omanonlineMockApiService
+        this._omanonlineApiService
             .onGet('api/apps/news/courses')
             .reply(() =>
             {
@@ -61,7 +61,7 @@ export class NewsMockApi
         // -----------------------------------------------------------------------------------------------------
         // @ Course - GET
         // -----------------------------------------------------------------------------------------------------
-        this._omanonlineMockApiService
+        this._omanonlineApiService
             .onGet('api/apps/news/courses/course')
             .reply(({request}) =>
             {

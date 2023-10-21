@@ -1,11 +1,11 @@
 import { HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export type OmanOnlineMockApiReplyCallback =
+export type OmanOnlineApiReplyCallback =
     | ((data: { request: HttpRequest<any>; urlParams: { [key: string]: string } }) => ([number, string | any]) | Observable<any>)
     | undefined;
 
-export type OmanOnlineMockApiMethods =
+export type OmanOnlineApiMethods =
     | 'get'
     | 'post'
     | 'patch'

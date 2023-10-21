@@ -1,5 +1,5 @@
 import { APP_INITIALIZER, ENVIRONMENT_INITIALIZER, EnvironmentProviders, Provider, importProvidersFrom, inject } from '@angular/core';
-import { OMANONLINE_MOCK_API_DEFAULT_DELAY, mockApiInterceptor } from '@omanonline/lib/mock-api';
+import { OMANONLINE_MOCK_API_DEFAULT_DELAY, ApiInterceptor } from '@omanonline/lib/api';
 import { OmanOnlineLoadingService, omanonlineLoadingInterceptor } from '@omanonline/services/loading';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
@@ -15,7 +15,7 @@ import { OmanOnlineSplashScreenService } from '@omanonline/services/splash-scree
 import { OmanOnlineUtilsService } from '@omanonline/services/utils';
 
 export type OmanOnlineProviderConfig = {
-    mockApi?: {
+    Api?: {
         delay?: number;
         services?: any[];
     },
@@ -47,7 +47,7 @@ export const provideOmanOnline = (config: OmanOnlineProviderConfig): Array<Provi
         },
         {
             provide : OMANONLINE_MOCK_API_DEFAULT_DELAY,
-            useValue: config?.mockApi?.delay ?? 0,
+            useValue: config?.Api?.delay ?? 0,
         },
         {
             provide : OMANONLINE_CONFIG,
@@ -90,14 +90,14 @@ export const provideOmanOnline = (config: OmanOnlineProviderConfig): Array<Provi
         },
     ];
 
-    // Mock Api services
-    if ( config?.mockApi?.services )
+    //  Api services
+    if ( config?.Api?.services )
     {
         providers.push(
-            provideHttpClient(withInterceptors([mockApiInterceptor])),
+            provideHttpClient(withInterceptors([ApiInterceptor])),
             {
                 provide   : APP_INITIALIZER,
-                deps      : [...config.mockApi.services],
+                deps      : [...config.Api.services],
                 useFactory: () => (): any => null,
                 multi     : true,
             },

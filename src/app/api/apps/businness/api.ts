@@ -1,20 +1,21 @@
-import { jobsCategories as jobsCategoriesData, jobs as jobsData } from 'app/mock-api/apps/jobs/data';
+import { businessCategories as businessCategoriesData, business as businessData } from 'app/api/apps/businness/data';
 
 import { Injectable } from '@angular/core';
-import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api';
+import { OmanOnlineApiService } from '@omanonline/lib/api';
 import { cloneDeep } from 'lodash-es';
 
-@Injectable({ providedIn: 'root' })
-export class JobsMockApi {
-    private _jobsCategories: any[] = jobsCategoriesData;
-    private _jobs: any[] = jobsData;
-
+@Injectable({providedIn: 'root'})
+export class BusinessApi
+{
+    private _businessCategories: any[] = businessCategoriesData;
+    private _business: any[] = businessData;
 
     /**
      * Constructor
      */
-    constructor(private _omanonlineMockApiService: OmanOnlineMockApiService) {
-        // Register Mock API handlers
+    constructor(private _omanonlineApiService: OmanOnlineApiService)
+    {
+        // Register  API handlers
         this.registerHandlers();
     }
 
@@ -23,15 +24,17 @@ export class JobsMockApi {
     // -----------------------------------------------------------------------------------------------------
 
     /**
-     * Register Mock API handlers
+     * Register  API handlers
      */
-    registerHandlers(): void {
+    registerHandlers(): void
+    {
         // -----------------------------------------------------------------------------------------------------
-        // @ JOBS - GET
+        // @ FAQs - GET
         // -----------------------------------------------------------------------------------------------------
-        this._omanonlineMockApiService
-            .onGet('api/apps/jobs/jobs')
-            .reply(({ request }) => {
+        this._omanonlineApiService
+            .onGet('api/apps/business/business')
+            .reply(({request}) =>
+            {
                 // Get the category slug
                 const slug = request.params.get('slug');
 
@@ -39,25 +42,28 @@ export class JobsMockApi {
                 const results = [];
 
                 // Get FAQs
-                const jobs = cloneDeep(this._jobs);
+                const business = cloneDeep(this._business);
 
                 // Get FAQ Categories
-                const categories = cloneDeep(this._jobsCategories);
+                const categories = cloneDeep(this._businessCategories);
 
                 // If slug is not provided...
-                if (!slug) {
+                if ( !slug )
+                {
                     // Go through each category and set the results
-                    categories.forEach((category) => {
+                    categories.forEach((category) =>
+                    {
                         results.push(
                             {
                                 ...category,
-                                jobs: jobs.filter(jobs => jobs.categoryId === category.id),
+                                business: business.filter(business => business.categoryId === category.id),
                             },
                         );
                     });
                 }
                 // Otherwise...
-                else {
+                else
+                {
                     // Find the category by the slug
                     const category = categories.find(item => item.slug === slug);
 
@@ -65,7 +71,7 @@ export class JobsMockApi {
                     results.push(
                         {
                             ...category,
-                            jobs: jobs.filter(jobs => jobs.categoryId === category.id),
+                            business: business.filter(business => business.categoryId === category.id),
                         },
                     );
                 }
@@ -73,6 +79,6 @@ export class JobsMockApi {
                 // Return the response
                 return [200, results];
             });
-    }
 
+        }
 }

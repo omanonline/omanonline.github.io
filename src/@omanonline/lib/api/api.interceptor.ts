@@ -1,20 +1,20 @@
 import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable, delay, of, switchMap, throwError } from 'rxjs';
 
-import { OMANONLINE_MOCK_API_DEFAULT_DELAY } from '@omanonline/lib/mock-api/mock-api.constants';
-import { OmanOnlineMockApiService } from '@omanonline/lib/mock-api/mock-api.service';
+import { OMANONLINE_MOCK_API_DEFAULT_DELAY } from '@omanonline/lib/api/api.constants';
+import { OmanOnlineApiService } from '@omanonline/lib/api/api.service';
 import { inject } from '@angular/core';
 
-export const mockApiInterceptor = (request: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> =>
+export const ApiInterceptor = (request: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> =>
 {
     const defaultDelay = inject(OMANONLINE_MOCK_API_DEFAULT_DELAY);
-    const omanonlineMockApiService = inject(OmanOnlineMockApiService);
+    const omanonlineApiService = inject(OmanOnlineApiService);
 
     // Try to get the request handler
     const {
         handler,
         urlParams,
-    } = omanonlineMockApiService.findHandler(request.method.toUpperCase(), request.url);
+    } = omanonlineApiService.findHandler(request.method.toUpperCase(), request.url);
 
     // Pass through if the request handler does not exist
     if ( !handler )

@@ -1,21 +1,21 @@
 import { compact, fromPairs } from 'lodash-es';
 
 import { Injectable } from '@angular/core';
-import { OmanOnlineMockApiHandler } from '@omanonline/lib/mock-api/mock-api.request-handler';
-import { OmanOnlineMockApiMethods } from '@omanonline/lib/mock-api/mock-api.types';
+import { OmanOnlineApiHandler } from '@omanonline/lib/api/api.request-handler';
+import { OmanOnlineApiMethods } from '@omanonline/lib/api/api.types';
 
 @Injectable({providedIn: 'root'})
-export class OmanOnlineMockApiService
+export class OmanOnlineApiService
 {
-    private _handlers: { [key: string]: Map<string, OmanOnlineMockApiHandler> } = {
-        'get'    : new Map<string, OmanOnlineMockApiHandler>(),
-        'post'   : new Map<string, OmanOnlineMockApiHandler>(),
-        'patch'  : new Map<string, OmanOnlineMockApiHandler>(),
-        'delete' : new Map<string, OmanOnlineMockApiHandler>(),
-        'put'    : new Map<string, OmanOnlineMockApiHandler>(),
-        'head'   : new Map<string, OmanOnlineMockApiHandler>(),
-        'jsonp'  : new Map<string, OmanOnlineMockApiHandler>(),
-        'options': new Map<string, OmanOnlineMockApiHandler>(),
+    private _handlers: { [key: string]: Map<string, OmanOnlineApiHandler> } = {
+        'get'    : new Map<string, OmanOnlineApiHandler>(),
+        'post'   : new Map<string, OmanOnlineApiHandler>(),
+        'patch'  : new Map<string, OmanOnlineApiHandler>(),
+        'delete' : new Map<string, OmanOnlineApiHandler>(),
+        'put'    : new Map<string, OmanOnlineApiHandler>(),
+        'head'   : new Map<string, OmanOnlineApiHandler>(),
+        'jsonp'  : new Map<string, OmanOnlineApiHandler>(),
+        'options': new Map<string, OmanOnlineApiHandler>(),
     };
 
     /**
@@ -36,10 +36,10 @@ export class OmanOnlineMockApiService
      * @param method
      * @param url
      */
-    findHandler(method: string, url: string): { handler: OmanOnlineMockApiHandler | undefined; urlParams: { [key: string]: string } }
+    findHandler(method: string, url: string): { handler: OmanOnlineApiHandler | undefined; urlParams: { [key: string]: string } }
     {
         // Prepare the return object
-        const matchingHandler: { handler: OmanOnlineMockApiHandler | undefined; urlParams: { [key: string]: string } } = {
+        const matchingHandler: { handler: OmanOnlineApiHandler | undefined; urlParams: { [key: string]: string } } = {
             handler  : undefined,
             urlParams: {},
         };
@@ -90,10 +90,10 @@ export class OmanOnlineMockApiService
     /**
      * Register GET request handler
      *
-     * @param url - URL address of the mocked API endpoint
+     * @param url - URL address of the ed API endpoint
      * @param delay - Delay of the response in milliseconds
      */
-    onGet(url: string, delay?: number): OmanOnlineMockApiHandler
+    onGet(url: string, delay?: number): OmanOnlineApiHandler
     {
         return this._registerHandler('get', url, delay);
     }
@@ -101,10 +101,10 @@ export class OmanOnlineMockApiService
     /**
      * Register POST request handler
      *
-     * @param url - URL address of the mocked API endpoint
+     * @param url - URL address of the ed API endpoint
      * @param delay - Delay of the response in milliseconds
      */
-    onPost(url: string, delay?: number): OmanOnlineMockApiHandler
+    onPost(url: string, delay?: number): OmanOnlineApiHandler
     {
         return this._registerHandler('post', url, delay);
     }
@@ -112,10 +112,10 @@ export class OmanOnlineMockApiService
     /**
      * Register PATCH request handler
      *
-     * @param url - URL address of the mocked API endpoint
+     * @param url - URL address of the ed API endpoint
      * @param delay - Delay of the response in milliseconds
      */
-    onPatch(url: string, delay?: number): OmanOnlineMockApiHandler
+    onPatch(url: string, delay?: number): OmanOnlineApiHandler
     {
         return this._registerHandler('patch', url, delay);
     }
@@ -123,10 +123,10 @@ export class OmanOnlineMockApiService
     /**
      * Register DELETE request handler
      *
-     * @param url - URL address of the mocked API endpoint
+     * @param url - URL address of the ed API endpoint
      * @param delay - Delay of the response in milliseconds
      */
-    onDelete(url: string, delay?: number): OmanOnlineMockApiHandler
+    onDelete(url: string, delay?: number): OmanOnlineApiHandler
     {
         return this._registerHandler('delete', url, delay);
     }
@@ -134,10 +134,10 @@ export class OmanOnlineMockApiService
     /**
      * Register PUT request handler
      *
-     * @param url - URL address of the mocked API endpoint
+     * @param url - URL address of the ed API endpoint
      * @param delay - Delay of the response in milliseconds
      */
-    onPut(url: string, delay?: number): OmanOnlineMockApiHandler
+    onPut(url: string, delay?: number): OmanOnlineApiHandler
     {
         return this._registerHandler('put', url, delay);
     }
@@ -145,10 +145,10 @@ export class OmanOnlineMockApiService
     /**
      * Register HEAD request handler
      *
-     * @param url - URL address of the mocked API endpoint
+     * @param url - URL address of the ed API endpoint
      * @param delay - Delay of the response in milliseconds
      */
-    onHead(url: string, delay?: number): OmanOnlineMockApiHandler
+    onHead(url: string, delay?: number): OmanOnlineApiHandler
     {
         return this._registerHandler('head', url, delay);
     }
@@ -156,10 +156,10 @@ export class OmanOnlineMockApiService
     /**
      * Register JSONP request handler
      *
-     * @param url - URL address of the mocked API endpoint
+     * @param url - URL address of the ed API endpoint
      * @param delay - Delay of the response in milliseconds
      */
-    onJsonp(url: string, delay?: number): OmanOnlineMockApiHandler
+    onJsonp(url: string, delay?: number): OmanOnlineApiHandler
     {
         return this._registerHandler('jsonp', url, delay);
     }
@@ -167,10 +167,10 @@ export class OmanOnlineMockApiService
     /**
      * Register OPTIONS request handler
      *
-     * @param url - URL address of the mocked API endpoint
+     * @param url - URL address of the ed API endpoint
      * @param delay - Delay of the response in milliseconds
      */
-    onOptions(url: string, delay?: number): OmanOnlineMockApiHandler
+    onOptions(url: string, delay?: number): OmanOnlineApiHandler
     {
         return this._registerHandler('options', url, delay);
     }
@@ -187,15 +187,15 @@ export class OmanOnlineMockApiService
      * @param delay
      * @private
      */
-    private _registerHandler(method: OmanOnlineMockApiMethods, url: string, delay?: number): OmanOnlineMockApiHandler
+    private _registerHandler(method: OmanOnlineApiMethods, url: string, delay?: number): OmanOnlineApiHandler
     {
-        // Create a new instance of OmanOnlineMockApiRequestHandler
-        const omanonlineMockHttp = new OmanOnlineMockApiHandler(url, delay);
+        // Create a new instance of OmanOnlineApiRequestHandler
+        const omanonlineHttp = new OmanOnlineApiHandler(url, delay);
 
         // Store the handler to access it from the interceptor
-        this._handlers[method].set(url, omanonlineMockHttp);
+        this._handlers[method].set(url, omanonlineHttp);
 
         // Return the instance
-        return omanonlineMockHttp;
+        return omanonlineHttp;
     }
 }
