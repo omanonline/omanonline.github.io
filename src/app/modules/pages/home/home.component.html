@@ -92,15 +92,15 @@
             </div>
         </div>
         <!-- FAQs -->
-        <div class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Most frequently asked questions</div>
-        <div class="mt-2 text-xl text-center text-secondary">Here are the most frequently asked questions you may check before getting started</div>
+        <div class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Illuminating Businesses that Shine</div>
+        <div class="mt-2 text-xl text-center text-secondary">Shining a Spotlight on Successful Enterprises and Stellar Strategies</div>
         <mat-accordion class="max-w-4xl mt-12">
             <ng-container *ngFor="let business of businessCategory.business; trackBy: trackByFn">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                        <mat-panel-title>{{business.question}}</mat-panel-title>
+                        <mat-panel-title>{{business.username}}</mat-panel-title>
                     </mat-expansion-panel-header>
-                    {{business.answer}}
+                    {{business.description}}
                 </mat-expansion-panel>
             </ng-container>
         </mat-accordion>

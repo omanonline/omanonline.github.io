@@ -85,6 +85,9 @@ export class ApiService {
   async loadCategories() {
     return this.download(`https://omanonline.org/businesses/categories.json`);
   }
+  async loadBusinesses() {
+    return this.download(`https://omanonline.org/businesses/businesses.json`);
+  }
   async loadBusiness(BusinessId: string) {
     return this.download(`https://omanonline.org/businesses/businesses/${BusinessId}.json`);
   }

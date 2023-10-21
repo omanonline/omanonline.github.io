@@ -38,7 +38,7 @@ export class JobsApi {
                 // Prepare the results
                 const results = [];
 
-                // Get FAQs
+                // Get Businesses
                 const jobs = cloneDeep(this._jobs);
 
                 // Get FAQ Categories

@@ -5,22 +5,21 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { BehaviorSubject } from 'rxjs';
 
-
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class SetupService {
-
-    data: any;
-    
+    currentBusinessInfo: any;
+    Categories: any;
+    Businesses: any;
     username: any;
-    
 
-    private readonly currentBusiness = new BehaviorSubject<string>('omanonline');
+    private readonly currentBusiness = new BehaviorSubject<string>(
+        'omanonline'
+    );
     readonly currentBusiness$ = this.currentBusiness.asObservable();
     initialized: any;
     multiChain: boolean;
- 
 
     get current(): string {
         return this.currentBusiness.getValue();
@@ -30,11 +29,7 @@ export class SetupService {
         this.currentBusiness.next(val);
     }
 
-    constructor(
-        private api: ApiService,
-    ) {
-
-    }
+    constructor(private api: ApiService) {}
 
     async setUsername(username: string) {
         if (this.current === username) {
@@ -44,17 +39,27 @@ export class SetupService {
         }
         // Make sure we have downloaded the setup before we trigger change.
         const data = await this.api.loadBusiness(username);
-        this.data = data;
-        this.username = this.data.info.username;
+        this.currentBusinessInfo = data;
+        this.username = this.currentBusinessInfo.info.username;
 
         // Update the chain subject, which should trigger consumers to do some processing.
         this.current = username;
         if (this.username?.Color) {
-            document.documentElement.style.setProperty('--accent', this.username?.Color);
+            document.documentElement.style.setProperty(
+                '--accent',
+                this.username?.Color
+            );
         }
         return null;
     }
-
-     
- 
+    async getCategories() {
+        const data = await this.api.loadCategories();
+        this.Categories = data.categories;
+        return data;
+    }
+    async getBusinesses() {
+        const data = await this.api.loadBusinesses();
+        this.Businesses = data;
+        return data;
+    }
 }

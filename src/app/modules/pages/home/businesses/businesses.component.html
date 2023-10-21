@@ -21,9 +21,9 @@
                     <ng-container *ngFor="let business of businessCategory.business; trackBy: trackByFn">
                         <mat-expansion-panel>
                             <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                                <mat-panel-title class="font-medium leading-tight">{{business.question}}</mat-panel-title>
+                                <mat-panel-title class="font-medium leading-tight">{{business.username}}</mat-panel-title>
                             </mat-expansion-panel-header>
-                            {{business.answer}}
+                            {{business.description}}
                         </mat-expansion-panel>
                     </ng-container>
                 </mat-accordion>

@@ -37,7 +37,7 @@ export class BusinessesComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the FAQs
+        // Get the Businesses
         this._homeService.business$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((businessCategories) =>

@@ -37,7 +37,7 @@ export class JobsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        // Get the FAQs
+        // Get the Businesses
         this._homeService.jobs$
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((jobsCategories) =>

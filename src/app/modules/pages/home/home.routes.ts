@@ -12,7 +12,7 @@ export default [
         path: '',
         component: HomeComponent,
         resolve: {
-            business: () => inject(HomeService).getBusinessByCategory('most-asked'),
+            business: () => inject(HomeService).getBusinessByCategory('restaurants-and-cafes'),
         },
     },
     {

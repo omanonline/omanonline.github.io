@@ -1,20 +1,21 @@
-import { businessCategories as businessCategoriesData, business as businessData } from 'app/api/apps/businness/data';
-
 import { Injectable } from '@angular/core';
 import { OmanOnlineApiService } from '@omanonline/lib/api';
 import { cloneDeep } from 'lodash-es';
+import { SetupService } from 'app/core/services/setup.service';
 
-@Injectable({providedIn: 'root'})
-export class BusinessApi
-{
-    private _businessCategories: any[] = businessCategoriesData;
-    private _business: any[] = businessData;
+@Injectable({ providedIn: 'root' })
+export class BusinessApi {
+    private _businessCategories: any[];
+
+    private _business: any[];
 
     /**
      * Constructor
      */
-    constructor(private _omanonlineApiService: OmanOnlineApiService)
-    {
+    constructor(
+        private _omanonlineApiService: OmanOnlineApiService,
+        private setup: SetupService
+    ) {
         // Register  API handlers
         this.registerHandlers();
     }
@@ -26,59 +27,61 @@ export class BusinessApi
     /**
      * Register  API handlers
      */
-    registerHandlers(): void
-    {
+    async registerHandlers(): Promise<void> {
+        var categories = await this.setup.getCategories();
+        this._businessCategories = categories.categories;
+
+        var businesses = await this.setup.getBusinesses();
+        this._business = businesses.businesses;
+
         // -----------------------------------------------------------------------------------------------------
-        // @ FAQs - GET
+        // @ Businesses - GET
         // -----------------------------------------------------------------------------------------------------
         this._omanonlineApiService
             .onGet('api/apps/business/business')
-            .reply(({request}) =>
-            {
+            .reply(({ request }) => {
                 // Get the category slug
                 const slug = request.params.get('slug');
 
                 // Prepare the results
                 const results = [];
 
-                // Get FAQs
+                // Get Businesses
                 const business = cloneDeep(this._business);
 
-                // Get FAQ Categories
+                // Get Businesses Categories
                 const categories = cloneDeep(this._businessCategories);
 
                 // If slug is not provided...
-                if ( !slug )
-                {
+                if (!slug) {
                     // Go through each category and set the results
-                    categories.forEach((category) =>
-                    {
-                        results.push(
-                            {
-                                ...category,
-                                business: business.filter(business => business.categoryId === category.id),
-                            },
-                        );
+                    categories.forEach((category) => {
+                        results.push({
+                            ...category,
+                            business: business.filter(
+                                (business) =>
+                                    business.categoryId === category.id
+                            ),
+                        });
                     });
                 }
                 // Otherwise...
-                else
-                {
+                else {
                     // Find the category by the slug
-                    const category = categories.find(item => item.slug === slug);
-
-                    // Set the results
-                    results.push(
-                        {
-                            ...category,
-                            business: business.filter(business => business.categoryId === category.id),
-                        },
+                    const category = categories.find(
+                        (item) => item.slug === slug
                     );
+                    // Set the results
+                    results.push({
+                        ...category,
+                        business: business.filter(
+                            (business) => business.categoryId === category.id
+                        ),
+                    });
                 }
 
                 // Return the response
                 return [200, results];
             });
-
-        }
+    }
 }
