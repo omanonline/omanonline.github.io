@@ -47,5 +47,15 @@ export const appRoutes: Route[] = [
             { path: ':username', loadChildren: () => import('app/modules/pages/profile/profile.routes') },
         ]
     },
+    {
+        path: '',
+        component: LayoutComponent,
+        resolve: {
+            initialData: InitialDataResolver
+        },
+        children: [
+            { path: ':username/about', loadChildren: () => import('app/modules/pages/profile/profile.routes') },
+        ]
+    },
 
 ];

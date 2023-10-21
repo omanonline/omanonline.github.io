@@ -2,7 +2,7 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, Routes } from '@an
 import { ProfileComponent } from './profile.component';
 import { inject } from '@angular/core';
 import { SetupService } from 'app/core/services/setup.service';
-
+ 
 const profileResolver = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) =>
 {
     const setupService = inject(SetupService);
@@ -17,5 +17,7 @@ export default [
         resolve  : {
             business: profileResolver,
         } 
-    },
+        
+    }
+    
 ] as Routes;

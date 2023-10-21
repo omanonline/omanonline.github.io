@@ -15,7 +15,7 @@ export const messages = [
     },
     {
         id         : '608b4479-a3ac-4e26-8675-3609c52aca58',
-        image      : 'assets/images/avatars/male-04.jpg',
+        image      : 'assets/images/avatars/businesslogo.jpg',
         title      : 'Leo Gill (Client #8817)',
         description: 'You can download the latest invoices now. Please check and let me know.',
         time       : now.minus({minutes: 50}).toISO(), // 50 minutes ago
@@ -53,7 +53,7 @@ export const messages = [
     },
     {
         id         : '95930319-61cc-4c7e-9324-f1091865330c',
-        image      : 'assets/images/avatars/female-04.jpg',
+        image      : 'assets/images/avatars/febusinesslogo.jpg',
         title      : 'Elizabeth (New assistant)',
         description: 'Boss, I\'ve sent all client invoices but Geoffrey refusing to pay.',
         time       : now.minus({hours: 9}).toISO(), // 9 hours ago
