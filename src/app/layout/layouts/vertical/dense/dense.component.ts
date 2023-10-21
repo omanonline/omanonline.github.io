@@ -5,24 +5,20 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MessagesComponent } from 'app/layout/common/messages/messages.component';
 import { Navigation } from 'app/core/navigation/navigation.types';
 import { NavigationService } from 'app/core/navigation/navigation.service';
 import { NgIf } from '@angular/common';
-import { NotificationsComponent } from 'app/layout/common/notifications/notifications.component';
 import { OmanOnlineFullscreenComponent } from '@omanonline/components/fullscreen';
 import { OmanOnlineLoadingBarComponent } from '@omanonline/components/loading-bar';
 import { OmanOnlineMediaWatcherService } from '@omanonline/services/media-watcher';
-import { SearchComponent } from 'app/layout/common/search/search.component';
 import { SettingsComponent } from 'app/layout/common/settings/settings.component';
-import { ShortcutsComponent } from 'app/layout/common/shortcuts/shortcuts.component';
 
 @Component({
     selector     : 'dense-layout',
     templateUrl  : './dense.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone   : true,
-    imports      : [OmanOnlineLoadingBarComponent, OmanOnlineVerticalNavigationComponent, MatButtonModule, MatIconModule, OmanOnlineFullscreenComponent, SearchComponent, ShortcutsComponent, MessagesComponent, NotificationsComponent, NgIf, RouterOutlet, SettingsComponent],
+    imports      : [OmanOnlineLoadingBarComponent, OmanOnlineVerticalNavigationComponent, MatButtonModule, MatIconModule, OmanOnlineFullscreenComponent,  NgIf, RouterOutlet, SettingsComponent],
 })
 export class DenseLayoutComponent implements OnInit, OnDestroy
 {

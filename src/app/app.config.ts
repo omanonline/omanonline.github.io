@@ -6,7 +6,6 @@ import { LuxonDateAdapter } from '@angular/material-luxon-adapter';
 import { appRoutes } from 'app/app.routes';
 import { mockApiServices } from 'app/mock-api';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideAuth } from 'app/core/auth/auth.provider';
 import { provideHttpClient } from '@angular/common/http';
 import { provideIcons } from 'app/core/icons/icons.provider';
 import { provideOmanOnline } from '@omanonline/omanonline.provider';
