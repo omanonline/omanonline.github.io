@@ -28,11 +28,11 @@ export class BusinessApi {
      * Register  API handlers
      */
     async registerHandlers(): Promise<void> {
-        var categories = await this.setup.getCategories();
-        this._businessCategories = categories.categories;
+        this._businessCategories = await this.setup.getCategories();
+        console.log(this._businessCategories);
 
-        var businesses = await this.setup.getBusinesses();
-        this._business = businesses.businesses;
+        this._business = await this.setup.getBusinesses();
+        console.log(this._business);
 
         // -----------------------------------------------------------------------------------------------------
         // @ Businesses - GET

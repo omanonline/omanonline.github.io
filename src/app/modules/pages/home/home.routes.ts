@@ -2,7 +2,6 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/ro
 
 import { BusinessesComponent } from 'app/modules/pages/home/businesses/businesses.component';
 import { HomeComponent } from 'app/modules/pages/home/home.component';
-import { HomeService } from 'app/modules/pages/home/home.service';
 import { JobsComponent } from './jobs/jobs.component';
 import { ServicesComponent } from './services/services.component';
 import { inject } from '@angular/core';
@@ -10,31 +9,19 @@ import { inject } from '@angular/core';
 export default [
     {
         path: '',
-        component: HomeComponent,
-        resolve: {
-            business: () => inject(HomeService).getBusinessByCategory('restaurants-and-cafes'),
-        },
+        component: HomeComponent
     },
     {
         path: 'businesses',
-        component: BusinessesComponent,
-        resolve: {
-            business: () => inject(HomeService).getAllBusiness(),
-        },
+        component: BusinessesComponent
     },
     {
         path: 'jobs',
-        component: JobsComponent,
-        resolve: {
-            jobs: () => inject(HomeService).getAllJobs(),
-        },
+        component: JobsComponent
     }
     ,
     {
         path: 'services',
-        component: ServicesComponent,
-        resolve: {
-            services: () => inject(HomeService).getAllServices(),
-        },
+        component: ServicesComponent
     }
 ] as Routes;

@@ -55,11 +55,13 @@ export class SetupService {
     async getCategories() {
         const data = await this.api.loadCategories();
         this.Categories = data.categories;
-        return data;
+        return this.Categories ;
     }
+
+
     async getBusinesses() {
         const data = await this.api.loadBusinesses();
-        this.Businesses = data;
-        return data;
+        this.Businesses = data.businesses;
+        return this.Businesses;
     }
 }

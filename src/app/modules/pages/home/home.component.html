@@ -95,7 +95,7 @@
         <div class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Illuminating Businesses that Shine</div>
         <div class="mt-2 text-xl text-center text-secondary">Shining a Spotlight on Successful Enterprises and Stellar Strategies</div>
         <mat-accordion class="max-w-4xl mt-12">
-            <ng-container *ngFor="let business of businessCategory.business; trackBy: trackByFn">
+            <ng-container *ngFor="let business of  _business;">
                 <mat-expansion-panel>
                     <mat-expansion-panel-header [collapsedHeight]="'56px'">
                         <mat-panel-title>{{business.username}}</mat-panel-title>
