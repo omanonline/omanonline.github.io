@@ -15,19 +15,38 @@
             <div class="mt-2 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight">
                 Businesses
             </div>
-            <ng-container *ngFor="let businessCategory of businessCategories; ">
-                <div class="mt-12 sm:mt-16 text-3xl font-bold leading-tight tracking-tight">{{businessCategory.title}}</div>
-                <mat-accordion class="max-w-4xl mt-8">
-                    <ng-container *ngFor="let business of businessCategory.business; ">
-                        <mat-expansion-panel>
-                            <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                                <mat-panel-title class="font-medium leading-tight">{{business.username}}</mat-panel-title>
-                            </mat-expansion-panel-header>
-                            {{business.description}}
-                        </mat-expansion-panel>
+            <app-progress *ngIf="!businessCategories"></app-progress>
+
+            <ng-container *ngFor="let businessCategory of businessCategories">
+              
+                
+                <!-- Check if businessCategory.business has elements -->
+                <ng-container *ngIf="businessCategory.business.length == 1"> 
+                     <div class="mt-12 sm:mt-16 text-3xl font-bold leading-tight tracking-tight">{{ businessCategory.title }}</div>
+                  <mat-accordion class="max-w-4xl mt-8">
+                    <ng-container *ngFor="let business of businessCategory.business">
+                      <mat-expansion-panel>
+                        <mat-expansion-panel-header [collapsedHeight]="'56px'">
+                          <mat-panel-title class="font-medium leading-tight">{{ business.username }}</mat-panel-title>
+                        </mat-expansion-panel-header>
+                        {{ business.description }}  
+                        <br>
+                        <div
+                        class="flex items-center justify-center py-4 px-8 text-primary-500 dark:text-primary-400 bg-gray-50 dark:bg-transparent dark:border-t">
+
+                        <a class="flex items-center" [routerLink]="['/'+business.username.toLowerCase() ]">
+                            <span class="absolute inset-0"></span>
+                            <span class="font-medium">Go to business</span>
+                            <mat-icon class="ml-2 icon-size-5 text-current"
+                                [svgIcon]="'heroicons_mini:arrow-long-right'"></mat-icon>
+                        </a>
+                    </div>
+                      </mat-expansion-panel>
                     </ng-container>
-                </mat-accordion>
-            </ng-container>
+                  </mat-accordion>
+                </ng-container>
+              </ng-container>
+              
         </div>
     </div>
 

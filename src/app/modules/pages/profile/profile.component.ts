@@ -1,6 +1,6 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
@@ -24,12 +24,18 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     imports        : [RouterLink, OmanOnlineCardComponent, MatIconModule, MatButtonModule, MatMenuModule,MatTabsModule, MatFormFieldModule, MatInputModule, TextFieldModule, MatDividerModule, MatTooltipModule, NgClass],
  
 })
-export class ProfileComponent
+export class ProfileComponent implements OnInit
 {
-    /**
-     * Constructor
-     */
+    currentBusinessInfo : any;
+
     constructor(public setup: SetupService)
     {
+
+    }
+    async ngOnInit(): Promise<void> {
+
+       this. currentBusinessInfo = await this.setup.getBusiness(this.setup.current);
+
+       console.log(this.currentBusinessInfo);
     }
 }

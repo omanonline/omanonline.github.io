@@ -8,7 +8,7 @@ const profileResolver = (route: ActivatedRouteSnapshot, state: RouterStateSnapsh
     const setupService = inject(SetupService);
     const router = inject(Router);
     setupService.current=(route.paramMap.get('username'));
-
+ 
 };
 export default [
     {

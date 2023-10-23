@@ -31,33 +31,34 @@ export class SetupService {
 
     constructor(private api: ApiService) {}
 
-    async setUsername(username: string) {
-        if (this.current === username) {
-            // Update the chain subject, which should trigger consumers to do some processing.
-            this.current = username;
-            return;
-        }
+    async getBusiness(username: string) {
+        // if (this.current === username) {
+        //     // Update the chain subject, which should trigger consumers to do some processing.
+        //     this.current = username;
+        //     return;
+        // }
         // Make sure we have downloaded the setup before we trigger change.
         const data = await this.api.loadBusiness(username);
-        this.currentBusinessInfo = data;
-        this.username = this.currentBusinessInfo.info.username;
 
+        this.currentBusinessInfo = data.information;
+        console.log(this.currentBusinessInfo);
+
+        return this.currentBusinessInfo;
         // Update the chain subject, which should trigger consumers to do some processing.
         this.current = username;
-        if (this.username?.Color) {
-            document.documentElement.style.setProperty(
-                '--accent',
-                this.username?.Color
-            );
-        }
+        // if (this.username?.Color) {
+        //     document.documentElement.style.setProperty(
+        //         '--accent',
+        //         this.username?.Color
+        //     );
+        // }
         return null;
     }
     async getCategories() {
         const data = await this.api.loadCategories();
         this.Categories = data.categories;
-        return this.Categories ;
+        return this.Categories;
     }
-
 
     async getBusinesses() {
         const data = await this.api.loadBusinesses();
