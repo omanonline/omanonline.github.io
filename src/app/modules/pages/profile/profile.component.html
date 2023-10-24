@@ -5,10 +5,7 @@
 
         <!-- Cover image -->
         <div>
-            <img
-                class="h-40 lg:h-80 object-cover"
-                src="/assets/images/pages/profile/cover.png"
-                alt="Cover image">
+            <img class="h-40 lg:h-80 object-cover" src="/assets/images/pages/profile/cover.png" alt="Cover image">
         </div>
 
         <!-- User info -->
@@ -16,9 +13,7 @@
 
             <!-- Avatar -->
             <div class="-mt-26 lg:-mt-22 rounded-full">
-                <img
-                    class="w-32 h-32 rounded-full ring-4 ring-bg-card"
-                    src="/assets/images/avatars/businesslogo.jpg"
+                <img class="w-32 h-32 rounded-full ring-4 ring-bg-card" src="/assets/images/avatars/businesslogo.jpg"
                     alt="User avatar">
             </div>
 
@@ -28,11 +23,11 @@
                 <div class="text-secondary">Oman</div>
             </div>
 
- 
+
 
             <!-- Menu -->
             <div class="flex items-center mt-8 mb-4 lg:m-0 lg:ml-auto space-x-6">
-                <span class="font-medium">                   
+                <span class="font-medium">
                     <mat-icon svgIcon="mat_solid:favorite"></mat-icon>
                 </span>
             </div>
@@ -42,39 +37,79 @@
     </div>
 
     <!-- Main -->
-    <div class="flex flex-auto justify-center w-full max-w-5xl mx-auto p-6 sm:p-8">
-            
-            <!-- About me -->
-            <omanonline-card class="flex flex-col w-full p-8">
-                <div class="text-2xl font-semibold leading-tight">About Me</div>
-                <div class="mt-4">
-                    I’m a friendly kitchen assistant who suffers from a severe phobia of buttons.
-                    <br><br>
-                    Brother of Elijah Jay Watkins, who has phobia of buttons and trust issues.
+    <div class="justify-center w-full max-w-5xl mx-auto p-6 sm:p-8">
+
+        <!-- About me -->
+        <omanonline-card class="flex flex-col w-full p-8">
+            <div class="text-2xl font-semibold leading-tight">About Me</div>
+            <div class="mt-4">
+                I’m a friendly kitchen assistant who suffers from a severe phobia of buttons.
+                <br><br>
+                Brother of Elijah Jay Watkins, who has phobia of buttons and trust issues.
+            </div>
+            <hr class="w-full border-t my-6">
+            <div class="flex flex-col">
+                <div class="flex items-center">
+                    <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
+                    <span class="leading-none">Oman, Muscat</span>
                 </div>
-                <hr class="w-full border-t my-6">
-                <div class="flex flex-col">
+                <div class="flex items-center mt-4">
+                    <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:briefcase'"></mat-icon>
+                    <span class="leading-none">ACME Corp. Lead UX Designer</span>
+                </div>
+                <div class="flex items-center mt-4">
+                    <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:cake'"></mat-icon>
+                    <span class="leading-none">April, 24</span>
+                </div>
+            </div>
+
+        </omanonline-card>
+
+        <omanonline-card class="flex flex-col lg:flex-row max-w-sm max-w-240 filter-pricing mt-5">
+            <div
+                class="flex flex-col items-center p-8 lg:px-10 lg:py-12 lg:min-w-20 bg-gray-100 dark:bg-black dark:bg-opacity-10">
+                <div class="flex items-center whitespace-nowrap">
+                    <div class="text-8xl font-extrabold tracking-tight lg:rotate-270 lg:relative lg:top-15">VISION</div>
+                </div>
+
+            </div>
+
+            <div class="p-6 sm:p-8 lg:p-10">
+                <div class="text-3xl font-bold">Lifetime Membership</div>
+                <div class="mt-2 leading-relaxed text-secondary">
+                    Learn from like-minded individuals which are eager to make a living building stuff on the web. Pay
+                    once and get lifetime access to the community.
+                </div>
+                <div class="flex items-center mt-10">
+                    <div class="font-medium text-secondary">INCLUDED FEATURES</div>
+                    <div class="flex-auto ml-2 border-b-2"></div>
+                </div>
+                <!-- Features -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-4 mt-6">
                     <div class="flex items-center">
-                        <mat-icon
-                            class="icon-size-5 mr-3"
-                            [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                        <span class="leading-none">Oman, Muscat</span>
+                        <mat-icon class="icon-size-5 text-primary"
+                            [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                        <div class="ml-2">Private forum access</div>
                     </div>
-                    <div class="flex items-center mt-4">
-                        <mat-icon
-                            class="icon-size-5 mr-3"
-                            [svgIcon]="'heroicons_solid:briefcase'"></mat-icon>
-                        <span class="leading-none">ACME Corp. Lead UX Designer</span>
+                    <div class="flex items-center">
+                        <mat-icon class="icon-size-5 text-primary"
+                            [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                        <div class="ml-2">Access to annual online conference</div>
                     </div>
-                    <div class="flex items-center mt-4">
-                        <mat-icon
-                            class="icon-size-5 mr-3"
-                            [svgIcon]="'heroicons_solid:cake'"></mat-icon>
-                        <span class="leading-none">April, 24</span>
+                    <div class="flex items-center">
+                        <mat-icon class="icon-size-5 text-primary"
+                            [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                        <div class="ml-2">Member resources</div>
+                    </div>
+                    <div class="flex items-center">
+                        <mat-icon class="icon-size-5 text-primary"
+                            [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                        <div class="ml-2">Official member T-Shirt</div>
                     </div>
                 </div>
-              
-            </omanonline-card>
+            </div>
+
+        </omanonline-card>
 
     </div>
 
