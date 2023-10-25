@@ -85,31 +85,64 @@
                 </div>
             </div>
         </div>
-        <!-- FAQs -->
-        <div class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Illuminating
+
+
+         <div class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Illuminating
             Businesses that Shine</div>
         <div class="mt-2 text-xl text-center text-secondary">Shining a Spotlight on Successful Enterprises and Stellar
             Strategies</div>
         <mat-accordion class="max-w-4xl mt-12">
-            <ng-container *ngFor="let business of  _business;">
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header [collapsedHeight]="'56px'">
-                        <mat-panel-title>{{business.username}}</mat-panel-title>
-                    </mat-expansion-panel-header>
-                    {{business.description}}
-                    <br>
-                    <div
-                        class="flex items-center justify-center py-4 px-8 text-primary-500 dark:text-primary-400 bg-gray-50 dark:bg-transparent dark:border-t">
+                          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full min-w-0">
+  <ng-container *ngFor="let business of  _business;">
+ 
 
-                        <a class="flex items-center" [routerLink]="['/'+business.username.toLowerCase() ]">
-                            <span class="absolute inset-0"></span>
-                            <span class="font-medium">Go to business</span>
-                            <mat-icon class="ml-2 icon-size-5 text-current"
-                                [svgIcon]="'heroicons_mini:arrow-long-right'"></mat-icon>
-                        </a>
+                <omanonline-card class="flex flex-col max-w-80 w-full filter-info">
+                    <div class="flex h-32">
+                        <img
+                            class="object-cover"
+                            src="/assets/images/pages/profile/cover.png"
+                            alt="Card cover image">
                     </div>
-                </mat-expansion-panel>
-            </ng-container>
+                    <div class="flex px-8">
+                        <div class="p-1 bg-card rounded-full -mt-12">
+                            <img
+                                class="w-24 h-24 rounded-full"
+                                src={{business.logo}}
+                                alt="Card cover image">
+                        </div>
+                    </div>
+                    <div class="flex flex-col px-8 pt-4 pb-6">
+                        <div class="flex items-center justify-between">
+                            <div class="mr-4">
+                                <div class="text-2xl font-semibold leading-tight">{{business.name}}</div>
+                                <div class="text-secondary leading-tight mt-1">{{business.address}}</div>
+                            </div>
+
+                        </div>
+                        <hr class="w-full border-t my-6">
+                        <div class="flex items-center mx-3 sm:mx-5">
+                           
+                            <button
+                                class="px-3 mr-1"
+                                mat-button [routerLink]="['/'+business.username.toLowerCase() ]">
+                                <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:chat-bubble-left-ellipsis'"></mat-icon>
+                                <span class="ml-2">more info</span>
+                            </button>
+                            <button
+                                class="px-3 mr-1"
+                                mat-button>
+                                <mat-icon
+                                    class="icon-size-5"
+                                    [svgIcon]="'heroicons_solid:share'"></mat-icon>
+                                <span class="ml-2">Share</span>
+                            </button>
+                        </div>
+                    </div>
+                </omanonline-card>
+           
+            </ng-container> </div>
         </mat-accordion>
     </div>
 </div>
