@@ -32,6 +32,8 @@ export class BusinessesComponent implements OnInit, OnDestroy {
         this._businessCategories = await this.setup.getCategories();
 
         this._business = await this.setup.getBusinesses();
+
+        
         const slug = null;
 
 
@@ -62,8 +64,9 @@ export class BusinessesComponent implements OnInit, OnDestroy {
             });
         }
 
- 
-
+     console.log(this._businessCategories);
+        
+     console.log(this._business);
     }
 
 
