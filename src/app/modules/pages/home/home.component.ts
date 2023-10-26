@@ -17,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Meta, Title } from "@angular/platform-browser";
 
 @Component({
     selector: 'home',
@@ -40,11 +41,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     _business: any[];
 
-    constructor(private setup: SetupService) {}
+    constructor(private setup: SetupService,private metaService: Meta, private titleService: Title) {}
 
     async ngOnInit(): Promise<void> {
         this._businessCategories = await this.setup.getCategories();
         this._business = await this.setup.getBusinesses();
+        this.titleService.setTitle("Oman Online");
     }
 
     ngOnDestroy(): void {}

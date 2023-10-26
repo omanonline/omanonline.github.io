@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 
 import { RouterOutlet } from '@angular/router';
 
@@ -15,7 +16,9 @@ export class NewsComponent
     /**
      * Constructor
      */
-    constructor()
-    {
+    constructor( private metaService: Meta, private titleService: Title)
+    {           
+          this.titleService.setTitle("Oman Online - News");
+
     }
 }

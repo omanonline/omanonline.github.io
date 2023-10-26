@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SeoService } from './core/services/seo.service';
 
 @Component({
     selector   : 'app-root',
@@ -7,13 +8,15 @@ import { RouterOutlet } from '@angular/router';
     styleUrls  : ['./app.component.scss'],
     standalone : true,
     imports    : [RouterOutlet],
+    providers :[SeoService]
 })
 export class AppComponent
 {
     /**
      * Constructor
      */
-    constructor()
+    constructor(private seoService: SeoService)
     {
+        this.seoService.enableSeo();
     }
 }

@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 import { cloneDeep } from 'lodash';
 import { SetupService } from 'app/core/services/setup.service';
 import { CommonModule } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'home-businesses',
@@ -21,7 +22,7 @@ import { CommonModule } from '@angular/common';
 export class BusinessesComponent implements OnInit, OnDestroy {
 
 
-    constructor(private setup: SetupService) {
+    constructor(private setup: SetupService,private metaService: Meta, private titleService: Title) {
     }
     _businessCategories: any[];
 
@@ -64,9 +65,8 @@ export class BusinessesComponent implements OnInit, OnDestroy {
             });
         }
 
-     console.log(this._businessCategories);
-        
-     console.log(this._business);
+        this.titleService.setTitle("Oman Online - Businesses" );
+
     }
 
 

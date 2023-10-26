@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { Meta, Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import { OmanOnlineCardComponent } from '@omanonline/components/card';
 import { SetupService } from 'app/core/services/setup.service';
@@ -52,15 +53,17 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 export class ProfileComponent implements OnInit {
     currentBusinessInfo: any;
 
-    constructor(public setup: SetupService, private cd: ChangeDetectorRef) {}
+    constructor(public setup: SetupService, private cd: ChangeDetectorRef,private metaService: Meta, private titleService: Title) {}
     async ngOnInit(): Promise<void> {
         try {
             this.currentBusinessInfo = await this.setup.getBusiness(
                 this.setup.current
             );
+             this.titleService.setTitle("Oman Online - " +this.currentBusinessInfo.name);
 
-            console.log(this.currentBusinessInfo);
-            this.cd.detectChanges();
+             this.cd.detectChanges();
+
+
 
         } catch (error) {}
     }

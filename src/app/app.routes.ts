@@ -34,7 +34,16 @@ export const appRoutes: Route[] = [
             initialData: InitialDataResolver
         },
         children: [
-            { path: 'news', loadChildren: () => import('app/modules/pages/news/news.routes') },
+            { path: 'news', loadChildren: () => import('app/modules/pages/news/news.routes') 
+            // ,
+            // data: {
+            //     title: "News",
+            //     metaTags: {
+            //       description: "Page Description or some content here",
+            //       keywords: "some, keywords, here, separated, by, a comma"
+            //     }
+            //   }
+            },
         ]
     },
     {
