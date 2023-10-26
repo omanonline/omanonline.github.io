@@ -41,8 +41,7 @@ export class SetupService {
         const data = await this.api.loadBusiness(username);
 
         this.currentBusinessInfo = data.information;
-        console.log(this.currentBusinessInfo);
-
+ 
         return this.currentBusinessInfo;
         // Update the chain subject, which should trigger consumers to do some processing.
         this.current = username;

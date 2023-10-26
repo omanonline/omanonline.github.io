@@ -1,6 +1,18 @@
 import { TextFieldModule } from '@angular/cdk/text-field';
-import { CurrencyPipe, NgClass, NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+    CommonModule,
+    CurrencyPipe,
+    NgClass,
+    NgFor,
+    NgIf,
+} from '@angular/common';
+import {
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component,
+    OnInit,
+    ViewEncapsulation,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
@@ -16,26 +28,40 @@ import { SetupService } from 'app/core/services/setup.service';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
 @Component({
-    selector       : 'profile',
-    templateUrl    : './profile.component.html',
-    encapsulation  : ViewEncapsulation.None,
+    selector: 'profile',
+    templateUrl: './profile.component.html',
+    encapsulation: ViewEncapsulation.None,
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone     : true,
-    imports        : [RouterLink, OmanOnlineCardComponent, MatIconModule, MatButtonModule, MatMenuModule,MatTabsModule, MatFormFieldModule, MatInputModule, TextFieldModule, MatDividerModule, MatTooltipModule, NgClass],
- 
+    standalone: true,
+    imports: [
+        CommonModule,
+        RouterLink,
+        OmanOnlineCardComponent,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatTabsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        TextFieldModule,
+        MatDividerModule,
+        MatTooltipModule,
+        NgClass,
+    ],
 })
-export class ProfileComponent implements OnInit
-{
-    currentBusinessInfo : any;
+export class ProfileComponent implements OnInit {
+    currentBusinessInfo: any;
 
-    constructor(public setup: SetupService)
-    {
-
-    }
+    constructor(public setup: SetupService, private cd: ChangeDetectorRef) {}
     async ngOnInit(): Promise<void> {
+        try {
+            this.currentBusinessInfo = await this.setup.getBusiness(
+                this.setup.current
+            );
 
-       this. currentBusinessInfo = await this.setup.getBusiness(this.setup.current);
+            console.log(this.currentBusinessInfo);
+            this.cd.detectChanges();
 
-       console.log(this.currentBusinessInfo);
+        } catch (error) {}
     }
 }

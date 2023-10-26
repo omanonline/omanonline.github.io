@@ -1,5 +1,5 @@
 <div class="flex flex-col flex-auto min-w-0">
-
+ 
     <!-- Header -->
     <div class="flex flex-col shadow bg-card">
 
@@ -8,19 +8,22 @@
             <img class="h-40 lg:h-80 object-cover" src="/assets/images/pages/profile/cover.png" alt="Cover image">
         </div>
 
-        <!-- User info -->
-        <div class="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto px-8 lg:h-18 bg-card">
+        <!-- Business info -->
+        <div *ngIf="currentBusinessInfo"
+            class="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto px-8 lg:h-18 bg-card">
 
             <!-- Avatar -->
+
+
             <div class="-mt-26 lg:-mt-22 rounded-full">
-                <img class="w-32 h-32 rounded-full ring-4 ring-bg-card" src="/assets/images/avatars/businesslogo.jpg"
-                    alt="User avatar">
+                <img class="w-32 h-32 rounded-full ring-4 ring-bg-card" [src]="currentBusinessInfo.logo"
+                    alt="Business avatar">
             </div>
 
             <!-- Details -->
             <div class="flex flex-col items-center lg:items-start mt-4 lg:mt-0 lg:ml-8">
-                <div class="text-lg font-bold leading-none">{{setup.current}}</div>
-                <div class="text-secondary">Oman</div>
+                <div class="text-lg font-bold leading-none">{{currentBusinessInfo.name}}</div>
+                <div class="text-secondary">{{currentBusinessInfo.description}}</div>
             </div>
 
 
@@ -33,7 +36,6 @@
             </div>
 
         </div>
-
     </div>
 
     <!-- Main -->
@@ -41,11 +43,13 @@
 
     <div class="justify-center w-full max-w-5xl mx-auto">
 
+        <app-progress *ngIf="!currentBusinessInfo"></app-progress>
 
 
         <!-- Tabs -->
 
-        <mat-tab-group class="sm:px-2 w-full" mat-stretch-tabs="true" [animationDuration]="'0'">
+        <mat-tab-group *ngIf="currentBusinessInfo" class="sm:px-2 w-full" mat-stretch-tabs="true"
+            [animationDuration]="'0'">
             <div class="justify-center w-full max-w-5xl mx-auto p-6 sm:p-8">
                 <!-- Home -->
                 <mat-tab label="About Me">
@@ -62,7 +66,7 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">Oman, Muscat</span>
+                                    <span class="leading-none">{{currentBusinessInfo.description}}</span>
                                 </div>
                                 <div class="flex items-center mt-4">
                                     <mat-icon class="icon-size-5 mr-3"
