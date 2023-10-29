@@ -26,7 +26,7 @@
         </mat-form-field>
         <mat-form-field class="w-full mt-4 sm:mt-0 sm:ml-4" [subscriptSizing]="'dynamic'">
           <mat-icon matPrefix class="icon-size-5" [svgIcon]="'heroicons_solid:magnifying-glass'"></mat-icon>
-          <input (input)="filterByQuery(query.value)" placeholder="Search by title or description" matInput #query>
+          <input (input)="filterByQuery(query.value)" [(ngModel)]="currentQuery" placeholder="Search by title or description" matInput #query>
         </mat-form-field>
 
       </div>

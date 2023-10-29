@@ -29,10 +29,12 @@
 
 
             <!-- Menu -->
-            <div class="flex items-center mt-8 mb-4 lg:m-0 lg:ml-auto space-x-6">
-                <span class="font-medium">
+            <div class="flex flex-col items-center mt-8 mb-4 lg:m-0 lg:ml-auto space-x-6">
+                <!-- <span class="font-medium">
                     <mat-icon svgIcon="mat_solid:favorite"></mat-icon>
-                </span>
+                </span> -->
+                <div class="text-lg font-bold">{{currentBusinessInfo.categoryId}}</div>
+                <div class="text-secondary">{{currentBusinessInfo.description}}</div>
             </div>
 
         </div>

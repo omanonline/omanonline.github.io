@@ -17,17 +17,20 @@
             <div class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
                 Oman Online
             </div>
-             <img class="max-w-100" src="/assets/images/pages/home/oo.png" alt="home image">
+             <!-- <img class="max-w-100" src="/assets/images/pages/home/oo.png" alt="home image"> -->
 
             <div class="mt-3 sm:text-2xl text-center tracking-tight text-secondary">
                 Introduction of businesses and services and jobs in Oman
             </div>
-            <mat-form-field
-                class="omanonline-mat-rounded omanonline-mat-bold w-full max-w-80 sm:max-w-120 mt-10 sm:mt-20"
-                [subscriptSizing]="'dynamic'">
-                <input matInput [placeholder]="'Enter a keyword'">
-                <mat-icon matPrefix [svgIcon]="'heroicons_outline:magnifying-glass'"></mat-icon>
-            </mat-form-field>
+              <mat-form-field
+              class="omanonline-mat-rounded omanonline-mat-bold w-full max-w-80 sm:max-w-120 mt-10 sm:mt-20"
+              [subscriptSizing]="'dynamic'">
+              <input matInput [(ngModel)]="searchKeyword" [placeholder]="'Enter a keyword'" (keyup.enter)="searchBusinesses()">
+              <mat-icon matPrefix [svgIcon]="'heroicons_outline:magnifying-glass'" (click)="searchBusinesses()"></mat-icon>
+          </mat-form-field>
+
+
+
         </div>
     </div>
 

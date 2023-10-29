@@ -6,7 +6,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-
+import { ActivatedRoute } from '@angular/router';
 import { BusinessCategory } from 'app/modules/pages/home/home.type';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -20,6 +20,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'home-businesses',
@@ -36,6 +37,7 @@ import { MatSelectChange, MatSelectModule } from '@angular/material/select';
         MatInputModule,
         MatSelectModule,
         MatOptionModule,
+        FormsModule
     ],
 })
 export class BusinessesComponent implements OnInit, OnDestroy {
@@ -43,7 +45,8 @@ export class BusinessesComponent implements OnInit, OnDestroy {
         private setup: SetupService,
         private metaService: Meta,
         private titleService: Title,
-        private cd: ChangeDetectorRef
+        private cd: ChangeDetectorRef,
+        private route: ActivatedRoute
     ) {}
     _businessCategories: any[];
 
@@ -59,7 +62,17 @@ export class BusinessesComponent implements OnInit, OnDestroy {
 
         this._business = await this.setup.getBusinesses();
 
-        this.loadData(null);
+        this.route.queryParams.subscribe((queryParams) => {
+            this.currentQuery = queryParams['q'];
+      
+            if (this.currentQuery) {
+              // Call filterByQuery with the keyword obtained from the query parameter
+              this.filterByQuery(this.currentQuery);
+            } else {
+              // If no query parameter is present, load the data normally
+              this.loadData(null);
+            }
+          });
 
         this.titleService.setTitle('Oman Online - Businesses');
     }

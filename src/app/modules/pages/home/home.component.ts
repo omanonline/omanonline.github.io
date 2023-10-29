@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-
+import { Router } from '@angular/router';
 import { ApiService } from 'app/core/services/api.service';
 import { BusinessCategory } from 'app/modules/pages/home/home.type';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -18,6 +18,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Meta, Title } from "@angular/platform-browser";
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'home',
@@ -28,6 +29,7 @@ import { Meta, Title } from "@angular/platform-browser";
         MatFormFieldModule,
         MatInputModule,
         MatIconModule,
+        FormsModule,  
         RouterLink,
         MatExpansionModule,
         NgFor,
@@ -38,15 +40,24 @@ import { Meta, Title } from "@angular/platform-browser";
 })
 export class HomeComponent implements OnInit, OnDestroy {
     _businessCategories: any[];
-
     _business: any[];
+    searchKeyword: string = '';
 
-    constructor(private setup: SetupService,private metaService: Meta, private titleService: Title) {}
+    constructor(private setup: SetupService,private metaService: Meta, private titleService: Title,private router: Router) {}
 
     async ngOnInit(): Promise<void> {
         this._businessCategories = await this.setup.getCategories();
         this._business = await this.setup.getBusinesses();
         this.titleService.setTitle("Oman Online");
+    }
+
+    searchBusinesses() {
+       if (this.searchKeyword) {
+                this.router.navigate(['/businesses'], {
+          queryParams: { q: this.searchKeyword }, // Pass the keyword as a query parameter
+        });
+       } 
+
     }
 
     ngOnDestroy(): void {}

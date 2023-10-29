@@ -52,19 +52,31 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 })
 export class ProfileComponent implements OnInit {
     currentBusinessInfo: any;
+    category: any;
 
-    constructor(public setup: SetupService, private cd: ChangeDetectorRef,private metaService: Meta, private titleService: Title) {}
+    constructor(
+        public setup: SetupService,
+        private cd: ChangeDetectorRef,
+        private metaService: Meta,
+        private titleService: Title
+    ) {}
+
+ 
+
     async ngOnInit(): Promise<void> {
         try {
             this.currentBusinessInfo = await this.setup.getBusiness(
                 this.setup.current
             );
-             this.titleService.setTitle("Oman Online - " +this.currentBusinessInfo.name);
+            this.titleService.setTitle(
+                'Oman Online - ' + this.currentBusinessInfo.name
+            );
+            this.category = this.currentBusinessInfo;
+               
+         
+            console.log(this.category);
 
-             this.cd.detectChanges();
-
-
-
+            this.cd.detectChanges();
         } catch (error) {}
     }
 }
