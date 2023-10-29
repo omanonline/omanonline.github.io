@@ -6,6 +6,7 @@ import { JobsComponent } from './jobs/jobs.component';
 import { ServicesComponent } from './services/services.component';
 import { inject } from '@angular/core';
 import { FavoriteComponent } from './businesses/favorite/favorite.component';
+import { MapComponent } from './businesses/map/map.component';
 
 export default [
     {
@@ -19,6 +20,11 @@ export default [
     {
         path: 'businesses/favorite',
         component: FavoriteComponent
+    }
+    ,
+    {
+        path: 'businesses/map',
+        component: MapComponent
     },
     {
         path: 'jobs',

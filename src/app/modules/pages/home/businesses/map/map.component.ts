@@ -21,10 +21,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps'
 
 @Component({
-    selector: 'businesses-favorite',
-    templateUrl: './favorite.component.html',
+    selector: 'businesses-map',
+    templateUrl: './map.component.html',
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [
@@ -38,9 +39,10 @@ import { FormsModule } from '@angular/forms';
         MatSelectModule,
         MatOptionModule,
         FormsModule,
+        GoogleMapsModule
     ],
 })
-export class FavoriteComponent implements OnInit, OnDestroy {
+export class MapComponent implements OnInit, OnDestroy {
     constructor(
         private setup: SetupService,
         private metaService: Meta,
@@ -57,6 +59,19 @@ export class FavoriteComponent implements OnInit, OnDestroy {
     selectedCategory: string = 'all'; // Default to 'all' or any other appropriate default value
     currentQuery: string = '';
 
+
+    zoom = 12;
+    center: google.maps.LatLngLiteral;
+    options: google.maps.MapOptions = {
+      mapTypeId: 'hybrid',
+      zoomControl: false,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
+      maxZoom: 15,
+      minZoom: 8,
+    };
+
+
     async ngOnInit(): Promise<void> {
         this._businessCategories = await this.setup.getCategories();
 
@@ -64,18 +79,35 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
         this.route.queryParams.subscribe((queryParams) => {
             this.currentQuery = queryParams['q'];
-
+      
             if (this.currentQuery) {
-                // Call filterByQuery with the keyword obtained from the query parameter
-                this.filterByQuery(this.currentQuery);
+              // Call filterByQuery with the keyword obtained from the query parameter
+              this.filterByQuery(this.currentQuery);
             } else {
-                // If no query parameter is present, load the data normally
-                this.loadData(null);
+              // If no query parameter is present, load the data normally
+              this.loadData(null);
             }
-        });
+          });
 
-        this.titleService.setTitle('Oman Online - Businesses');
+          navigator.geolocation.getCurrentPosition((position) => {
+            this.center = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+          });
+
+
+        this.titleService.setTitle('Oman Online - Businesses on map');
     }
+
+    zoomIn() {
+        if (this.zoom < this.options.maxZoom) this.zoom++;
+      }
+     
+      zoomOut() {
+        if (this.zoom > this.options.minZoom) this.zoom--;
+      }
+
 
     loadData(categoryId: string): void {
         this.businessCategories = [];
@@ -83,43 +115,32 @@ export class FavoriteComponent implements OnInit, OnDestroy {
 
         const categories = cloneDeep(this._businessCategories);
 
-        const favoriteUsernames = JSON.parse(
-            localStorage.getItem('favoriteBusinesses')
-        );
-
-        if (favoriteUsernames && favoriteUsernames.length > 0) {
-            if (!categoryId) {
-                categories.forEach((category) => {
-                    this.businessCategories.push({
-                        ...category,
-                        business: business.filter(
-                            (business) =>
-                                business.categoryId === category.id &&
-                                favoriteUsernames.includes(business.username)
-                        ),
-                    });
-                });
-            } else {
-                const category = categories.find(
-                    (item) => item.id === categoryId
-                );
+        if (!categoryId) {
+            categories.forEach((category) => {
                 this.businessCategories.push({
                     ...category,
                     business: business.filter(
-                        (business) =>
-                            business.categoryId === category.id &&
-                            favoriteUsernames.includes(business.username)
+                        (business) => business.categoryId === category.id
                     ),
                 });
-            }
+            });
+        } else {
+            const category = categories.find((item) => item.id === categoryId);
+            this.businessCategories.push({
+                ...category,
+                business: business.filter(
+                    (business) => business.categoryId === category.id
+                ),
+            });
         }
     }
-
     ngOnDestroy(): void {}
+
+
 
     filterByQuery(query: string): void {
         this.currentQuery = query;
-
+    
         if (!query) {
             // If the query is empty, display all data based on the selected category or all categories
             if (this.selectedCategory === 'all') {
@@ -137,41 +158,37 @@ export class FavoriteComponent implements OnInit, OnDestroy {
                     ...business.address, // Assuming address is an array
                     // Add other properties you want to search here
                 ];
-
+    
                 // Check if any property contains the query
                 const matchesQuery = propertiesToSearch.some((property) =>
                     property.toLowerCase().includes(query.toLowerCase())
                 );
-
+    
                 if (this.selectedCategory === 'all') {
                     // If "all" categories are selected, return true for any matching business
                     return matchesQuery;
                 } else {
                     // If a specific category is selected, return true only for the selected category
-                    return (
-                        business.categoryId === this.selectedCategory &&
-                        matchesQuery
-                    );
+                    return business.categoryId === this.selectedCategory && matchesQuery;
                 }
             });
-
-            const filteredBusinessCategories = this._businessCategories.map(
-                (category) => ({
-                    ...category,
-                    business: filteredBusinesses.filter(
-                        (business) => business.categoryId === category.id
-                    ),
-                })
-            );
-
+    
+            const filteredBusinessCategories = this._businessCategories.map((category) => ({
+                ...category,
+                business: filteredBusinesses.filter((business) => business.categoryId === category.id),
+            }));
+    
             // Update the displayed business categories with the filtered results
             this.businessCategories = filteredBusinessCategories;
         }
     }
+    
+    
+
 
     selectCategory(change: MatSelectChange): void {
         this.selectedCategory = change.value;
-
+    
         if (this.currentQuery) {
             // If there is a query, filter with the selected category and the query
             this.filterByQuery(this.currentQuery);
