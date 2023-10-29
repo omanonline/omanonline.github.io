@@ -5,6 +5,7 @@ import { HomeComponent } from 'app/modules/pages/home/home.component';
 import { JobsComponent } from './jobs/jobs.component';
 import { ServicesComponent } from './services/services.component';
 import { inject } from '@angular/core';
+import { FavoriteComponent } from './businesses/favorite/favorite.component';
 
 export default [
     {
@@ -14,6 +15,10 @@ export default [
     {
         path: 'businesses',
         component: BusinessesComponent
+    },
+    {
+        path: 'businesses/favorite',
+        component: FavoriteComponent
     },
     {
         path: 'jobs',
