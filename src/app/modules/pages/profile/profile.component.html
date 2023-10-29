@@ -1,5 +1,5 @@
 <div class="flex flex-col flex-auto min-w-0">
- 
+
     <!-- Header -->
     <div class="flex flex-col shadow bg-card">
 
@@ -13,8 +13,6 @@
             class="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto px-8 lg:h-18 bg-card">
 
             <!-- Avatar -->
-
-
             <div class="-mt-26 lg:-mt-22 rounded-full">
                 <img class="w-32 h-32 rounded-full ring-4 ring-bg-card p-4" [src]="currentBusinessInfo.logo"
                     alt="Business avatar">
@@ -23,18 +21,48 @@
             <!-- Details -->
             <div class="flex flex-col items-center lg:items-start mt-4 lg:mt-0 lg:ml-8">
                 <div class="text-lg font-bold leading-none">{{currentBusinessInfo.name}}</div>
-                <div class="text-secondary">{{currentBusinessInfo.description}}</div>
+                <div class="text-secondary">{{getCategoryName(currentBusinessInfo.categoryId)}}</div>
             </div>
 
 
 
             <!-- Menu -->
-            <div class="flex flex-col items-center mt-8 mb-4 lg:m-0 lg:ml-auto space-x-6">
+            <div class="flex flex-col items-center mt-8 mb-4 lg:m-0 lg:ml-auto">
                 <!-- <span class="font-medium">
                     <mat-icon svgIcon="mat_solid:favorite"></mat-icon>
                 </span> -->
-                <div class="text-lg font-bold">{{currentBusinessInfo.categoryId}}</div>
-                <div class="text-secondary">{{currentBusinessInfo.description}}</div>
+                <!-- <div class="text-lg">{{currentBusinessInfo.address.addresses[0].address}}</div> -->
+                <div class="flex items-center ">
+                    <button class="mr-4" mat-icon-button (click)="Save()">
+                        <mat-icon *ngIf="!isSave" matTooltip="Save" svgIcon="heroicons_outline:bookmark"></mat-icon>
+                        <mat-icon *ngIf="isSave" matTooltip="UnSave" svgIcon="heroicons_solid:bookmark"></mat-icon>
+                    </button>
+
+
+
+                    <button matTooltip="Save to Cantact" class="mr-4" mat-icon-button (click)="downloadVCard()">
+                        <mat-icon svgIcon="heroicons_solid:user-plus"></mat-icon>
+                    </button>
+
+                    <button matTooltip="Share" mat-icon-button [matMenuTriggerFor]="shareMenu">
+                        <mat-icon [svgIcon]="'heroicons_outline:share'"></mat-icon>
+                        <mat-menu #shareMenu>
+                            <!-- <button mat-menu-item (click)="shareOnTelegram()">
+                                <mat-icon>telegram</mat-icon>
+                                Telegram
+                            </button> -->
+                            <button mat-menu-item  (click)="shareOnWhatsApp()">
+                                <mat-icon>chat</mat-icon>
+                                Whatsapp
+                            </button>
+                            <button mat-menu-item (click)="copyToClipboard()">
+                                <mat-icon>link</mat-icon>
+                                Copy Link
+                            </button>
+                           
+                        </mat-menu>
+                    </button>
+                </div>
             </div>
 
         </div>
