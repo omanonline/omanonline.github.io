@@ -10,6 +10,7 @@ import {
     ChangeDetectionStrategy,
     ChangeDetectorRef,
     Component,
+    Input,
     OnInit,
     ViewEncapsulation,
 } from '@angular/core';
@@ -29,7 +30,7 @@ import { SetupService } from 'app/core/services/setup.service';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ClipboardModule, ClipboardService } from 'ngx-clipboard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-
+  
 @Component({
     selector: 'profile',
     templateUrl: './profile.component.html',
@@ -52,15 +53,15 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
         NgClass,
         ClipboardModule,
         MatSnackBarModule,
-    ],
+     ]
 })
 export class ProfileComponent implements OnInit {
+  
     currentBusinessInfo: any;
     category: any;
     categories: any;
     isSave: boolean = false;
     favorite: string[] = [];
-
     constructor(
         public setup: SetupService,
         private cd: ChangeDetectorRef,
@@ -81,6 +82,7 @@ export class ProfileComponent implements OnInit {
                 this.isSave = false;
             }
         }
+
     }
 
     async ngOnInit(): Promise<void> {
