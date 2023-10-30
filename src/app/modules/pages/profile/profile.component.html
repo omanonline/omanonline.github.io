@@ -13,7 +13,7 @@
             class="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto px-8 lg:h-18 bg-card">
 
             <!-- Avatar -->
-            <div class="-mt-26 lg:-mt-22 rounded-full business-back-color" >
+            <div class="-mt-26 lg:-mt-22 rounded-full business-back-color">
                 <img class="w-32 h-32 rounded-full ring-4 ring-bg-card p-4" [src]="currentBusinessInfo.logo"
                     alt="Business avatar">
             </div>
@@ -51,7 +51,7 @@
                                 <mat-icon>telegram</mat-icon>
                                 Telegram
                             </button> -->
-                            <button mat-menu-item  (click)="shareOnWhatsApp()">
+                            <button mat-menu-item (click)="shareOnWhatsApp()">
                                 <mat-icon>chat</mat-icon>
                                 Whatsapp
                             </button>
@@ -59,7 +59,7 @@
                                 <mat-icon>link</mat-icon>
                                 Copy Link
                             </button>
-                           
+
                         </mat-menu>
                     </button>
                 </div>
@@ -260,7 +260,7 @@
                 </mat-tab>
                 <mat-tab label="Services">
                     <ng-template matTabContent>
-                     
+
                         <omanonline-card class="flex flex-col w-full p-8">
                             <div class="text-2xl font-semibold leading-tight">Services</div>
                             <div class="mt-4">
@@ -317,6 +317,11 @@
                             </div>
 
                         </omanonline-card>
+                        <omanonline-card class="flex flex-col w-full p-8 mt-5">
+                                 <google-map height="500px" width="100%" [zoom]="zoom" [center]="center"
+                                    [options]="options">
+                                </google-map>
+                         </omanonline-card>
                     </ng-template>
                 </mat-tab>
                 <mat-tab label="Brand Book">
@@ -411,7 +416,7 @@
             </div>
         </mat-tab-group>
 
- 
+
 
     </div>
 

@@ -29,6 +29,7 @@ import { SetupService } from 'app/core/services/setup.service';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ClipboardModule, ClipboardService } from 'ngx-clipboard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { GoogleMapsModule } from '@angular/google-maps';
  
 @Component({
     selector: 'profile',
@@ -51,7 +52,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
         MatTooltipModule,
         NgClass,
         ClipboardModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        GoogleMapsModule
      ]
 })
 export class ProfileComponent implements OnInit {
@@ -61,6 +63,20 @@ export class ProfileComponent implements OnInit {
     categories: any;
     isSave: boolean = false;
     favorite: string[] = [];
+
+
+    zoom = 12;
+    center: google.maps.LatLngLiteral;
+    options: google.maps.MapOptions = {
+      mapTypeId: 'hybrid',
+      zoomControl: false,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
+      maxZoom: 15,
+      minZoom: 8,
+    };
+
+
     constructor(
         public setup: SetupService,
         private cd: ChangeDetectorRef,
@@ -91,6 +107,14 @@ export class ProfileComponent implements OnInit {
             this.currentBusinessInfo = await this.setup.getBusiness(
                 this.setup.current
             );
+
+            navigator.geolocation.getCurrentPosition((position) => {
+                this.center = {
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude,
+                };
+              });
+
 
             this.titleService.setTitle(
                 'Oman Online - ' + this.currentBusinessInfo.name
