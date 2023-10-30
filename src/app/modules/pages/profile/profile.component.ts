@@ -15,8 +15,7 @@ import {
     ViewEncapsulation,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
-import { MatDividerModule } from '@angular/material/divider';
+ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -98,7 +97,7 @@ export class ProfileComponent implements OnInit {
             );
             this.category = this.currentBusinessInfo.categoryId;
 
-            console.log(this.category);
+            console.log(this.currentBusinessInfo);
 
             this.cd.detectChanges();
         } catch (error) {}
