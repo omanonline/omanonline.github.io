@@ -41,17 +41,13 @@ export class SetupService {
         const data = await this.api.loadBusiness(username);
 
         this.currentBusinessInfo = data.information;
- 
+         if (this.currentBusinessInfo?.color) {
+            document.documentElement.style.setProperty(
+                '--accent',
+                this.currentBusinessInfo?.color
+            );
+        }
         return this.currentBusinessInfo;
-        // Update the chain subject, which should trigger consumers to do some processing.
-        this.current = username;
-        // if (this.username?.Color) {
-        //     document.documentElement.style.setProperty(
-        //         '--accent',
-        //         this.username?.Color
-        //     );
-        // }
-        return null;
     }
     async getCategories() {
         const data = await this.api.loadCategories();

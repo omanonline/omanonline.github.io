@@ -30,7 +30,7 @@ import { SetupService } from 'app/core/services/setup.service';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ClipboardModule, ClipboardService } from 'ngx-clipboard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-  
+ 
 @Component({
     selector: 'profile',
     templateUrl: './profile.component.html',
@@ -52,7 +52,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
         MatTooltipModule,
         NgClass,
         ClipboardModule,
-        MatSnackBarModule,
+        MatSnackBarModule
      ]
 })
 export class ProfileComponent implements OnInit {

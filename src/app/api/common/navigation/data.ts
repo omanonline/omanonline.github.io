@@ -32,14 +32,14 @@ export const defaultNavigation: OmanOnlineNavigationItem[] = [
             }
         ],
     },
-    {
-        id      : 'news',
-        title   : 'News',
-        subtitle: 'Oman news',
-        type    : 'basic',
-        icon    : 'heroicons_outline:newspaper',
-        link : '/news'
-    }
+    // {
+    //     id      : 'news',
+    //     title   : 'News',
+    //     subtitle: 'Oman news',
+    //     type    : 'basic',
+    //     icon    : 'heroicons_outline:newspaper',
+    //     link : '/news'
+    // }
 ];
 export const compactNavigation: OmanOnlineNavigationItem[] = [
     {
@@ -72,14 +72,14 @@ export const compactNavigation: OmanOnlineNavigationItem[] = [
             }
         ],
     },
-    {
-        id      : 'news',
-        title   : 'News',
-        subtitle: 'Oman news',
-        type    : 'basic',
-        icon    : 'heroicons_outline:newspaper',
-        link : '/news'
-    }
+       // {
+    //     id      : 'news',
+    //     title   : 'News',
+    //     subtitle: 'Oman news',
+    //     type    : 'basic',
+    //     icon    : 'heroicons_outline:newspaper',
+    //     link : '/news'
+    // }
 ];
 export const futuristicNavigation: OmanOnlineNavigationItem[] = [
     {
@@ -112,14 +112,14 @@ export const futuristicNavigation: OmanOnlineNavigationItem[] = [
             }
         ],
     },
-    {
-        id      : 'news',
-        title   : 'News',
-        subtitle: 'Oman news',
-        type    : 'basic',
-        icon    : 'heroicons_outline:newspaper',
-        link : '/news'
-    }
+       // {
+    //     id      : 'news',
+    //     title   : 'News',
+    //     subtitle: 'Oman news',
+    //     type    : 'basic',
+    //     icon    : 'heroicons_outline:newspaper',
+    //     link : '/news'
+    // }
 ];
 export const horizontalNavigation: OmanOnlineNavigationItem[] = [
     {
@@ -152,12 +152,12 @@ export const horizontalNavigation: OmanOnlineNavigationItem[] = [
             }
         ],
     },
-    {
-        id      : 'news',
-        title   : 'News',
-        subtitle: 'Oman news',
-        type    : 'basic',
-        icon    : 'heroicons_outline:newspaper',
-        link : '/news'
-    }
+       // {
+    //     id      : 'news',
+    //     title   : 'News',
+    //     subtitle: 'Oman news',
+    //     type    : 'basic',
+    //     icon    : 'heroicons_outline:newspaper',
+    //     link : '/news'
+    // }
 ];
