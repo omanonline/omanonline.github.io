@@ -96,10 +96,10 @@
         <span *ngIf="!_business" class="mr-auto mt-10 ml-auto">
             <mat-spinner></mat-spinner>
         </span>
-        <div class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Oman's Premier
+        <div *ngIf="_business" class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Oman's Premier
             Featured Businesses</div>
 
-        <div
+        <div *ngIf="_business"
             class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-y-0 md:gap-x-6 w-full max-w-sm md:max-w-4xl mt-16 sm:mt-24">
 
             <ng-container *ngFor="let business of _business;">

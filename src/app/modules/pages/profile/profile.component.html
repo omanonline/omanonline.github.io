@@ -1,7 +1,9 @@
 <div class="flex flex-col flex-auto min-w-0">
-
+    <span *ngIf="!currentBusinessInfo" class="mr-auto mt-10 ml-auto">
+        <mat-spinner></mat-spinner>
+    </span>
     <!-- Header -->
-    <div class="flex flex-col shadow bg-card">
+    <div *ngIf="currentBusinessInfo" class="flex flex-col shadow bg-card">
 
         <!-- Cover image -->
         <div>
@@ -9,7 +11,7 @@
         </div>
 
         <!-- Business info -->
-        <div *ngIf="currentBusinessInfo"
+        <div 
             class="flex flex-col flex-0 lg:flex-row items-center max-w-5xl w-full mx-auto px-8 lg:h-18 bg-card">
 
             <!-- Avatar -->
@@ -73,8 +75,9 @@
 
     <div class="justify-center w-full max-w-5xl mx-auto">
 
-        <app-progress *ngIf="!currentBusinessInfo"></app-progress>
-
+         <span *ngIf="!currentBusinessInfo" class="mr-auto mt-10 ml-auto">
+            <mat-spinner></mat-spinner>
+        </span>
 
         <!-- Tabs -->
         <mat-tab-group *ngIf="currentBusinessInfo" class="sm:px-2 w-full" mat-stretch-tabs="true"
