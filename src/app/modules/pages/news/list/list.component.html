@@ -68,7 +68,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 sm:mt-10">
                     <ng-container *ngFor="let course of filteredCourses; trackBy: trackByFn">
                         <!-- Course -->
-                        <div class="flex flex-col h-96 shadow rounded-2xl overflow-hidden bg-card">
+                        <div class="flex flex-col h-96 shadow rounded-2xl overflow-hidden bg-card dark:bg-gray-900">
                             <div class="flex flex-col p-6">
                                 <div class="flex items-center justify-between">
                                     <!-- Course category -->
@@ -147,7 +147,7 @@
                                 </div>
 
                                 <!-- Course launch button -->
-                                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
+                                <div class="px-6 py-4 text-right bg-gray-50 dark:bg-gray-900 ">
                                     <a
                                         mat-stroked-button
                                         [routerLink]="[course.id]">
@@ -184,7 +184,7 @@
 
             <!-- No courses -->
             <ng-template #noCourses>
-                <div class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-transparent">
+                <div class="flex flex-auto flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 ">
                     <mat-icon
                         class="icon-size-24"
                         [svgIcon]="'heroicons_outline:document-search'"></mat-icon>
