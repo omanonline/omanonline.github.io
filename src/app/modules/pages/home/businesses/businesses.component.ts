@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
     selector: 'home-businesses',
@@ -37,8 +38,11 @@ import { FormsModule } from '@angular/forms';
         MatInputModule,
         MatSelectModule,
         MatOptionModule,
-        FormsModule
-    ],
+        FormsModule,
+        MatProgressSpinnerModule
+    ]
+
+    
 })
 export class BusinessesComponent implements OnInit, OnDestroy {
     constructor(

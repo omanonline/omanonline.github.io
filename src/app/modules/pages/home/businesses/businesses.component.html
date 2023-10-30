@@ -41,7 +41,9 @@
       </div>
 
 
-      <app-progress *ngIf="!businessCategories"></app-progress>
+       <span *ngIf="!businessCategories" class="mr-auto mt-10 ml-auto">
+        <mat-spinner></mat-spinner>
+      </span>
 
       <ng-container *ngFor="let businessCategory of businessCategories">
 
