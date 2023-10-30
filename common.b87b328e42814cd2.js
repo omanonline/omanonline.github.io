@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkomanonline=self.webpackChunkomanonline||[]).push([[592],{6385:(c,o,r)=>{r.d(o,{t:()=>n});var a=r(5879),d=r(3680);let n=(()=>{class t{static#t=this.\u0275fac=function(e){return new(e||t)};static#i=this.\u0275mod=a.oAB({type:t});static#e=this.\u0275inj=a.cJS({imports:[d.BQ,d.BQ]})}return t})()}}]);
