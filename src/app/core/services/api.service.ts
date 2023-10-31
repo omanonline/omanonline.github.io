@@ -64,7 +64,7 @@ export class ApiService {
     let setup = null;
 
 
-    setup = await this.download('https://omanonline.org/businesses/businesses.json');
+    setup = await this.download('https://omanonline.org/api/businesses.json');
 
     return setup;
   }
@@ -83,13 +83,13 @@ export class ApiService {
     this.businessUrl = this.resetUrl;
   }
   async loadCategories() {
-    return this.download(`https://omanonline.org/businesses/categories.json`);
+    return this.download(`https://omanonline.org/api/categories.json`);
   }
   async loadBusinesses() {
-    return this.download(`https://omanonline.org/businesses/businesses.json`);
+    return this.download(`https://omanonline.org/api/businesses.json`);
   }
   async loadBusiness(username: string) {
-    return this.download(`https://omanonline.org/businesses/info/${username}/info/en.json`);
+    return this.download(`https://omanonline.org/api/info/${username}/info/en.json`);
   }
 
 
