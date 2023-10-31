@@ -96,41 +96,66 @@
         <span *ngIf="!_business" class="mr-auto mt-10 ml-auto">
             <mat-spinner></mat-spinner>
         </span>
-        <div *ngIf="_business" class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Oman's Premier
+        <div *ngIf="_business"
+            class="mt-24 text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-center">Oman's Premier
             Featured Businesses</div>
 
         <div *ngIf="_business"
-            class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-y-0 md:gap-x-6 w-full max-w-sm md:max-w-4xl mt-16 sm:mt-24">
+            class="grid grid-cols-1 md:grid-cols-1 gap-y-8 md:gap-y-0 md:gap-x-6 w-full max-w-sm md:max-w-4xl mt-10 sm:mt-15">
 
             <ng-container *ngFor="let business of _business;">
 
-
-                <div class="flex flex-col flex-auto items-center bg-card shadow rounded-2xl overflow-hidden">
-                    <!-- Avatar & Info -->
-                    <div class="flex flex-col flex-auto w-full p-8 text-center">
-                        <div class="w-32 h-32 mx-auto rounded-full overflow-hidden">
-                            <img class="w-full h-full" [src]="business.logo">
+                <omanonline-card class="flex flex-col lg:flex-row max-w-sm lg:max-w-240 filter-pricing mt-5">
+                    <!-- Price -->
+                    <div
+                        class="flex flex-col items-center p-8 lg:px-10 lg:py-12 lg:min-w-80 bg-gray-100 dark:bg-black dark:bg-opacity-10">
+                        <div class="flex items-center whitespace-nowrap">
+                            <div class="w-32 h-32 mx-auto rounded-full overflow-hidden">
+                                <img class="w-full h-full" [src]="business.logo">
+                            </div>
                         </div>
-                        <div class="mt-6 font-medium">{{business.name}}</div>
-                        <div class="text-secondary">{{business.address}}</div>
-                    </div>
-                    <!-- Email & Phone -->
-                    <div class="flex items-center w-full border-t divide-x">
-                        <a class="flex flex-auto items-center justify-center py-4 hover:bg-hover"
+
+                        <a class="w-full mt-8 lg:mt-auto" mat-flat-button [color]="'primary'"
                             [routerLink]="['/'+business.username.toLowerCase() ]">
-                            <mat-icon class="icon-size-5 text-hint" [svgIcon]="'heroicons_solid:envelope'"></mat-icon>
-                            <span class="ml-2">More info</span>
-                        </a>
-                        <a class="flex flex-auto items-center justify-center py-4 hover:bg-hover"
-                            [routerLink]="['/'+business.username.toLowerCase() ]">
-                            <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:share'"></mat-icon>
-                            <span class="ml-2">Share</span>
+
+                            Go to business
                         </a>
                     </div>
-                </div>
+                    <div class="p-6 sm:p-8 lg:p-10">
+                        <div class="text-3xl font-bold">{{business.name}}</div>
+                        <div class="mt-2 leading-relaxed text-secondary">
+                            {{ business.description }}
+                        </div>
+                        <div class="flex items-center mt-10">
+                            <div class="font-medium text-secondary">Services</div>
+                            <div class="flex-auto ml-2 border-b-2"></div>
+                        </div>
+                        <!-- Features -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-4 mt-6">
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-5 text-primary"
+                                    [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                                <div class="ml-2">Private forum access</div>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-5 text-primary"
+                                    [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                                <div class="ml-2">Access to annual online conference</div>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-5 text-primary"
+                                    [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                                <div class="ml-2">Member resources</div>
+                            </div>
+                            <div class="flex items-center">
+                                <mat-icon class="icon-size-5 text-primary"
+                                    [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                                <div class="ml-2">Official member T-Shirt</div>
+                            </div>
+                        </div>
+                    </div>
 
-
-
+                </omanonline-card>
 
             </ng-container>
 

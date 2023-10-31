@@ -21,6 +21,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { OmanOnlineCardComponent } from '@omanonline/components/card';
 
 @Component({
     selector: 'businesses-favorite',
@@ -38,6 +40,8 @@ import { FormsModule } from '@angular/forms';
         MatSelectModule,
         MatOptionModule,
         FormsModule,
+        MatProgressSpinnerModule,
+        OmanOnlineCardComponent,
     ],
 })
 export class FavoriteComponent implements OnInit, OnDestroy {

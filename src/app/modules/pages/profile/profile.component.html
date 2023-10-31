@@ -46,7 +46,7 @@
                         <mat-icon svgIcon="heroicons_solid:user-plus"></mat-icon>
                     </button> -->
 
-                    <button matTooltip="Share" mat-icon-button [matMenuTriggerFor]="shareMenu">
+                    <button class="mr-4"  matTooltip="Share" mat-icon-button [matMenuTriggerFor]="shareMenu">
                         <mat-icon [svgIcon]="'heroicons_outline:share'"></mat-icon>
                         <mat-menu #shareMenu>
                             <!-- <button mat-menu-item (click)="shareOnTelegram()">
@@ -60,6 +60,25 @@
                             <button mat-menu-item (click)="copyToClipboard()">
                                 <mat-icon>link</mat-icon>
                                 Copy Link
+                            </button>
+
+                        </mat-menu>
+                    </button>
+
+                    <button matTooltip="Language" mat-icon-button [matMenuTriggerFor]="langMenu">
+                        <mat-icon [svgIcon]="'heroicons_outline:language'"></mat-icon>
+                        <mat-menu #langMenu>
+                            <!-- <button mat-menu-item (click)="shareOnTelegram()">
+                                <mat-icon>telegram</mat-icon>
+                                Telegram
+                            </button> -->
+                            <button mat-menu-item >
+                                <mat-icon>language</mat-icon>
+                                English
+                            </button>
+                            <button mat-menu-item >
+                                <mat-icon>language</mat-icon>
+                                Arabic
                             </button>
 
                         </mat-menu>
