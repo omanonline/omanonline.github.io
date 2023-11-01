@@ -40,7 +40,7 @@ export class SetupService {
         // Make sure we have downloaded the setup before we trigger change.
         const data = await this.api.loadBusiness(username);
 
-        this.currentBusinessInfo = data.information;
+        this.currentBusinessInfo = data;
          if (this.currentBusinessInfo?.color) {
             document.documentElement.style.setProperty(
                 '--accent',
@@ -51,13 +51,13 @@ export class SetupService {
     }
     async getCategories() {
         const data = await this.api.loadCategories();
-        this.Categories = data.categories;
+        this.Categories = data;
         return this.Categories;
     }
 
     async getBusinesses() {
-        const data = await this.api.loadBusinesses();
-        this.Businesses = data.businesses;
+        const data = await this.api.loadBusinesses();        
+        this.Businesses = data;
         return this.Businesses;
     }
 }

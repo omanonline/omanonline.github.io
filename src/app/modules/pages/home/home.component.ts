@@ -39,15 +39,17 @@ import { FormsModule } from '@angular/forms';
     ],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-    _businessCategories: any[];
     _business: any[];
     searchKeyword: string = '';
 
     constructor(private setup: SetupService,private metaService: Meta, private titleService: Title,private router: Router) {}
 
     async ngOnInit(): Promise<void> {
-        this._businessCategories = await this.setup.getCategories();
+
+
         this._business = await this.setup.getBusinesses();
+       
+        
         this.titleService.setTitle("Oman Online");
     }
 

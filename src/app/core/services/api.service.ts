@@ -91,7 +91,4 @@ export class ApiService {
   async loadBusiness(username: string) {
     return this.download(`https://omanonline.org/api/info/${username}/info/en.json`);
   }
-
-
-
 }

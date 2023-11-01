@@ -13,7 +13,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { cloneDeep } from 'lodash';
+import { cloneDeep, includes } from 'lodash';
 import { SetupService } from 'app/core/services/setup.service';
 import { CommonModule } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
@@ -61,7 +61,7 @@ export class BusinessesComponent implements OnInit, OnDestroy {
 
     businessCategories = [];
 
-    selectedCategory: string = 'all'; // Default to 'all' or any other appropriate default value
+    selectedCategory: string = 'all'; 
     currentQuery: string = '';
 
     async ngOnInit(): Promise<void> {
@@ -73,10 +73,8 @@ export class BusinessesComponent implements OnInit, OnDestroy {
             this.currentQuery = queryParams['q'];
       
             if (this.currentQuery) {
-              // Call filterByQuery with the keyword obtained from the query parameter
               this.filterByQuery(this.currentQuery);
             } else {
-              // If no query parameter is present, load the data normally
               this.loadData(null);
             }
           });
@@ -85,6 +83,7 @@ export class BusinessesComponent implements OnInit, OnDestroy {
     }
 
     loadData(categoryId: string): void {
+     
         this.businessCategories = [];
         const business = cloneDeep(this._business);
 
@@ -92,10 +91,12 @@ export class BusinessesComponent implements OnInit, OnDestroy {
 
         if (!categoryId) {
             categories.forEach((category) => {
+                console.log(category);
+
                 this.businessCategories.push({
                     ...category,
                     business: business.filter(
-                        (business) => business.categoryId === category.id
+                        (business) => business.categories.includes(category.id) 
                     ),
                 });
             });
@@ -104,7 +105,7 @@ export class BusinessesComponent implements OnInit, OnDestroy {
             this.businessCategories.push({
                 ...category,
                 business: business.filter(
-                    (business) => business.categoryId === category.id
+                    (business) => business.categories.includes(category.id) 
                 ),
             });
         }
@@ -117,58 +118,46 @@ export class BusinessesComponent implements OnInit, OnDestroy {
         this.currentQuery = query;
     
         if (!query) {
-            // If the query is empty, display all data based on the selected category or all categories
             if (this.selectedCategory === 'all') {
-                this.loadData(null); // Load all categories
+                this.loadData(null);
             } else {
-                this.loadData(this.selectedCategory); // Load the selected category
+                this.loadData(this.selectedCategory);
             }
         } else {
-            // If there is a query, filter based on the query and the selected category
             const filteredBusinesses = this._business.filter((business) => {
                 const propertiesToSearch = [
                     business.name,
                     business.username,
                     business.description,
-                    ...business.address, // Assuming address is an array
-                    // Add other properties you want to search here
+                    ...(business.services ? business.services.map(service => service.name) : []),
+                    ...(business.services ? business.services.map(service => service.description) : []),
                 ];
-    
-                // Check if any property contains the query
                 const matchesQuery = propertiesToSearch.some((property) =>
                     property.toLowerCase().includes(query.toLowerCase())
                 );
     
                 if (this.selectedCategory === 'all') {
-                    // If "all" categories are selected, return true for any matching business
                     return matchesQuery;
                 } else {
-                    // If a specific category is selected, return true only for the selected category
-                    return business.categoryId === this.selectedCategory && matchesQuery;
+                    return business.categories.includes(this.selectedCategory) && matchesQuery;
                 }
             });
     
             const filteredBusinessCategories = this._businessCategories.map((category) => ({
                 ...category,
-                business: filteredBusinesses.filter((business) => business.categoryId === category.id),
+                business: filteredBusinesses.filter((business) => business.categories.includes(category.id)),
             }));
     
-            // Update the displayed business categories with the filtered results
             this.businessCategories = filteredBusinessCategories;
         }
     }
-    
-    
-
 
     selectCategory(change: MatSelectChange): void {
         this.selectedCategory = change.value;
     
         if (this.currentQuery) {
-            // If there is a query, filter with the selected category and the query
             this.filterByQuery(this.currentQuery);
         } else {
-            // If the query is empty, load all data in the selected category
             if (change.value === 'all') {
                 this.loadData(null);
             } else {

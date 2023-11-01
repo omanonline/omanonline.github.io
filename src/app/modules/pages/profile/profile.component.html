@@ -16,14 +16,14 @@
 
             <!-- Avatar -->
             <div class="-mt-26 lg:-mt-22 rounded-full business-back-color">
-                <img class="w-32 h-32 rounded-full ring-4 ring-bg-card p-4" [src]="currentBusinessInfo.logo"
+                <img class="w-32 h-32 rounded-full ring-4 ring-bg-card p-4" [src]="currentBusinessInfo.symbols.logo"
                     alt="Business avatar">
             </div>
 
             <!-- Details -->
             <div class="flex flex-col items-center lg:items-start mt-4 lg:mt-0 lg:ml-8">
                 <div class="text-lg font-bold leading-none">{{currentBusinessInfo.name}}</div>
-                <div class="text-secondary">{{getCategoryName(currentBusinessInfo.categoryId)}}</div>
+                <div class="text-secondary">{{ currentBusinessInfo.username }}</div>
             </div>
 
 
@@ -117,7 +117,7 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">{{currentBusinessInfo.description}}</span>
+                                    <span class="leading-none">{{currentBusinessInfo.username}}</span>
                                 </div>
                                 <div class="flex items-center mt-4">
                                     <mat-icon class="icon-size-5 mr-3"
@@ -294,7 +294,7 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">{{currentBusinessInfo.description}}</span>
+                                    <span class="leading-none">{{currentBusinessInfo.username}}</span>
                                 </div>
                                 <div class="flex items-center mt-4">
                                     <mat-icon class="icon-size-5 mr-3"
@@ -325,7 +325,7 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">{{currentBusinessInfo.description}}</span>
+                                    <span class="leading-none">{{currentBusinessInfo.username}}</span>
                                 </div>
                                 <div class="flex items-center mt-4">
                                     <mat-icon class="icon-size-5 mr-3"
@@ -359,7 +359,7 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">{{currentBusinessInfo.description}}</span>
+                                    <span class="leading-none">{{currentBusinessInfo.username}}</span>
                                 </div>
                                 <div class="flex items-center mt-4">
                                     <mat-icon class="icon-size-5 mr-3"
@@ -389,7 +389,7 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">{{currentBusinessInfo.description}}</span>
+                                    <span class="leading-none">{{currentBusinessInfo.username}}</span>
                                 </div>
                                 <div class="flex items-center mt-4">
                                     <mat-icon class="icon-size-5 mr-3"
@@ -419,7 +419,7 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">{{currentBusinessInfo.description}}</span>
+                                    <span class="leading-none">{{currentBusinessInfo.username}}</span>
                                 </div>
                                 <div class="flex items-center mt-4">
                                     <mat-icon class="icon-size-5 mr-3"
