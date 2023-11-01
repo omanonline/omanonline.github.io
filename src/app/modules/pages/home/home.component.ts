@@ -19,6 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Meta, Title } from "@angular/platform-browser";
 import { FormsModule } from '@angular/forms';
+import { cloneDeep } from 'lodash';
 
 @Component({
     selector: 'home',
@@ -39,24 +40,41 @@ import { FormsModule } from '@angular/forms';
     ],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+    _businessCategories: any[];
     _business: any[];
     searchKeyword: string = '';
+    businessCategories = [];
 
     constructor(private setup: SetupService,private metaService: Meta, private titleService: Title,private router: Router) {}
 
     async ngOnInit(): Promise<void> {
 
+        this.businessCategories = await this.setup.getCategories();
 
         this._business = await this.setup.getBusinesses();
        
-        
+        this.businessCategories = [];
+        const business = cloneDeep(this._business);
+
+        const categories = cloneDeep(this._businessCategories);
+
+        this.businessCategories.push({
+            ...categories,
+            business: business.filter(
+                (business) => business.hasstar 
+            ),
+        });
+
+
+
+
         this.titleService.setTitle("Oman Online");
     }
 
     searchBusinesses() {
        if (this.searchKeyword) {
                 this.router.navigate(['/businesses'], {
-          queryParams: { q: this.searchKeyword }, // Pass the keyword as a query parameter
+          queryParams: { q: this.searchKeyword }, 
         });
        } 
 

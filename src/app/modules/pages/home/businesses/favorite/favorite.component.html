@@ -39,62 +39,44 @@
       <ng-container *ngFor="let businessCategory of businessCategories">
 
 
-        <!-- Check if businessCategory.business has elements -->
-        <ng-container *ngIf="businessCategory.business.length >= 1">
+         <ng-container *ngIf="businessCategory.business.length >= 1">
           <div class="mt-12 sm:mt-16 text-3xl font-bold leading-tight tracking-tight">{{ businessCategory.title }}</div>
  
           <omanonline-card *ngFor="let business of businessCategory.business" class="flex flex-col lg:flex-row w-full mt-5">
-            <!-- Price -->
             <div
-                class="flex flex-col items-center p-8 lg:px-10 lg:py-12 lg:min-w-80 bg-gray-100 dark:bg-black dark:bg-opacity-10">
-                <div class="flex items-center whitespace-nowrap">
-                    <div class="w-32 h-32 mx-auto rounded-full overflow-hidden">
-                        <img class="w-full h-full" [src]="business.logo">
-                    </div>
-                </div>
+               class="flex flex-col items-center p-8 lg:px-10 lg:py-12 lg:min-w-80 bg-gray-100 dark:bg-black dark:bg-opacity-10">
+               <div class="flex items-center whitespace-nowrap">
+                   <div class="w-32 h-32 mx-auto rounded-full overflow-hidden">
+                       <img class="w-full h-full" [src]="business.logo">
+                   </div>
+               </div>
 
-                <a class="w-full mt-8 lg:mt-auto" mat-button [color]="'primary'"
-                    [routerLink]="['/'+business.username.toLowerCase() ]">
+               <a class="w-full mt-8 lg:mt-auto" mat-button [color]="'primary'"
+                   [routerLink]="['/'+business.username.toLowerCase() ]">
 
-                    Go to business
-                </a>
-            </div>
-            <div class="p-6 sm:p-8 lg:p-10">
-                <div class="text-3xl font-bold">{{business.name}}</div>
-                <div class="mt-2 leading-relaxed text-secondary text-description">
-                  {{ business.description }}
+                   Go to business
+               </a>
+           </div>
+           <div class="p-6 sm:p-8 lg:p-10">
+               <div class="text-3xl font-bold">{{business.name}}</div>
+               <div class="mt-2 leading-relaxed text-secondary text-description">
+                 {{ business.description }}
 
-                </div>
-                <div class="flex items-center mt-10">
-                    <div class="font-medium text-secondary">Services</div>
-                    <div class="flex-auto ml-2 border-b-2"></div>
-                </div>
-                <!-- Features -->
-                <div class="grid grid-cols-1 lg:grid-cols-1 gap-y-4 mt-6">
-                    <div class="flex items-center">
-                        <mat-icon class="icon-size-5 text-primary"
-                            [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
-                        <div class="ml-2">Private forum access</div>
-                    </div>
-                    <div class="flex items-center">
-                        <mat-icon class="icon-size-5 text-primary"
-                            [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
-                        <div class="ml-2">Access to annual online conference</div>
-                    </div>
-                    <div class="flex items-center">
-                        <mat-icon class="icon-size-5 text-primary"
-                            [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
-                        <div class="ml-2">Member resources</div>
-                    </div>
-                    <div class="flex items-center">
-                        <mat-icon class="icon-size-5 text-primary"
-                            [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
-                        <div class="ml-2">Official member T-Shirt</div>
-                    </div>
-                </div>
-            </div>
+               </div>
+               <div class="flex items-center mt-10">
+                   <div class="font-medium text-secondary">Services</div>
+                   <div class="flex-auto ml-2 border-b-2"></div>
+               </div>
+               <div class="grid grid-cols-1 lg:grid-cols-1 gap-y-4 mt-6" *ngFor="let service of business.services">
+                   <div class="flex items-center">
+                       <mat-icon class="icon-size-5 text-primary"
+                           [svgIcon]="'heroicons_solid:check-circle'"></mat-icon>
+                       <div class="ml-2">{{service.name}}</div>
+                   </div>
+               </div>
+           </div>
 
-        </omanonline-card>
+       </omanonline-card>
 
 
         </ng-container>

@@ -97,8 +97,9 @@ export class FavoriteComponent implements OnInit, OnDestroy {
                     this.businessCategories.push({
                         ...category,
                         business: business.filter(
-                            (business) =>
-                                business.categoryId === category.id &&
+                           
+                            (business) => business.categories.includes(category.id) 
+                            &&
                                 favoriteUsernames.includes(business.username)
                         ),
                     });
@@ -110,8 +111,9 @@ export class FavoriteComponent implements OnInit, OnDestroy {
                 this.businessCategories.push({
                     ...category,
                     business: business.filter(
-                        (business) =>
-                            business.categoryId === category.id &&
+                      
+                        (business) => business.categories.includes(category.id) 
+                        &&
                             favoriteUsernames.includes(business.username)
                     ),
                 });
