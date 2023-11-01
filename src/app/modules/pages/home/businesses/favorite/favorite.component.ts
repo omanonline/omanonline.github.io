@@ -140,8 +140,8 @@ export class FavoriteComponent implements OnInit, OnDestroy {
                     business.name,
                     business.username,
                     business.description,
-                    ...business.address, // Assuming address is an array
-                    // Add other properties you want to search here
+                    ...(business.services ? business.services.map(service => service.name) : []),
+                    ...(business.services ? business.services.map(service => service.description) : []),
                 ];
 
                 // Check if any property contains the query
@@ -150,25 +150,16 @@ export class FavoriteComponent implements OnInit, OnDestroy {
                 );
 
                 if (this.selectedCategory === 'all') {
-                    // If "all" categories are selected, return true for any matching business
                     return matchesQuery;
                 } else {
-                    // If a specific category is selected, return true only for the selected category
-                    return (
-                        business.categoryId === this.selectedCategory &&
-                        matchesQuery
-                    );
+                    return business.categories.includes(this.selectedCategory) && matchesQuery;
                 }
             });
 
-            const filteredBusinessCategories = this._businessCategories.map(
-                (category) => ({
-                    ...category,
-                    business: filteredBusinesses.filter(
-                        (business) => business.categoryId === category.id
-                    ),
-                })
-            );
+            const filteredBusinessCategories = this._businessCategories.map((category) => ({
+                ...category,
+                business: filteredBusinesses.filter((business) => business.categories.includes(category.id)),
+            }));
 
             // Update the displayed business categories with the filtered results
             this.businessCategories = filteredBusinessCategories;
