@@ -12,10 +12,11 @@ import {
     Component,
     Input,
     OnInit,
+    ViewChild,
     ViewEncapsulation,
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
- import { MatDividerModule } from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -29,8 +30,7 @@ import { SetupService } from 'app/core/services/setup.service';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ClipboardModule, ClipboardService } from 'ngx-clipboard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { GoogleMapsModule } from '@angular/google-maps';
- 
+
 @Component({
     selector: 'profile',
     templateUrl: './profile.component.html',
@@ -53,29 +53,15 @@ import { GoogleMapsModule } from '@angular/google-maps';
         NgClass,
         ClipboardModule,
         MatSnackBarModule,
-        GoogleMapsModule
-     ]
+    ],
 })
 export class ProfileComponent implements OnInit {
-  
     currentBusinessInfo: any;
     category: any;
     categories: any;
     isSave: boolean = false;
     favorite: string[] = [];
-
-
-    zoom = 12;
-    center: google.maps.LatLngLiteral;
-    options: google.maps.MapOptions = {
-      mapTypeId: 'hybrid',
-      zoomControl: false,
-      scrollwheel: false,
-      disableDoubleClickZoom: true,
-      maxZoom: 15,
-      minZoom: 8,
-    };
-
+ 
 
     constructor(
         public setup: SetupService,
@@ -97,9 +83,14 @@ export class ProfileComponent implements OnInit {
                 this.isSave = false;
             }
         }
-
     }
 
+
+  
+    openGoogleMaps(latitude: any,longitude: any) {
+      const url = `https://www.google.com/maps?q=${latitude},${longitude}`;
+      window.open(url, '_blank');
+    }
     async ngOnInit(): Promise<void> {
         try {
             this.categories = await this.setup.getCategories();
@@ -108,13 +99,6 @@ export class ProfileComponent implements OnInit {
                 this.setup.current
             );
 
-            navigator.geolocation.getCurrentPosition((position) => {
-                this.center = {
-                  lat: position.coords.latitude,
-                  lng: position.coords.longitude,
-                };
-              });
-
 
             this.titleService.setTitle(
                 'Oman Online - ' + this.currentBusinessInfo.name
@@ -122,7 +106,7 @@ export class ProfileComponent implements OnInit {
             this.category = this.currentBusinessInfo.categoryId;
 
             console.log(this.currentBusinessInfo);
-
+ 
             this.cd.detectChanges();
         } catch (error) {}
     }
