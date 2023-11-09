@@ -99,22 +99,22 @@ export class ProfileComponent implements OnInit {
                 this.setup.current
             );
 
+            console.log(this.currentBusinessInfo);
 
             this.titleService.setTitle(
                 'Oman Online - ' + this.currentBusinessInfo.name
             );
-            this.category = this.currentBusinessInfo.categoryId;
+            // this.category = this.currentBusinessInfo.categoryId;
 
-            console.log(this.currentBusinessInfo);
  
-            this.cd.detectChanges();
+             this.cd.detectChanges();
         } catch (error) {}
     }
 
-    getCategoryName(id: number): string {
-        const category = this.categories.find((category) => category.id === id);
-        return category ? category.title : 'Category not found';
-    }
+    // getCategoryName(id: number): string {
+    //     const category = this.categories.find((category) => category.id === id);
+    //     return category ? category.title : 'Category not found';
+    // }
 
     Save() {
         this.isSave = !this.isSave;

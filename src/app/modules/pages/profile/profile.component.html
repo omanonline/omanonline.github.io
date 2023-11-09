@@ -97,9 +97,10 @@
                             <div class="flex flex-col">
                                 <div class="flex items-center">
                                     <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">{{currentBusinessInfo.addresses[0].country}} -
-                                        {{currentBusinessInfo.addresses[0].city}} -
-                                        {{currentBusinessInfo.addresses[0].address}}</span>
+                                    <span class="leading-none">
+                                        
+                                        <b>{{currentBusinessInfo.contact[0].address.country}} - {{currentBusinessInfo.contact[0].address.city}} - {{currentBusinessInfo.contact[0].address.address}}</b>
+                                    </span>
                                 </div>
                             </div>
 
@@ -183,14 +184,19 @@
                 </mat-tab>
 
                 <mat-tab label="Contact">
+                   
                     <ng-template matTabContent>
-                        <omanonline-card class="flex flex-col w-full p-8"
-                            *ngFor="let address of currentBusinessInfo.addresses">
-                            <div class="text-2xl font-semibold leading-tight">{{address.title}}</div>
+                       
+
+
+
+
+                        <omanonline-card class="flex flex-col w-full p-8" *ngFor="let contact of currentBusinessInfo.contact">
+                            
+                            <div class="text-2xl font-semibold leading-tight">{{contact.title}}</div>
                             <div class="flex items-center mt-4">
-                                <!-- <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon> -->
                                 <span>
-                                    Address: <b>{{address.country}} - {{address.city}} - {{address.address}}</b>
+                                    Address: <b>{{contact.address.country}} - {{contact.address.city}} - {{contact.address.address}}</b>
                                 </span>
                             </div>
                             <hr class="w-full border-t my-6">
@@ -199,8 +205,8 @@
                                     <div class="flex items-center">
                                         <mat-icon class="icon-size-5 mr-3"
                                             [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                        <button mat-button (click)="openGoogleMaps(address.lat,address.long)">Show on
-                                            Map</button>
+                                        <button mat-button (click)="openGoogleMaps(contact.address.lat,contact.address.long)">Show on Map</button>
+                                            
                                     </div>
                                 </div>
 
@@ -211,146 +217,6 @@
 
 
 
-                        <omanonline-card class="flex flex-col w-full p-8 mt-5"
-                            *ngFor="let phone of currentBusinessInfo.phones">
-                            <div class="text-2xl font-semibold leading-tight">{{phone.title}}</div>
-                            <div class="mt-4">
-
-                                <div class="flex items-center">
-                                    <!-- <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:phone'"></mat-icon> -->
-                                    <span>Phone number: <b>{{phone.phonenumber}}</b></span>
-                                </div>
-                            </div>
-                            <hr class="w-full border-t my-6">
-                            <div class="flex flex-col">
-                                <div class="flex justify-between">
-                                    <div class="flex items-center">
-                                        <mat-icon class="icon-size-5 mr-3"
-                                            [svgIcon]="'heroicons_solid:phone'"></mat-icon>
-                                        <button mat-button (click)="call(phone.phonenumber)">Call</button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </omanonline-card>
-
-
-                        <omanonline-card class="flex flex-col w-full p-8 mt-5"
-                            *ngFor="let mail of currentBusinessInfo.emails">
-                            <div class="text-2xl font-semibold leading-tight">{{mail.title}}</div>
-                            <div class="mt-4">
-
-                                <div class="flex items-center">
-                                    <!-- <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:envelope'"></mat-icon> -->
-                                    <span>E-Mail: <b>{{mail.emailaddress}}</b></span>
-                                </div>
-                            </div>
-                            <hr class="w-full border-t my-6">
-                            <div class="flex flex-col">
-                                <div class="flex justify-between">
-                                    <div class="flex items-center">
-                                        <mat-icon class="icon-size-5 mr-3"
-                                            [svgIcon]="'heroicons_solid:envelope'"></mat-icon>
-                                        <button mat-button (click)="call(mail.phonenumber)">Send Mail</button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </omanonline-card>
-
-                        <omanonline-card class="flex flex-col w-full p-8 mt-5"
-                            *ngFor="let link of currentBusinessInfo.links">
-                            <div class="text-2xl font-semibold leading-tight">{{link.title}}</div>
-                            <div class="mt-4">
-
-                                <div class="flex items-center">
-                                    <!-- <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:link'"></mat-icon> -->
-                                    <span>Link: <b>{{link.address}}</b></span>
-                                </div>
-                            </div>
-                            <hr class="w-full border-t my-6">
-                            <div class="flex flex-col">
-                                <div class="flex justify-between">
-                                    <div class="flex items-center">
-                                        <mat-icon class="icon-size-5 mr-3"
-                                            [svgIcon]="'heroicons_solid:link'"></mat-icon>
-                                        <button mat-button (click)="call(link.address)">Open Website</button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </omanonline-card>
-
-                        <omanonline-card class="flex flex-col w-full p-8 mt-5"
-                            *ngFor="let socialmedia of currentBusinessInfo.socialmedias">
-                            <div class="text-2xl font-semibold leading-tight">{{socialmedia.title}}</div>
-                            <div class="mt-4">
-
-                                <div class="flex items-center">
-                                    <!-- <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:link'"></mat-icon> -->
-                                    <span>Link: <b>{{socialmedia.link}}</b></span>
-                                </div>
-                            </div>
-                            <hr class="w-full border-t my-6">
-                            <div class="flex flex-col">
-                                <div class="flex justify-between">
-                                    <div class="flex items-center">
-                                        <mat-icon class="icon-size-5 mr-3"
-                                            [svgIcon]="'heroicons_solid:link'"></mat-icon>
-                                        <button mat-button (click)="call(link.address)">Open in
-                                            {{socialmedia.title}}</button>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </omanonline-card>
-
-                        <omanonline-card class="flex flex-col w-full p-8 mt-5"> 
-                         
-                        <div class="text-2xl font-semibold leading-tight">Opening Hours</div>
-                        <div class="mt-4">
-                            <div class="flex items-center mt-2">
-                                <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                <span>Monday: <b>{{currentBusinessInfo.openinghours.Monday}}</b></span>
-                            </div> 
-                            
-                            <div class="flex items-center mt-2">
-                                <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                <span>Tuesday: <b>{{currentBusinessInfo.openinghours.Tuesday}}</b></span>
-                            </div> 
-
-                            <div class="flex items-center mt-2">
-                                <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                <span>Wednesday: <b>{{currentBusinessInfo.openinghours.Wednesday}}</b></span>
-                            </div> 
-
-                            <div class="flex items-center mt-2">
-                                <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                <span>Thursday: <b>{{currentBusinessInfo.openinghours.Thursday}}</b></span>
-                            </div> 
-
-                            <div class="flex items-center mt-2">
-                                <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                <span>Friday: <b>{{currentBusinessInfo.openinghours.Friday}}</b></span>
-                            </div> 
-
-                            <div class="flex items-center mt-2">
-                                <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                <span>Saturday: <b>{{currentBusinessInfo.openinghours.Saturday}}</b></span>
-                            </div> 
-
-                            <div class="flex items-center mt-2">
-                                <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                <span>Sunday: <b>{{currentBusinessInfo.openinghours.Sunday}}</b></span>
-                            </div> 
-                        </div>
-  
-
-                    </omanonline-card>
                     </ng-template>
                 </mat-tab>
                 <mat-tab label="Brand Book">
