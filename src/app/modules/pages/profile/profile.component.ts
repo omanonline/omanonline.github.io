@@ -30,6 +30,7 @@ import { SetupService } from 'app/core/services/setup.service';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ClipboardModule, ClipboardService } from 'ngx-clipboard';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { SafePipe } from 'app/core/pipe/safe.pipe';
 
 @Component({
     selector: 'profile',
@@ -53,6 +54,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
         NgClass,
         ClipboardModule,
         MatSnackBarModule,
+        SafePipe,
     ],
 })
 export class ProfileComponent implements OnInit {
@@ -61,7 +63,11 @@ export class ProfileComponent implements OnInit {
     categories: any;
     isSave: boolean = false;
     favorite: string[] = [];
- 
+
+    latitude = 37.7749; 
+    longitude = -122.4194; 
+    apiKey = 'AIzaSyBq3kl-Kaamu4uN-hCNgZ7o3ZmBwn-fTB0';
+    mapsURL = `https://www.google.com/maps/embed/v1/view?key=${this.apiKey}&center=${this.latitude},${this.longitude}&zoom=15`;
 
     constructor(
         public setup: SetupService,
@@ -85,11 +91,14 @@ export class ProfileComponent implements OnInit {
         }
     }
 
+    getGoogleMapsUrl(latitude: any, longitude: any)  {
+        const mapUrl = `https://www.google.com/maps/embed/v1/view?key=${this.apiKey}&center=${latitude},${longitude}&zoom=15`;
+        return mapUrl;
+      }
 
-  
-    openGoogleMaps(latitude: any,longitude: any) {
-      const url = `https://www.google.com/maps?q=${latitude},${longitude}`;
-      window.open(url, '_blank');
+    openGoogleMaps(latitude: any, longitude: any) {
+        const url = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        window.open(url, '_blank');
     }
     async ngOnInit(): Promise<void> {
         try {
@@ -106,8 +115,7 @@ export class ProfileComponent implements OnInit {
             );
             // this.category = this.currentBusinessInfo.categoryId;
 
- 
-             this.cd.detectChanges();
+            this.cd.detectChanges();
         } catch (error) {}
     }
 

@@ -106,7 +106,7 @@
                             </div>
 
                         </omanonline-card>
- 
+
 
                     </ng-template>
                 </mat-tab>
@@ -128,20 +128,78 @@
 
                     <ng-template matTabContent>
 
-
-
-
-
                         <omanonline-card class="flex flex-col w-full p-8"
                             *ngFor="let contact of currentBusinessInfo.contact">
 
                             <div class="text-2xl font-semibold leading-tight">{{contact.title}}</div>
-                            <div class="flex items-center mt-4">
-                                <span>
-                                    Address: <b>{{contact.address.country}} - {{contact.address.city}} -
-                                        {{contact.address.address}}</b>
-                                </span>
+
+                            <div class="flex justify-between items-center">
+
+                                <div>
+                                    <div class="flex items-center mt-4">
+                                        <div class="flex items-center ">
+                                            <mat-icon class="icon-size-5 mr-3" [color]="'primary'"
+                                                [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
+                                            <span>
+                                                Address: <b>{{contact.address.country}} - {{contact.address.city}} -
+                                                    {{contact.address.address}}</b>
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="flex items-center mt-4">
+                                        <div class="grid grid-cols-1 lg:grid-cols-1 gap-y-4 mt-6"
+                                            *ngFor="let link of contact.links">
+                                            <div class="flex items-center">
+                                                <mat-icon class="icon-size-5 text-primary"
+                                                    [svgIcon]="'heroicons_solid:link'"></mat-icon>
+                                                <div class="ml-2"><a href="{{link.address}}">{{link.title}}</a> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="flex items-center mt-4">
+                                        <div class="grid grid-cols-1 lg:grid-cols-1 gap-y-4 mt-6"
+                                            *ngFor="let mail of contact.emails">
+                                            <div class="flex items-center">
+                                                <mat-icon class="icon-size-5 text-primary"
+                                                    [svgIcon]="'heroicons_solid:at-symbol'"></mat-icon>
+                                                <div class="ml-2"><a
+                                                        href="mailto: {{mail.emailaddress}}">{{mail.title}}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex items-center mt-4">
+                                        <div class="grid grid-cols-1 lg:grid-cols-1 gap-y-4 mt-6"
+                                            *ngFor="let phone of contact.phones">
+                                            <div class="flex items-center">
+                                                <mat-icon class="icon-size-5 text-primary"
+                                                    [svgIcon]="'heroicons_solid:phone'"></mat-icon>
+                                                <div class="ml-2"><a
+                                                        href="tel: {{phone.phonenumber}}">{{phone.title}}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <omanonline-card>
+                                    <iframe [src]='getGoogleMapsUrl(contact.address.lat,contact.address.long) | safe' width="315" height="250" frameborder="0"
+                                        allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+                                </omanonline-card>
+
                             </div>
+
+
+
+
                             <hr class="w-full border-t my-6">
                             <div class="flex flex-col">
                                 <div class="flex justify-between">
@@ -194,7 +252,7 @@
 
                         </omanonline-card>
 
-                        
+
                         <omanonline-card class="flex flex-col lg:flex-row w-full mt-5">
                             <div
                                 class="flex flex-col items-center p-8 lg:px-10 lg:py-12 lg:max-w-20 bg-gray-100 dark:bg-black dark:bg-opacity-10 justify-center">
