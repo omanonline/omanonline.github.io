@@ -155,7 +155,8 @@
                                             <div class="flex items-center">
                                                 <mat-icon class="icon-size-5 text-primary"
                                                     [svgIcon]="'heroicons_solid:link'"></mat-icon>
-                                                <div class="ml-2"><a href="{{link.address}}">{{link.title}}</a> </div>
+                                                <div class="ml-2"><a href="{{link.address}}"
+                                                        target="_blank">{{link.title}}</a> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -168,8 +169,8 @@
                                             <div class="flex items-center">
                                                 <mat-icon class="icon-size-5 text-primary"
                                                     [svgIcon]="'heroicons_solid:at-symbol'"></mat-icon>
-                                                <div class="ml-2"><a
-                                                        href="mailto: {{mail.emailaddress}}">{{mail.title}}</a>
+                                                <div class="ml-2"><a href="mailto: {{mail.emailaddress}}"
+                                                        target="_blank">{{mail.title}}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -182,8 +183,8 @@
                                             <div class="flex items-center">
                                                 <mat-icon class="icon-size-5 text-primary"
                                                     [svgIcon]="'heroicons_solid:phone'"></mat-icon>
-                                                <div class="ml-2"><a
-                                                        href="tel: {{phone.phonenumber}}">{{phone.title}}</a>
+                                                <div class="ml-2"><a href="tel: {{phone.phonenumber}}"
+                                                        target="_blank">{{phone.title}}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -191,8 +192,9 @@
 
                                 </div>
                                 <omanonline-card>
-                                    <iframe [src]='getGoogleMapsUrl(contact.address.lat,contact.address.long) | safe' width="315" height="250" frameborder="0"
-                                        allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
+                                    <iframe [src]='getGoogleMapsUrl(contact.address.lat,contact.address.long) | safe'
+                                        width="315" height="250" frameborder="0" allowfullscreen webkitallowfullscreen
+                                        mozallowfullscreen></iframe>
                                 </omanonline-card>
 
                             </div>
@@ -204,12 +206,18 @@
                             <div class="flex flex-col">
                                 <div class="flex justify-between">
                                     <div class="flex items-center">
-                                        <mat-icon class="icon-size-5 mr-3"
-                                            [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                        <button mat-button
-                                            (click)="openGoogleMaps(contact.address.lat,contact.address.long)">Show on
-                                            Map</button>
 
+                                        <button mat-icon-button matTooltip="Show on Map"
+                                            (click)="openGoogleMaps(contact.address.lat,contact.address.long)">
+                                            <mat-icon>map</mat-icon>
+                                        </button>
+
+                                        <div *ngFor="let link of contact.socialmedias">
+                                            <a matTooltip="{{link.title}}" mat-icon-button href="{{link.link}}"
+                                                target="_blank">
+                                                <mat-icon>{{link.title}}</mat-icon>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -226,29 +234,89 @@
 
                 <mat-tab label="Brand Book">
                     <ng-template matTabContent>
-                        <omanonline-card class="flex flex-col w-full p-8">
-                            <div class="text-2xl font-semibold leading-tight">Brand Book</div>
-                            <div class="mt-4">
-                                I’m a friendly kitchen assistant who suffers from a severe phobia of buttons.
-                                <br><br>
-                                Brother of Elijah Jay Watkins, who has phobia of buttons and trust issues.
+
+                        <omanonline-card class="flex flex-col lg:flex-row w-full mt-5">
+                            <div
+                                class="flex flex-col items-center p-8 lg:px-10 lg:py-12 lg:max-w-20 bg-gray-100 dark:bg-black dark:bg-opacity-10 justify-center">
+                                <div class="flex items-center whitespace-nowrap">
+                                    <div class="text-4xl font-extrabold tracking-widest lg:rotate-270 lg:relative">
+                                        IDENTITY
+                                    </div>
+                                </div>
+
                             </div>
-                            <hr class="w-full border-t my-6">
-                            <div class="flex flex-col">
-                                <div class="flex items-center">
-                                    <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:map-pin'"></mat-icon>
-                                    <span class="leading-none">{{currentBusinessInfo.username}}</span>
+
+                            <div class="p-6 sm:p-8 lg:p-10">
+                                <div class="text-3xl font-bold">BRAND IDENTITY</div>
+                                <div class="mt-2 leading-relaxed text-secondary">
+                                    {{currentBusinessInfo.description}}
                                 </div>
-                                <div class="flex items-center mt-4">
-                                    <mat-icon class="icon-size-5 mr-3"
-                                        [svgIcon]="'heroicons_solid:briefcase'"></mat-icon>
-                                    <span class="leading-none">ACME Corp. Lead UX Designer</span>
+
+                                <div class="text-3xl font-bold mt-10">SYMBOLS</div>
+                                <div class="mt-2 leading-relaxed text-secondary">
+                                   
+                                    
+
+
+                                    <omanonline-card class="flex flex-col items-center  w-full p-10">
+                              
+                      
+                                        <div class="flex mx-6 sm:mx-8 mb-4">
+                                            <div class="flex h-80 pr-1 mr-4">
+                                                <img matTooltip="LOGO"
+                                                    class="rounded object-cover"
+                                                    src="{{currentBusinessInfo.brandbook.symbols.logo}}"
+                                                    alt="logo">
+                                            </div>
+                                            <div class="flex flex-col pl-1">
+                                                <div class="flex h-40 pb-1">
+                                                    <img matTooltip="ICON"
+                                                        class="rounded object-cover"
+                                                        src="{{currentBusinessInfo.brandbook.symbols.icon}}"
+                                                        alt="icon">
+                                                </div>
+                                                <div class="flex h-40 pt-1">
+                                                    <img matTooltip="lOGO MOTION"
+                                                        class="rounded object-cover"
+                                                        src="{{currentBusinessInfo.brandbook.symbols.logomotion}}"
+                                                        alt="logo motion">
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+ 
+                                    </omanonline-card>
+
+
+
                                 </div>
-                                <div class="flex items-center mt-4">
-                                    <mat-icon class="icon-size-5 mr-3" [svgIcon]="'heroicons_solid:cake'"></mat-icon>
-                                    <span class="leading-none">April, 24</span>
+
+                                <div class="text-3xl font-bold mt-10">ORGANISATION COLORS</div>
+                                <div class="flex items-center mt-2 leading-relaxed text-secondary">
+                                  
+                                    <omanonline-card class="flex flex-col items-center max-w-80 w-full p-8 filter-info mr-1 ml-1" *ngFor="let color of currentBusinessInfo.brandbook.organisationcolors">
+                                        <div class="flex items-center justify-center p-5 rounded-full" style="background-color: {{color.code}}" >
+                                            <mat-icon
+                                                class="icon-size-10" [color]="color.code"
+                                               >instagram</mat-icon>
+
+                                                
+                                        </div>
+                                        <div class="text-2xl font-semibold leading-tight text-center mt-6">{{color.code}}</div>
+                                        <div class="text-center text-secondary mt-3">{{color.description}}</div>
+ 
+                                    </omanonline-card>
+
+                           
+                                </div>
+
+                                <div class="text-3xl font-bold mt-10">ORGANISATION FONTS</div>
+                                <div class="mt-2 leading-relaxed text-secondary">
+                                   
                                 </div>
                             </div>
+
+
 
                         </omanonline-card>
 

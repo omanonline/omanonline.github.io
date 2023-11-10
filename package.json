@@ -13,6 +13,7 @@
         "test": "ng test"
     },
     "dependencies": {
+        "@agm/core": "^3.0.0-beta.0",
         "@angular/animations": "16.2.11",
         "@angular/cdk": "16.2.10",
         "@angular/common": "16.2.11",

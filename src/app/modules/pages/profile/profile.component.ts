@@ -92,7 +92,8 @@ export class ProfileComponent implements OnInit {
     }
 
     getGoogleMapsUrl(latitude: any, longitude: any)  {
-        const mapUrl = `https://www.google.com/maps/embed/v1/view?key=${this.apiKey}&center=${latitude},${longitude}&zoom=15`;
+        const mapUrl = `https://www.google.com/maps/embed/v1/place?q=${latitude},${longitude}&key=${this.apiKey}`;
+        
         return mapUrl;
       }
 
@@ -100,6 +101,7 @@ export class ProfileComponent implements OnInit {
         const url = `https://www.google.com/maps?q=${latitude},${longitude}`;
         window.open(url, '_blank');
     }
+
     async ngOnInit(): Promise<void> {
         try {
             this.categories = await this.setup.getCategories();
