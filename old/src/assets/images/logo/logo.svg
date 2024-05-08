@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 515 512" width="515" height="512">
+	<title>logo-text-svg</title>
+	<style>
+		.s0 { fill: none;stroke: #10182a;stroke-miterlimit:10;stroke-width: 60 } 
+		.s1 { fill: #109488;stroke: #109488;stroke-miterlimit:10;stroke-width: 18 } 
+	</style>
+	<path id="Layer" class="s0" d="m256 451c-107.8 0-195-87.2-195-195 0-107.8 87.2-195 195-195 107.8 0 195 87.2 195 195 0 107.8-87.2 195-195 195z"/>
+	<g id="Layer">
+		<path id="Layer" class="s1" d="m385.8 161.4c-28.9 0-52.2-23.3-52.2-52.2 0-28.9 23.3-52.2 52.2-52.2 28.9 0 52.2 23.3 52.2 52.2 0 28.9-23.3 52.2-52.2 52.2z"/>
+	</g>
+</svg>
