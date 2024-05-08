@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Oman Online</title><description>Explore Oman, Engage with Opportunities</description><link>https://blog.sbc.om/</link><language>en</language><item><title>Draft Example</title><link>https://blog.sbc.om/posts/draft/</link><guid isPermaLink="true">https://blog.sbc.om/posts/draft/</guid><pubDate>Fri, 01 Jul 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;This Article is a Draft&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Oman Online</title><description>Explore Oman, Engage with Opportunities</description><link>https://omanonline.org/</link><language>en</language><item><title>Draft Example</title><link>https://omanonline.org/posts/draft/</link><guid isPermaLink="true">https://omanonline.org/posts/draft/</guid><pubDate>Fri, 01 Jul 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;This Article is a Draft&lt;/h1&gt;
 &lt;p&gt;This article is currently in a draft state and is not published. Therefore, it will not be visible to the general audience. The content is still a work in progress and may require further editing and review.&lt;/p&gt;
 &lt;p&gt;When the article is ready for publication, you can update the &quot;draft&quot; field to &quot;false&quot; in the Frontmatter:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;---
@@ -9,7 +9,7 @@ category: Examples
 draft: false
 ---
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>Simple Guides for Fuwari</title><link>https://blog.sbc.om/posts/guide/</link><guid isPermaLink="true">https://blog.sbc.om/posts/guide/</guid><description>How to use this blog template.</description><pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+</content:encoded></item><item><title>Simple Guides for Fuwari</title><link>https://omanonline.org/posts/guide/</link><guid isPermaLink="true">https://omanonline.org/posts/guide/</guid><description>How to use this blog template.</description><pubDate>Mon, 01 Apr 2024 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;Cover image source: &lt;a href=&quot;https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/208fc754-890d-4adb-9753-2c963332675d/width=2048/01651-1456859105-(colour_1.5),girl,_Blue,yellow,green,cyan,purple,red,pink,_best,8k,UHD,masterpiece,male%20focus,%201boy,gloves,%20ponytail,%20long%20hair,.jpeg&quot;&gt;Source&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;This blog template is built with &lt;a href=&quot;https://astro.build/&quot;&gt;Astro&lt;/a&gt;. For the things that are not mentioned in this guide, you may find the answers in the &lt;a href=&quot;https://docs.astro.build/&quot;&gt;Astro Docs&lt;/a&gt;.&lt;/p&gt;
@@ -70,7 +70,7 @@ draft: false
     ├── cover.png
     └── index.md
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>Markdown Extended Features</title><link>https://blog.sbc.om/posts/markdown-extended/</link><guid isPermaLink="true">https://blog.sbc.om/posts/markdown-extended/</guid><description>Read more about Markdown features in Fuwari</description><pubDate>Wed, 01 May 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;GitHub repository cards&lt;/h2&gt;
+</content:encoded></item><item><title>Markdown Extended Features</title><link>https://omanonline.org/posts/markdown-extended/</link><guid isPermaLink="true">https://omanonline.org/posts/markdown-extended/</guid><description>Read more about Markdown features in Fuwari</description><pubDate>Wed, 01 May 2024 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;GitHub repository cards&lt;/h2&gt;
 &lt;p&gt;You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API.&lt;/p&gt;
 &lt;p&gt;::github{repo=&quot;Fabrizz/MMM-OnSpotify&quot;}&lt;/p&gt;
 &lt;p&gt;Create a GitHub repository card with the code &lt;code&gt;::github{repo=&quot;&amp;lt;owner&amp;gt;/&amp;lt;repo&amp;gt;&quot;}&lt;/code&gt;.&lt;/p&gt;
@@ -109,7 +109,7 @@ This is a note with a custom title.
 This is a note with a custom title.
 :::
 &lt;/code&gt;&lt;/pre&gt;
-</content:encoded></item><item><title>Markdown Example</title><link>https://blog.sbc.om/posts/markdown/</link><guid isPermaLink="true">https://blog.sbc.om/posts/markdown/</guid><description>A simple example of a Markdown blog post.</description><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;An h1 header&lt;/h1&gt;
+</content:encoded></item><item><title>Markdown Example</title><link>https://omanonline.org/posts/markdown/</link><guid isPermaLink="true">https://omanonline.org/posts/markdown/</guid><description>A simple example of a Markdown blog post.</description><pubDate>Sun, 01 Oct 2023 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;An h1 header&lt;/h1&gt;
 &lt;p&gt;Paragraphs are separated by a blank line.&lt;/p&gt;
 &lt;p&gt;2nd paragraph. &lt;em&gt;Italic&lt;/em&gt;, &lt;strong&gt;bold&lt;/strong&gt;, and &lt;code&gt;monospace&lt;/code&gt;. Itemized lists
 look like:&lt;/p&gt;
@@ -230,7 +230,7 @@ math should get its own line and be put in in double-dollarsigns:&lt;/p&gt;
 &lt;p&gt;$$I = \int \rho R^{2} dV$$&lt;/p&gt;
 &lt;p&gt;And note that you can backslash-escape any punctuation characters
 which you wish to be displayed literally, ex.: `foo`, *bar*, etc.&lt;/p&gt;
-</content:encoded></item><item><title>Include Video in the Posts</title><link>https://blog.sbc.om/posts/video/</link><guid isPermaLink="true">https://blog.sbc.om/posts/video/</guid><description>This post demonstrates how to include embedded video in a blog post.</description><pubDate>Tue, 01 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Just copy the embed code from YouTube or other platforms, and paste it in the markdown file.&lt;/p&gt;
+</content:encoded></item><item><title>Include Video in the Posts</title><link>https://omanonline.org/posts/video/</link><guid isPermaLink="true">https://omanonline.org/posts/video/</guid><description>This post demonstrates how to include embedded video in a blog post.</description><pubDate>Tue, 01 Aug 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Just copy the embed code from YouTube or other platforms, and paste it in the markdown file.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;---
 title: Include Video in the Post
 published: 2023-10-19
